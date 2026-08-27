@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADDRESS — Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%231C1B18%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Georgia,serif%27 font-size=%2734%27 fill=%27%23F7F3EC%27 text-anchor=%27middle%27%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="logo" data-i18n="brand.name">ADDRESS</a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html" class="nav__link" data-i18n="nav.about">About Us</a></li>
+          <li><a href="service.html" class="nav__link nav__link--active" data-i18n="nav.service">Service</a></li>
+          <li><a href="contacts.html" class="nav__link" data-i18n="nav.contacts">Contacts</a></li>
+        </ul>
+        <a href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener" class="btn btn--primary nav-cta" data-magnetic="0.3" data-i18n="nav.contactCta">Get in Touch</a>
+        <button type="button" class="lang-toggle" data-lang-toggle aria-label="Switch language"><span class="lang-toggle__inner"><span class="lang-toggle__current">EN</span><span class="lang-toggle__target">RU</span></span></button>
+      </nav>
+      <button type="button" class="burger" data-burger aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" data-mobile-nav>
+      <ul class="mobile-nav__list">
+        <li><a href="index.html" class="mobile-nav__link" data-i18n="nav.home">Home</a></li>
+        <li><a href="about.html" class="mobile-nav__link" data-i18n="nav.about">About Us</a></li>
+        <li><a href="service.html" class="mobile-nav__link nav__link--active" data-i18n="nav.service">Service</a></li>
+        <li><a href="contacts.html" class="mobile-nav__link" data-i18n="nav.contacts">Contacts</a></li>
+      </ul>
+      <div class="mobile-nav__utility">
+        <button type="button" class="lang-toggle" data-lang-toggle aria-label="Switch language"><span class="lang-toggle__inner"><span class="lang-toggle__current">EN</span><span class="lang-toggle__target">RU</span></span></button>
+      </div>
+      <a href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener" class="btn btn--primary" data-i18n="nav.contactCta">Get in Touch</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero service-hero" aria-label="Service hero">
+      <div class="hero__media">
+        <div class="photo-placeholder" style="position:absolute; inset:0;" aria-label="Warm-lit boutique shelving with candles and diffusers"></div>
+      </div>
+      <div class="hero__content">
+        <div class="service-hero__panel">
+          <p class="tag-label" data-i18n="service.hero.label">services</p>
+          <h1 class="section__title" data-i18n="service.title">For a Journey That Comes Together Effortlessly</h1>
+          <p class="section__text" data-i18n="service.intro.text">We offer several formats of support — from personal guides to complete itinerary planning</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="personal" class="section section--light">
+      <div class="section__inner section__inner--narrow section__inner--center" data-reveal>
+        <span class="num" style="display:block; opacity:0.5; margin-bottom:8px;">01</span>
+        <p class="tag-label" data-i18n="service.personal.tag">personal</p>
+        <p class="section__text" style="margin-bottom: 48px;" data-i18n="service.personal.text">A curated selection of hotels, restaurants, museums, exhibitions, shops, and simply interesting spots on the city map, put together specifically for you and your trip — with the season, neighborhood, and your preferred pace in mind</p>
+      </div>
+      <div class="section__inner">
+        <div class="service-scroll">
+          <div class="service-scroll__pin">
+            <div class="service-scroll__stage">
+              <div class="service-scroll__words">
+                <span class="service-word" data-i18n="service.personal.category.hotels">Hotels</span>
+                <span class="service-word" data-i18n="service.personal.category.shops">Shops</span>
+                <span class="service-word" data-i18n="service.personal.category.museums">Museums</span>
+                <span class="service-word" data-i18n="service.personal.category.restaurants">Restaurants</span>
+                <span class="service-word" data-i18n="service.personal.category.exhibitions">Exhibitions</span>
+              </div>
+              <div class="service-scroll__images">
+                <div class="service-image"><div class="photo-placeholder photo-placeholder--tall" aria-label="Hotel interior photo"></div></div>
+                <div class="service-image"><div class="photo-placeholder photo-placeholder--tall" aria-label="Boutique shop interior photo"></div></div>
+                <div class="service-image"><div class="photo-placeholder photo-placeholder--tall" aria-label="Museum interior photo"></div></div>
+                <div class="service-image"><div class="photo-placeholder photo-placeholder--tall" aria-label="Restaurant table setting photo"></div></div>
+                <div class="service-image"><div class="photo-placeholder photo-placeholder--tall" aria-label="Exhibition photo"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="max-width: var(--content-width); margin: 96px auto 0; text-align: center;" data-reveal>
+          <p style="font-size: 19px; margin-bottom: 16px;" data-i18n="service.personal.deliverable1">You receive a file with curated picks by category — descriptions, links, and key details (opening hours, booking conditions, travel tips)</p>
+          <p style="font-size: 19px; margin-bottom: 32px;" data-i18n="service.personal.deliverable2">Plus a Google Maps link for easy orientation around the city</p>
+          <span class="price-badge price-badge--on-light" data-i18n="service.personal.price">from 20 000 ₽</span>
+          <span class="price-badge__note" data-i18n="service.personal.priceNote">depending on your request</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="tailored" class="section section--dark">
+      <div class="section__inner section__inner--narrow section__inner--center" data-reveal>
+        <span class="num" style="display:block; opacity:0.5; margin-bottom:8px;">02</span>
+        <p class="tag-label" data-i18n="service.tailored.tag">tailored</p>
+        <h2 class="section__title" data-i18n="service.tailored.title">Personalized Routes for Walks and Leisure</h2>
+        <p class="section__text" data-i18n="service.tailored.text">Your ideal day in the city, planned down to the smallest detail:</p>
+        <div class="question-list">
+          <div class="question-item"><span class="question-item__arrow">→</span><span class="question-item__text" data-i18n="service.tailored.q1">where's the widest by-the-glass champagne selection?</span></div>
+          <div class="question-item"><span class="question-item__arrow">→</span><span class="question-item__text" data-i18n="service.tailored.q2">which shop is worth a stop between the museum and coffee?</span></div>
+          <div class="question-item"><span class="question-item__arrow">→</span><span class="question-item__text" data-i18n="service.tailored.q3">which terrace has the best view of the city?</span></div>
+          <div class="question-item"><span class="question-item__arrow">→</span><span class="question-item__text" data-i18n="service.tailored.q4">where do sophisticated locals go for dinner?</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="photo-placeholder photo-placeholder--wide" aria-label="Table spread of food photo"></div>
+
+    <section class="section section--dark">
+      <div class="section__inner section__inner--narrow section__inner--center" data-reveal>
+        <h2 class="section__title" data-i18n="service.tailored.title2">We Plan the Logistics, Timing, and Convenient Routes</h2>
+        <p class="section__text" style="margin-bottom: 16px;" data-i18n="service.tailored.text2">All that's left is to enjoy the city</p>
+        <p style="font-size: 19px; margin-bottom: 32px;" data-i18n="service.tailored.deliverable">You'll receive a day-by-day itinerary file with approximate timing and a Google Maps link with the routes ready to go</p>
+        <span class="price-badge price-badge--on-dark" data-i18n="service.tailored.price">15 000 ₽ / day</span>
+        <span class="price-badge__note" data-i18n="service.tailored.priceNote">available from two days</span>
+      </div>
+    </section>
+
+    <div class="photo-placeholder photo-placeholder--wide" aria-label="Beach loungers and umbrellas photo"></div>
+
+    <section id="concierge" class="section section--light">
+      <div class="section__inner section__inner--narrow section__inner--center" data-reveal>
+        <span class="num" style="display:block; opacity:0.5; margin-bottom:8px;">03</span>
+        <p class="tag-label" data-i18n="service.concierge.tag">concierge</p>
+        <h2 class="section__title" data-i18n="service.concierge.title">We Book Your Hotels, Restaurants, and Event Tickets</h2>
+        <p class="section__text" style="margin-bottom: 32px;" data-i18n="service.concierge.text">We take care of the organizational details so your trip is as comfortable as possible</p>
+        <span class="price-badge price-badge--on-light" data-i18n="service.concierge.price">from 5 000 ₽</span>
+      </div>
+    </section>
+
+    <section class="section section--dark">
+      <div class="section__inner section__inner--narrow section__inner--center" data-reveal>
+        <p class="section__text" style="margin-bottom: 16px;" data-i18n="service.closing.text1">Planning a trip and want it thought through to the very last detail? Write to us</p>
+        <p class="section__text" style="margin-bottom: 32px;" data-i18n="service.closing.text2">We'll choose the right format of support and create a journey made just for you</p>
+        <a href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener" class="btn btn--outline-light" data-magnetic="0.3" data-i18n="service.closing.cta">Get in Touch</a>
+      </div>
+    </section>
+
+    <div class="photo-placeholder photo-placeholder--wide" aria-label="Bathroom interior photo"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__tagline" data-i18n="footer.tagline">Curated travel experiences</p>
+    <p class="site-footer__rights" data-i18n="footer.rights">© 2026 ADDRESS. All rights reserved.</p>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>
