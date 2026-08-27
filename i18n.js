@@ -110,7 +110,8 @@
       'service.closing.cta': 'Связаться с нами',
 
       'contacts.title': 'Контакты',
-      'contacts.lead': 'Расскажите, каким вы видите своё путешествие. Мы свяжемся с вами в течение дня.',
+      'contacts.hero.line1': 'Расскажите, каким вы видите своё путешествие.',
+      'contacts.hero.line2': 'Мы свяжемся с вами в течение дня.',
 
       'contacts.interest.label': 'Меня интересует…',
       'contacts.interest.personal': 'Персональное',
@@ -239,7 +240,8 @@
       'service.closing.cta': 'Get in Touch',
 
       'contacts.title': 'Contacts',
-      'contacts.lead': "Tell us how you picture your journey. We'll get back to you within a day.",
+      'contacts.hero.line1': 'Tell us how you picture your journey.',
+      'contacts.hero.line2': "We'll get back to you within a day.",
 
       'contacts.interest.label': "I'm interested in…",
       'contacts.interest.personal': 'Personal',
