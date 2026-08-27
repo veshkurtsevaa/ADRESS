@@ -143,13 +143,29 @@
     });
   }
 
-  /* ---------- index row cursor-fill hover (fill grows from entry point) ---------- */
+  /* ---------- index row cursor-fill hover (fill grows from entry point) ----------
+     --fill-r is set in px to the exact distance from the entry point to the row's
+     farthest corner, so the clip-path circle is always just big enough to fully
+     cover the row — never smaller (a gap left uncovered) or arbitrarily oversized. */
   document.querySelectorAll('.index-row__head').forEach(function (head) {
-    head.addEventListener('mouseenter', function (e) {
+    function setFillOrigin(e) {
       var rect = head.getBoundingClientRect();
-      head.style.setProperty('--fill-x', ((e.clientX - rect.left) / rect.width) * 100 + '%');
-      head.style.setProperty('--fill-y', ((e.clientY - rect.top) / rect.height) * 100 + '%');
-    });
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var corners = [
+        [0, 0], [rect.width, 0], [0, rect.height], [rect.width, rect.height]
+      ];
+      var maxDist = 0;
+      corners.forEach(function (c) {
+        var d = Math.hypot(x - c[0], y - c[1]);
+        if (d > maxDist) maxDist = d;
+      });
+      head.style.setProperty('--fill-x', x + 'px');
+      head.style.setProperty('--fill-y', y + 'px');
+      head.style.setProperty('--fill-r', maxDist + 'px');
+    }
+    head.addEventListener('mouseenter', setFillOrigin);
+    head.addEventListener('mouseleave', setFillOrigin);
   });
 
   /* ---------- interest tag picker (Contacts) ---------- */
