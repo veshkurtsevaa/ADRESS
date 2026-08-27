@@ -17,6 +17,7 @@
   --terracotta-dark: #9A4B2E;
   --navy: #25304A;
   --navy-dark: #1B2439;
+  --accent-pink: #F7DDE2;
   --line: rgba(28, 27, 24, 0.14);
   --line-on-dark: rgba(247, 243, 236, 0.22);
   --placeholder: #4A473F;
@@ -394,57 +395,72 @@ button { font-family: inherit; }
 .price-badge__note { display: block; margin-top: 10px; font-family: var(--font-body); font-size: 15px; opacity: 0.75; }
 
 /* =========================================================
-   CONTACTS — interest tags + form (serviceplusaquatics)
+   CONTACTS — big-type hero form (Claude Design "offline" reference)
    ========================================================= */
-.interest-picker__label {
-  font-family: var(--font-display); font-size: clamp(26px, 3.6vw, 42px); line-height: 1.3;
-  max-width: 760px; margin-bottom: 40px;
-}
-.interest-picker__tags { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 64px; }
-.interest-tag {
-  font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase;
-  padding: 14px 26px; border-radius: 999px; border: 1px solid var(--line);
-  background: transparent; color: var(--ink); cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-}
-.interest-tag:hover { transform: translateY(-2px); border-color: var(--ink); }
-.interest-tag.is-selected { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.section--white { background: #FFFFFF; }
 
-.contact-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 72px; max-width: var(--container); margin: 0 auto; }
-.contact-form { display: flex; flex-direction: column; gap: 8px; }
-.form-field { position: relative; border-bottom: 1px solid var(--line); padding-top: 34px; }
+.interest-picker__label {
+  font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 2.9vw, 48px);
+  line-height: 1.24; letter-spacing: 0.01em; text-wrap: pretty;
+  max-width: 1000px; margin-bottom: 32px;
+}
+.interest-picker__tags {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  max-width: 600px; margin-bottom: 64px;
+}
+.interest-tag {
+  font-family: var(--font-ui); font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 14px 8px; border-radius: 999px; border: 1px solid var(--line);
+  background: transparent; color: var(--ink); cursor: pointer;
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+}
+.interest-tag:hover { border-color: var(--ink); }
+.interest-tag.is-selected { background: var(--navy); color: var(--paper); border-color: var(--navy); transform: translateY(-2px); }
+@media (max-width: 600px) { .interest-picker__tags { grid-template-columns: repeat(2, 1fr); max-width: none; } }
+
+.contact-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 6vw; align-items: start; max-width: var(--container); margin: 0 auto; }
+.contact-form { display: flex; flex-direction: column; gap: 20px; }
+.form-field { position: relative; padding: 0 0 10px; }
 .form-field label {
-  position: absolute; left: 0; top: 34px; font-family: var(--font-body); font-size: clamp(22px, 3vw, 32px);
-  color: var(--ink-soft); pointer-events: none; transition: transform 0.2s var(--ease), font-size 0.2s var(--ease), opacity 0.2s ease;
+  position: absolute; left: 0; top: 0; font-family: var(--font-ui); font-weight: 200; font-size: clamp(24px, 2.9vw, 40px);
+  line-height: 1.3; color: var(--ink-soft); pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.4s var(--ease);
 }
 .form-field input, .form-field textarea {
-  width: 100%; border: none; background: transparent; font-family: var(--font-body);
-  font-size: clamp(22px, 3vw, 32px); color: var(--ink); padding: 8px 0 16px; outline: none;
+  width: 100%; border: none; background: transparent; font-family: var(--font-ui); font-weight: 200;
+  font-size: clamp(24px, 2.9vw, 40px); line-height: 1.3; color: var(--ink); padding: 0 0 10px; outline: none;
 }
-.form-field textarea { min-height: 120px; resize: vertical; }
-.form-field input:focus + label, .form-field input:not(:placeholder-shown) + label,
-.form-field textarea:focus + label, .form-field textarea:not(:placeholder-shown) + label {
-  transform: translateY(-30px); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.6;
+.form-field textarea { min-height: 1.3em; resize: none; }
+.form-field::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 1px; background: var(--ink-soft);
+  width: 0%; transition: width 0.5s var(--ease);
 }
-.form-submit {
-  align-self: flex-start; margin-top: 32px; width: 132px; height: 132px; border-radius: 50%;
-  background: var(--ink); color: var(--paper); border: none; cursor: pointer;
-  font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-.form-submit:hover { background: var(--terracotta); transform: scale(1.04); }
+.form-field:hover::after, .form-field:focus-within::after { width: 100%; }
+.form-field:hover input:placeholder-shown + label,
+.form-field:hover textarea:placeholder-shown + label { transform: translateX(6px); }
+.form-field input:not(:placeholder-shown) + label,
+.form-field textarea:not(:placeholder-shown) + label { opacity: 0; }
 
-.contact-info { display: flex; flex-direction: column; gap: 10px; }
-.contact-info__title { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; margin-bottom: 6px; }
-.contact-info__row { display: flex; gap: 8px; align-items: baseline; }
-.contact-info__label { font-family: var(--font-ui); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.55; }
-.contact-info__value { font-family: var(--font-body); font-size: 17px; }
+.form-submit {
+  align-self: flex-start; margin-top: 12px; width: 132px; height: 132px; border-radius: 50%;
+  background: var(--ink); color: var(--paper); border: none; cursor: pointer; will-change: transform;
+  font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  transition: background-color 0.45s ease, color 0.45s ease;
+}
+.form-submit.is-magnet-near { background: var(--accent-pink); color: var(--navy); }
+
+.contact-info { display: flex; flex-direction: column; gap: 26px; }
+.contact-info__title { font-family: var(--font-ui); font-size: 19px; font-weight: 500; letter-spacing: 0.01em; }
+.contact-info__row { display: grid; grid-template-columns: auto 1fr; gap: 8px 20px; align-items: baseline; }
+.contact-info__label { font-family: var(--font-ui); font-size: 15px; font-weight: 500; }
+.contact-info__value { font-family: var(--font-ui); font-size: 15px; font-weight: 300; color: var(--ink-soft); word-break: break-word; }
 .contact-info__value:hover { color: var(--terracotta); }
 
-.form-message { display: none; padding: 14px 18px; border-radius: 4px; font-size: 15px; margin-top: 16px; }
-.form-message.is-visible { display: block; }
-.form-message--success { background: rgba(124, 131, 85, 0.18); color: var(--olive-dark); }
-.form-message--error { background: rgba(184, 92, 56, 0.15); color: var(--terracotta-dark); }
+.form-message { display: none; margin-top: 16px; font-size: 17px; }
+.form-message.is-visible { display: block; animation: formFade 0.5s ease both; }
+.form-message--success { font-style: italic; color: var(--terracotta); }
+.form-message--error { color: var(--terracotta-dark); }
+@keyframes formFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 56px; } }
 

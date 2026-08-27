@@ -129,6 +129,52 @@
     initMagnetic(el, parseFloat(el.getAttribute('data-magnetic')) || 0.35);
   });
 
+  /* ---------- proximity magnet (Contacts submit button) ----------
+     Distinct from the generic magnetic buttons above: this one starts
+     pulling the button from up to REACH px away — before the cursor is
+     anywhere near its box — and swaps to the accent color once the
+     cursor is effectively "inside" the (moved) button, not just on a
+     plain CSS :hover of its resting position. */
+  document.querySelectorAll('[data-magnet-proximity]').forEach(function (el) {
+    if (reduceMotion || !window.matchMedia('(hover: hover)').matches) return;
+    var REACH = 260, PULL = 0.32, MAX = 46;
+    var pointer = { x: -9999, y: -9999 };
+    var pos = { x: 0, y: 0, s: 1 };
+    var isNear = false;
+
+    document.addEventListener('mousemove', function (e) {
+      pointer.x = e.clientX; pointer.y = e.clientY;
+    });
+
+    function tick() {
+      var rect = el.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2 - pos.x;
+      var cy = rect.top + rect.height / 2 - pos.y;
+      var dx = pointer.x - cx, dy = pointer.y - cy;
+      var d = Math.hypot(dx, dy);
+      var near = d < REACH;
+      var tx = 0, ty = 0, ts = 1;
+      if (near) {
+        var f = 1 - d / REACH;
+        var k = Math.min(MAX, d * PULL) / (d || 1);
+        tx = dx * k * (0.4 + 0.6 * f);
+        ty = dy * k * (0.4 + 0.6 * f);
+        ts = 1 + 0.06 * f;
+      }
+      pos.x += (tx - pos.x) * 0.12;
+      pos.y += (ty - pos.y) * 0.12;
+      pos.s += (ts - pos.s) * 0.12;
+      el.style.transform = 'translate3d(' + pos.x.toFixed(2) + 'px,' + pos.y.toFixed(2) + 'px,0) scale(' + pos.s.toFixed(3) + ')';
+      var inside = d < rect.width / 2 + 8;
+      if (inside !== isNear) {
+        isNear = inside;
+        el.classList.toggle('is-magnet-near', inside);
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+
   /* ---------- home index accordion (pure CSS grid-template-rows trick,
      no GSAP/CDN dependency — must work even if the animation CDN fails) ---------- */
   var indexRows = document.querySelectorAll('.index-row');
@@ -168,15 +214,31 @@
     head.addEventListener('mouseleave', setFillOrigin);
   });
 
-  /* ---------- interest tag picker (Contacts) ---------- */
+  /* ---------- interest tag picker (Contacts) — up to 2 at once,
+     oldest pick evicted when a 3rd is chosen ---------- */
   var interestTags = document.querySelectorAll('[data-interest-tag]');
   var interestInput = document.querySelector('[data-interest-input]');
+  var INTEREST_MAX = 2;
+  var selectedInterests = [];
   if (interestTags.length) {
     interestTags.forEach(function (tag) {
       tag.addEventListener('click', function () {
-        interestTags.forEach(function (t) { t.classList.remove('is-selected'); });
-        tag.classList.add('is-selected');
-        if (interestInput) interestInput.value = tag.textContent.trim();
+        var label = tag.textContent.trim();
+        var idx = selectedInterests.indexOf(label);
+        if (idx !== -1) {
+          selectedInterests.splice(idx, 1);
+          tag.classList.remove('is-selected');
+        } else {
+          selectedInterests.push(label);
+          tag.classList.add('is-selected');
+          if (selectedInterests.length > INTEREST_MAX) {
+            var evicted = selectedInterests.shift();
+            interestTags.forEach(function (t) {
+              if (t.textContent.trim() === evicted) t.classList.remove('is-selected');
+            });
+          }
+        }
+        if (interestInput) interestInput.value = selectedInterests.join(', ');
       });
     });
   }
