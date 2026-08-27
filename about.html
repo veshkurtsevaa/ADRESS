@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADDRESS — About Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%231C1B18%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Georgia,serif%27 font-size=%2734%27 fill=%27%23F7F3EC%27 text-anchor=%27middle%27%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="logo" data-i18n="brand.name">ADDRESS</a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html" class="nav__link nav__link--active" data-i18n="nav.about">About Us</a></li>
+          <li><a href="service.html" class="nav__link" data-i18n="nav.service">Service</a></li>
+          <li><a href="contacts.html" class="nav__link" data-i18n="nav.contacts">Contacts</a></li>
+        </ul>
+        <a href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener" class="btn btn--primary nav-cta" data-magnetic="0.3" data-i18n="nav.contactCta">Get in Touch</a>
+        <button type="button" class="lang-toggle" data-lang-toggle aria-label="Switch language"><span class="lang-toggle__inner"><span class="lang-toggle__current">EN</span><span class="lang-toggle__target">RU</span></span></button>
+      </nav>
+      <button type="button" class="burger" data-burger aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" data-mobile-nav>
+      <ul class="mobile-nav__list">
+        <li><a href="index.html" class="mobile-nav__link" data-i18n="nav.home">Home</a></li>
+        <li><a href="about.html" class="mobile-nav__link nav__link--active" data-i18n="nav.about">About Us</a></li>
+        <li><a href="service.html" class="mobile-nav__link" data-i18n="nav.service">Service</a></li>
+        <li><a href="contacts.html" class="mobile-nav__link" data-i18n="nav.contacts">Contacts</a></li>
+      </ul>
+      <div class="mobile-nav__utility">
+        <button type="button" class="lang-toggle" data-lang-toggle aria-label="Switch language"><span class="lang-toggle__inner"><span class="lang-toggle__current">EN</span><span class="lang-toggle__target">RU</span></span></button>
+      </div>
+      <a href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener" class="btn btn--primary" data-i18n="nav.contactCta">Get in Touch</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section--light" style="padding-top:160px; padding-bottom:80px;">
+      <div class="section__inner">
+        <p class="tag-label" style="display:block; text-align:center;" data-reveal data-i18n="about.hero.label">about us</p>
+        <h1 class="section__title" data-reveal data-i18n="about.title">About Us</h1>
+        <p class="section__text" data-reveal data-i18n="about.lead">ADDRESS is a project of curated travel experiences. We work directly with hotels, guides, and local partners so every detail is thought through in advance</p>
+      </div>
+    </section>
+
+    <section class="spread section--dim">
+      <div class="spread__grid">
+        <div class="spread-photo spread-photo--offset-a" data-reveal>
+          <div class="photo-placeholder photo-placeholder--tall" data-parallax="0.12" aria-label="Street scene photo"></div>
+          <p class="spread-photo__caption"><span class="num">I.</span><span data-i18n="about.spread.01">Every itinerary starts with a conversation — about rhythm, taste, and what a perfect day means to you</span></p>
+        </div>
+        <div class="spread-photo spread-photo--offset-b" data-reveal>
+          <div class="photo-placeholder photo-placeholder--square" data-parallax="-0.1" aria-label="Local guide photo"></div>
+          <p class="spread-photo__caption"><span class="num">II.</span><span data-i18n="about.spread.02">We visit places ourselves before we recommend them to you</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="spread section--olive">
+      <div class="spread__grid">
+        <div class="spread-photo spread-photo--offset-a" data-reveal>
+          <div class="photo-placeholder photo-placeholder--tall" data-parallax="0.12" aria-label="Hidden courtyard photo"></div>
+          <p class="spread-photo__caption" style="color:var(--paper);"><span class="num">III.</span><span data-i18n="about.spread.03">Hidden addresses no guidebook lists are part of the job</span></p>
+        </div>
+        <div class="spread-photo spread-photo--offset-b" data-reveal>
+          <div class="photo-placeholder photo-placeholder--square" data-parallax="-0.1" aria-label="Postcard writing photo"></div>
+          <p class="spread-photo__caption" style="color:var(--paper);"><span class="num">IV.</span><span data-i18n="about.spread.04">From the first message to the last day of the trip — we stay in touch</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--light">
+      <div class="section__inner">
+        <p class="tag-label" style="display:block; text-align:center;" data-reveal data-i18n="about.principles.label">principles</p>
+        <div class="principles" data-reveal>
+          <div class="principle">
+            <span class="principle__num">01</span>
+            <h3 class="principle__title" data-i18n="about.principles.personal.title">Personal Approach</h3>
+            <p class="principle__text" data-i18n="about.principles.personal.text">Every itinerary is built from scratch around your rhythm and interests</p>
+          </div>
+          <div class="principle">
+            <span class="principle__num">02</span>
+            <h3 class="principle__title" data-i18n="about.principles.partners.title">Direct Partnerships</h3>
+            <p class="principle__text" data-i18n="about.principles.partners.text">We work directly with hotels — exclusive rates and upgrades</p>
+          </div>
+          <div class="principle">
+            <span class="principle__num">03</span>
+            <h3 class="principle__title" data-i18n="about.principles.guides.title">Guides With Hidden Places</h3>
+            <p class="principle__text" data-i18n="about.principles.guides.text">Personal guides with locations no guidebook lists</p>
+          </div>
+          <div class="principle">
+            <span class="principle__num">04</span>
+            <h3 class="principle__title" data-i18n="about.principles.trust.title">Privacy &amp; Trust</h3>
+            <p class="principle__text" data-i18n="about.principles.trust.text">Confidentiality and attention to detail at every step</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote section--dark">
+      <p class="quote__text" data-reveal data-i18n="about.quote">Aesthetics, hidden places, attention to detail, and the feeling of ease when a journey comes together perfectly</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__tagline" data-i18n="footer.tagline">Curated travel experiences</p>
+    <p class="site-footer__rights" data-i18n="footer.rights">© 2026 ADDRESS. All rights reserved.</p>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>
