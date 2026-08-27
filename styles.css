@@ -17,6 +17,7 @@
   --terracotta-dark: #9A4B2E;
   --line: rgba(28, 27, 24, 0.14);
   --line-on-dark: rgba(247, 243, 236, 0.22);
+  --placeholder: #4A473F;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Cormorant Garamond', Georgia, serif;
@@ -165,14 +166,20 @@ button { font-family: inherit; }
   font-family: var(--font-mono); font-variant-numeric: tabular-nums;
 }
 
-/* ---------- photo placeholder ---------- */
+/* ---------- photo placeholder ----------
+   Deliberately a different tone from both --ink (dark sections) and
+   --paper (light sections) so a placeholder never visually merges with
+   an adjacent dark section into one undifferentiated black stretch.
+   Each instance carries a data-ph number (see HTML) so it's obvious
+   which numbered photo goes where once real images are dropped in. */
 .photo-placeholder {
-  background: var(--ink); color: var(--paper);
+  background: var(--placeholder); color: var(--paper);
   display: flex; align-items: center; justify-content: center;
   text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-mono);
-  font-size: 12px; opacity: 0.85; width: 100%; position: relative; overflow: hidden;
+  font-size: 13px; width: 100%; position: relative; overflow: hidden;
+  border: 1px solid var(--line-on-dark);
 }
-.photo-placeholder::after { content: "Photo"; }
+.photo-placeholder::after { content: "Photo " attr(data-ph); }
 .photo-placeholder--wide { aspect-ratio: 16 / 9; }
 .photo-placeholder--tall { aspect-ratio: 3 / 4; }
 .photo-placeholder--square { aspect-ratio: 1 / 1; }
