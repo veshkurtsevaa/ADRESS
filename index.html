@@ -7,7 +7,7 @@
   <meta name="description" content="ADDRESS is a project of curated travel experiences — personal itineraries, hidden places, direct hotel partnerships.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%231C1B18%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Georgia,serif%27 font-size=%2734%27 fill=%27%23F7F3EC%27 text-anchor=%27middle%27%3EA%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -17,7 +17,6 @@
       <a href="index.html" class="logo" data-i18n="brand.name">ADDRESS</a>
       <nav class="nav">
         <ul class="nav__list">
-          <li><a href="index.html" class="nav__link nav__link--active" data-i18n="nav.home">Home</a></li>
           <li><a href="about.html" class="nav__link" data-i18n="nav.about">About Us</a></li>
           <li><a href="service.html" class="nav__link" data-i18n="nav.service">Service</a></li>
           <li><a href="contacts.html" class="nav__link" data-i18n="nav.contacts">Contacts</a></li>
@@ -31,7 +30,6 @@
     </div>
     <div class="mobile-nav" data-mobile-nav>
       <ul class="mobile-nav__list">
-        <li><a href="index.html" class="mobile-nav__link" data-i18n="nav.home">Home</a></li>
         <li><a href="about.html" class="mobile-nav__link" data-i18n="nav.about">About Us</a></li>
         <li><a href="service.html" class="mobile-nav__link" data-i18n="nav.service">Service</a></li>
         <li><a href="contacts.html" class="mobile-nav__link" data-i18n="nav.contacts">Contacts</a></li>
@@ -62,7 +60,11 @@
           <a href="#index" class="btn btn--glass" data-magnetic="0.3" data-i18n="home.hero.cta2">Explore Our Service</a>
         </div>
       </div>
-      <div class="hero__scroll-cue"><span></span><span data-i18n="home.hero.scroll">Scroll</span></div>
+      <a href="#index" class="hero__scroll-cue" aria-label="Scroll down" data-magnetic="0.25">
+        <svg class="hero__scroll-arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 4v16M5 13l7 7 7-7"/>
+        </svg>
+      </a>
     </section>
 
     <div class="marquee" aria-hidden="true">
@@ -79,8 +81,10 @@
         <p class="tag-label" data-reveal data-i18n="home.index.label">index</p>
         <ul class="index-list" data-reveal>
           <li class="index-row" data-cursor data-cursor-label="Open">
-            <span class="index-row__num num">01</span>
-            <a href="service.html#personal" class="index-row__title" data-i18n="home.index.01.title">Personal</a>
+            <div class="index-row__head">
+              <span class="index-row__num num">01</span>
+              <a href="service.html#personal" class="index-row__title" data-i18n="home.index.01.title">Personal</a>
+            </div>
             <div class="index-row__reveal-wrap"><div class="index-row__reveal">
               <div class="index-row__reveal-media"><div class="photo-placeholder" aria-label="Hotel interior photo" data-ph="02"></div></div>
               <div class="index-row__reveal-text">
@@ -90,8 +94,10 @@
             </div></div>
           </li>
           <li class="index-row" data-cursor data-cursor-label="Open">
-            <span class="index-row__num num">02</span>
-            <a href="service.html#tailored" class="index-row__title" data-i18n="home.index.02.title">Tailored</a>
+            <div class="index-row__head">
+              <span class="index-row__num num">02</span>
+              <a href="service.html#tailored" class="index-row__title" data-i18n="home.index.02.title">Tailored</a>
+            </div>
             <div class="index-row__reveal-wrap"><div class="index-row__reveal">
               <div class="index-row__reveal-media"><div class="photo-placeholder" aria-label="City walking route photo" data-ph="03"></div></div>
               <div class="index-row__reveal-text">
@@ -101,8 +107,10 @@
             </div></div>
           </li>
           <li class="index-row" data-cursor data-cursor-label="Open">
-            <span class="index-row__num num">03</span>
-            <a href="service.html#concierge" class="index-row__title" data-i18n="home.index.03.title">Concierge</a>
+            <div class="index-row__head">
+              <span class="index-row__num num">03</span>
+              <a href="service.html#concierge" class="index-row__title" data-i18n="home.index.03.title">Concierge</a>
+            </div>
             <div class="index-row__reveal-wrap"><div class="index-row__reveal">
               <div class="index-row__reveal-media"><div class="photo-placeholder" aria-label="Restaurant table setting photo" data-ph="04"></div></div>
               <div class="index-row__reveal-text">
@@ -112,8 +120,10 @@
             </div></div>
           </li>
           <li class="index-row" data-cursor data-cursor-label="Open">
-            <span class="index-row__num num">04</span>
-            <a href="about.html" class="index-row__title" data-i18n="home.index.04.title">About Us</a>
+            <div class="index-row__head">
+              <span class="index-row__num num">04</span>
+              <a href="about.html" class="index-row__title" data-i18n="home.index.04.title">About Us</a>
+            </div>
             <div class="index-row__reveal-wrap"><div class="index-row__reveal">
               <div class="index-row__reveal-media"><div class="photo-placeholder" aria-label="Team on location photo" data-ph="05"></div></div>
               <div class="index-row__reveal-text">
@@ -123,8 +133,10 @@
             </div></div>
           </li>
           <li class="index-row" data-cursor data-cursor-label="Open">
-            <span class="index-row__num num">05</span>
-            <a href="contacts.html" class="index-row__title" data-i18n="home.index.05.title">Contacts</a>
+            <div class="index-row__head">
+              <span class="index-row__num num">05</span>
+              <a href="contacts.html" class="index-row__title" data-i18n="home.index.05.title">Contacts</a>
+            </div>
             <div class="index-row__reveal-wrap"><div class="index-row__reveal">
               <div class="index-row__reveal-media"><div class="photo-placeholder" aria-label="Postcard and map photo" data-ph="06"></div></div>
               <div class="index-row__reveal-text">

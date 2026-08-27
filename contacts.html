@@ -6,7 +6,7 @@
   <title>ADDRESS — Contacts</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%231C1B18%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Georgia,serif%27 font-size=%2734%27 fill=%27%23F7F3EC%27 text-anchor=%27middle%27%3EA%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,7 +16,6 @@
       <a href="index.html" class="logo" data-i18n="brand.name">ADDRESS</a>
       <nav class="nav">
         <ul class="nav__list">
-          <li><a href="index.html" class="nav__link" data-i18n="nav.home">Home</a></li>
           <li><a href="about.html" class="nav__link" data-i18n="nav.about">About Us</a></li>
           <li><a href="service.html" class="nav__link" data-i18n="nav.service">Service</a></li>
           <li><a href="contacts.html" class="nav__link nav__link--active" data-i18n="nav.contacts">Contacts</a></li>
@@ -30,7 +29,6 @@
     </div>
     <div class="mobile-nav" data-mobile-nav>
       <ul class="mobile-nav__list">
-        <li><a href="index.html" class="mobile-nav__link" data-i18n="nav.home">Home</a></li>
         <li><a href="about.html" class="mobile-nav__link" data-i18n="nav.about">About Us</a></li>
         <li><a href="service.html" class="mobile-nav__link" data-i18n="nav.service">Service</a></li>
         <li><a href="contacts.html" class="mobile-nav__link nav__link--active" data-i18n="nav.contacts">Contacts</a></li>
@@ -43,17 +41,9 @@
   </header>
 
   <main>
-    <section class="section section--light" style="padding-top:160px; padding-bottom:0;">
-      <div class="section__inner" data-reveal>
-        <p class="tag-label" data-i18n="contacts.hero.label">contacts</p>
-        <h1 class="section__title contact-hero" style="text-align:left; margin-bottom:12px;" data-i18n="contacts.title">Contacts</h1>
-        <p class="section__text" style="text-align:left; margin-left:0;" data-i18n="contacts.lead">Tell us about your journey — we'll get back to you within a day</p>
-      </div>
-    </section>
-
-    <section class="section section--light">
+    <section class="section section--light" style="padding-top:160px;">
       <div class="section__inner">
-        <p class="interest-picker__label" data-reveal data-i18n="contacts.interest.label">I'm interested in…</p>
+        <p class="interest-picker__label" data-reveal data-i18n="contacts.lead">Tell us about your journey — we'll get back to you within a day</p>
         <div class="interest-picker__tags" data-reveal>
           <button type="button" class="interest-tag is-selected" data-interest-tag data-i18n="contacts.interest.personal">Personal</button>
           <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.tailored">Tailored</button>
@@ -82,14 +72,11 @@
           </form>
 
           <div class="contact-info" data-reveal>
-            <div>
-              <p class="contact-info__title" data-i18n="contacts.info.telegram.label">Telegram</p>
-              <p class="contact-info__value"><a href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener" data-i18n="contacts.info.telegram.value">Message us directly</a></p>
-            </div>
-            <div>
-              <p class="contact-info__title" data-i18n="contacts.info.response.label">Response time</p>
-              <p class="contact-info__value" data-i18n="contacts.info.response.value">Within a day</p>
-            </div>
+            <p class="contact-info__title" data-i18n="contacts.title">Contacts</p>
+            <p class="contact-info__row">
+              <span class="contact-info__label" data-i18n="contacts.info.telegram.label">Telegram</span>
+              <a class="contact-info__value" href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener">@YOUR_TELEGRAM</a>
+            </p>
           </div>
         </div>
       </div>

@@ -143,6 +143,15 @@
     });
   }
 
+  /* ---------- index row cursor-fill hover (fill grows from entry point) ---------- */
+  document.querySelectorAll('.index-row__head').forEach(function (head) {
+    head.addEventListener('mouseenter', function (e) {
+      var rect = head.getBoundingClientRect();
+      head.style.setProperty('--fill-x', ((e.clientX - rect.left) / rect.width) * 100 + '%');
+      head.style.setProperty('--fill-y', ((e.clientY - rect.top) / rect.height) * 100 + '%');
+    });
+  });
+
   /* ---------- interest tag picker (Contacts) ---------- */
   var interestTags = document.querySelectorAll('[data-interest-tag]');
   var interestInput = document.querySelector('[data-interest-input]');
@@ -159,6 +168,22 @@
   /* ---------- contact form ---------- */
   var form = document.querySelector('[data-contact-form]');
   if (form) {
+    /* Browser-native "required"/"type=email" validation bubbles are shown in the
+       browser's own locale, not the page's — override them so a Russian-language
+       page never shows an English validation message (or vice versa). */
+    form.querySelectorAll('input[required], textarea[required]').forEach(function (field) {
+      field.addEventListener('invalid', function () {
+        var t = window.addressI18n && window.addressI18n.t;
+        if (!t) return;
+        if (field.validity.valueMissing) {
+          field.setCustomValidity(t('contacts.form.validation.required'));
+        } else if (field.validity.typeMismatch) {
+          field.setCustomValidity(t('contacts.form.validation.email'));
+        }
+      });
+      field.addEventListener('input', function () { field.setCustomValidity(''); });
+    });
+
     var successEl = form.querySelector('[data-form-success]');
     var errorEl = form.querySelector('[data-form-error]');
     form.addEventListener('submit', function (e) {
