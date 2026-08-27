@@ -400,11 +400,12 @@ button { font-family: inherit; }
 .section--white { background: #FFFFFF; }
 
 .interest-picker__label {
-  font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 2.9vw, 48px);
-  line-height: 1.24; letter-spacing: 0.01em;
-  max-width: 1000px; margin-bottom: 32px;
+  font-family: var(--font-display); font-weight: 400; font-size: clamp(22px, 2.3vw, 38px);
+  line-height: 1.28; letter-spacing: 0.01em;
+  max-width: 1200px; margin-bottom: 32px;
 }
-.interest-picker__label-line { display: block; text-wrap: pretty; }
+.interest-picker__label-line { display: block; text-wrap: pretty; white-space: nowrap; }
+@media (max-width: 720px) { .interest-picker__label-line { white-space: normal; } }
 .interest-picker__tags {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
   max-width: 600px; margin-bottom: 64px;
