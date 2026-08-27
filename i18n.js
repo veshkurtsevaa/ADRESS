@@ -5,7 +5,6 @@
   var DICT = {
     ru: {
       'brand.name': 'ADDRESS',
-      'nav.home': 'Главная',
       'nav.about': 'О нас',
       'nav.service': 'Сервис',
       'nav.contacts': 'Контакты',
@@ -18,7 +17,6 @@
       'home.hero.subtitle': 'Проект кураторских путешествий. Мы создаём каждое путешествие индивидуально, подстраиваясь под ваш ритм, интересы и ожидания',
       'home.hero.cta': 'Связаться',
       'home.hero.cta2': 'Смотреть индекс',
-      'home.hero.scroll': 'Листайте',
 
       'home.marquee.text': 'КУРАТОРСКИЕ ПУТЕШЕСТВИЯ · ОТЕЛИ · ГИДЫ · ИНДИВИДУАЛЬНЫЕ МАРШРУТЫ',
 
@@ -111,7 +109,6 @@
       'service.closing.text2': 'Мы подберём формат сопровождения и создадим путешествие именно для вас',
       'service.closing.cta': 'Связаться с нами',
 
-      'contacts.hero.label': 'контакты',
       'contacts.title': 'Контакты',
       'contacts.lead': 'Расскажите нам о своём путешествии — мы свяжемся с вами в течение дня',
 
@@ -127,15 +124,13 @@
       'contacts.form.submit': 'Отправить',
       'contacts.form.success': 'Спасибо! Мы получили ваше сообщение и свяжемся с вами в ближайшее время',
       'contacts.form.error': 'Что-то пошло не так. Попробуйте ещё раз или напишите нам в Telegram',
+      'contacts.form.validation.required': 'Заполните это поле',
+      'contacts.form.validation.email': 'Введите корректный email',
 
-      'contacts.info.telegram.label': 'Telegram',
-      'contacts.info.telegram.value': 'Написать напрямую',
-      'contacts.info.response.label': 'Время ответа',
-      'contacts.info.response.value': 'В течение дня'
+      'contacts.info.telegram.label': 'Telegram'
     },
     en: {
       'brand.name': 'ADDRESS',
-      'nav.home': 'Home',
       'nav.about': 'About Us',
       'nav.service': 'Service',
       'nav.contacts': 'Contacts',
@@ -148,7 +143,6 @@
       'home.hero.subtitle': 'A project of curated travel experiences. We design each journey individually, shaping it around your rhythm, interests, and expectations',
       'home.hero.cta': 'Get in Touch',
       'home.hero.cta2': 'View Index',
-      'home.hero.scroll': 'Scroll',
 
       'home.marquee.text': 'CURATED TRAVEL · HOTELS · GUIDES · TAILORED ITINERARIES',
 
@@ -241,7 +235,6 @@
       'service.closing.text2': "We'll choose the right format of support and create a journey made just for you",
       'service.closing.cta': 'Get in Touch',
 
-      'contacts.hero.label': 'contacts',
       'contacts.title': 'Contacts',
       'contacts.lead': "Tell us about your journey — we'll get back to you within a day",
 
@@ -257,11 +250,10 @@
       'contacts.form.submit': 'Send',
       'contacts.form.success': "Thank you! We've received your message and will get back to you shortly",
       'contacts.form.error': 'Something went wrong. Please try again or message us on Telegram',
+      'contacts.form.validation.required': 'Please fill in this field',
+      'contacts.form.validation.email': 'Please enter a valid email address',
 
-      'contacts.info.telegram.label': 'Telegram',
-      'contacts.info.telegram.value': 'Message us directly',
-      'contacts.info.response.label': 'Response time',
-      'contacts.info.response.value': 'Within a day'
+      'contacts.info.telegram.label': 'Telegram'
     }
   };
 
