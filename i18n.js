@@ -116,11 +116,11 @@
       'contacts.interest.label': 'Меня интересует…',
       'contacts.interest.personal': 'Персональное',
       'contacts.interest.tailored': 'Индивидуальное',
-      'contacts.interest.concierge': 'Concierge',
+      'contacts.interest.concierge': 'Консьерж',
       'contacts.interest.other': 'Свой запрос',
 
       'contacts.form.name': 'Имя',
-      'contacts.form.email': 'Email',
+      'contacts.form.email': 'Почта',
       'contacts.form.message': 'Сообщение',
       'contacts.form.submit': 'Отправить',
       'contacts.form.success': 'Спасибо — мы свяжемся с вами в течение дня',
