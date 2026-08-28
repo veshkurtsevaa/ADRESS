@@ -110,16 +110,15 @@
       'service.closing.cta': 'Связаться с нами',
 
       'contacts.title': 'Контакты',
-      'contacts.lead': 'Расскажите нам о своём путешествии — мы свяжемся с вами в течение дня',
+      'contacts.lead': 'Расскажите, каким вы видите своё путешествие. Мы свяжемся с вами в течение дня.',
 
-      'contacts.interest.label': 'Меня интересует…',
-      'contacts.interest.personal': 'Personal',
-      'contacts.interest.tailored': 'Tailored',
-      'contacts.interest.concierge': 'Concierge',
+      'contacts.interest.personal': 'Персональное',
+      'contacts.interest.tailored': 'Индивидуальное',
+      'contacts.interest.concierge': 'Консьерж',
       'contacts.interest.other': 'Свой запрос',
 
       'contacts.form.name': 'Имя',
-      'contacts.form.email': 'Email',
+      'contacts.form.email': 'Почта',
       'contacts.form.message': 'Сообщение',
       'contacts.form.submit': 'Отправить',
       'contacts.form.success': 'Спасибо! Мы получили ваше сообщение и свяжемся с вами в ближайшее время',
@@ -127,6 +126,7 @@
       'contacts.form.validation.required': 'Заполните это поле',
       'contacts.form.validation.email': 'Введите корректный email',
 
+      'contacts.info.heading': 'Контактная информация',
       'contacts.info.telegram.label': 'Telegram'
     },
     en: {
@@ -236,9 +236,8 @@
       'service.closing.cta': 'Get in Touch',
 
       'contacts.title': 'Contacts',
-      'contacts.lead': "Tell us about your journey — we'll get back to you within a day",
+      'contacts.lead': "Tell us how you see your journey. We'll get back to you within a day.",
 
-      'contacts.interest.label': "I'm interested in…",
       'contacts.interest.personal': 'Personal',
       'contacts.interest.tailored': 'Tailored',
       'contacts.interest.concierge': 'Concierge',
@@ -253,6 +252,7 @@
       'contacts.form.validation.required': 'Please fill in this field',
       'contacts.form.validation.email': 'Please enter a valid email address',
 
+      'contacts.info.heading': 'Contact information',
       'contacts.info.telegram.label': 'Telegram'
     }
   };
