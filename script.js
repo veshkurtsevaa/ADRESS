@@ -227,28 +227,37 @@
   var interestTags = document.querySelectorAll('[data-interest-tag]');
   var interestInput = document.querySelector('[data-interest-input]');
   var INTEREST_MAX = 2;
-  var selectedInterests = [];
+  var selectedTags = [];
+
+  /* The picks are held as elements, not as label text: the labels are
+     translated in place, so the submitted value has to be rebuilt from
+     them after a language switch — otherwise an English form carries the
+     Russian words the visitor happened to click. */
+  function syncInterestInput() {
+    if (!interestInput) return;
+    interestInput.value = selectedTags.map(function (tag) {
+      return tag.textContent.trim();
+    }).join(', ');
+  }
+
   if (interestTags.length) {
     interestTags.forEach(function (tag) {
       tag.addEventListener('click', function () {
-        var label = tag.textContent.trim();
-        var idx = selectedInterests.indexOf(label);
+        var idx = selectedTags.indexOf(tag);
         if (idx !== -1) {
-          selectedInterests.splice(idx, 1);
+          selectedTags.splice(idx, 1);
           tag.classList.remove('is-selected');
         } else {
-          selectedInterests.push(label);
+          selectedTags.push(tag);
           tag.classList.add('is-selected');
-          if (selectedInterests.length > INTEREST_MAX) {
-            var evicted = selectedInterests.shift();
-            interestTags.forEach(function (t) {
-              if (t.textContent.trim() === evicted) t.classList.remove('is-selected');
-            });
+          if (selectedTags.length > INTEREST_MAX) {
+            selectedTags.shift().classList.remove('is-selected');
           }
         }
-        if (interestInput) interestInput.value = selectedInterests.join(', ');
+        syncInterestInput();
       });
     });
+    document.addEventListener('address:langchange', syncInterestInput);
   }
 
   /* ---------- contact form ---------- */
@@ -315,6 +324,99 @@
       });
     });
   }
+
+  /* ---------- Contacts: live local clocks ----------
+     The slide asks "are they awake right now?" before the form is
+     touched, so the three times have to be real, not decorative. */
+  var clocks = document.querySelectorAll('[data-clock]');
+  if (clocks.length) {
+    var tickClocks = function () {
+      var now = new Date();
+      clocks.forEach(function (el) {
+        var opts = { hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' };
+        var tz = el.getAttribute('data-tz');
+        if (tz) opts.timeZone = tz;
+        try {
+          el.textContent = new Intl.DateTimeFormat('en-GB', opts).format(now);
+        } catch (e) {
+          /* a browser without this time zone keeps the static --:-- */
+        }
+      });
+    };
+    tickClocks();
+    setInterval(tickClocks, 1000);
+  }
+
+  /* ---------- Contacts: the request line writes itself ----------
+     The sentence above the form fills in from the interest tags and the
+     name field, so the visitor reads their own brief back before sending.
+     Each slot carries its own data-i18n placeholder, which i18n.js writes
+     back on a language switch — hence the re-render on langchange. */
+  var requestLine = document.querySelector('[data-request-line]');
+  if (requestLine) {
+    var nameSlot = requestLine.querySelector('[data-request-name]');
+    var interestSlot = requestLine.querySelector('[data-request-interest]');
+    var nameField = document.getElementById('name');
+
+    var fillSlot = function (slot, value, placeholderKey) {
+      if (!slot) return;
+      var text = (value || '').trim();
+      var t = window.addressI18n && window.addressI18n.t;
+      slot.textContent = text || (t ? t(placeholderKey) : slot.textContent);
+      slot.classList.toggle('is-filled', !!text);
+    };
+    var renderRequestLine = function () {
+      fillSlot(nameSlot, nameField ? nameField.value : '', 'contacts.request.namePlaceholder');
+      fillSlot(interestSlot, interestInput ? interestInput.value : '', 'contacts.request.interestPlaceholder');
+    };
+
+    if (nameField) nameField.addEventListener('input', renderRequestLine);
+    interestTags.forEach(function (tag) { tag.addEventListener('click', renderRequestLine); });
+    if (form) form.addEventListener('reset', function () { setTimeout(renderRequestLine, 0); });
+    document.addEventListener('address:langchange', renderRequestLine);
+    renderRequestLine();
+  }
+
+  /* ---------- Contacts: copy the email / phone in one click ----------
+     The value stays a real mailto:/tel: link — this only saves the
+     select-and-copy for anyone writing from another device. */
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    var labelEl = btn.querySelector('span') || btn;
+    var resetTimer;
+
+    btn.addEventListener('click', function () {
+      var value = btn.getAttribute('data-copy') || '';
+
+      function confirmCopy() {
+        var t = window.addressI18n && window.addressI18n.t;
+        labelEl.textContent = t ? t('contacts.copied') : 'copied';
+        btn.classList.add('is-copied');
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () {
+          labelEl.textContent = t ? t('contacts.copy') : 'copy';
+          btn.classList.remove('is-copied');
+        }, 1800);
+      }
+
+      function copyFallback() {
+        var ta = document.createElement('textarea');
+        ta.value = value;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); confirmCopy(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).then(confirmCopy).catch(copyFallback);
+      } else {
+        copyFallback();
+      }
+    });
+  });
 
   /* ---------- page transition (fade on internal nav) ---------- */
   if (!reduceMotion) {

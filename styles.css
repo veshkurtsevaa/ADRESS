@@ -661,49 +661,134 @@ button { font-family: inherit; }
 .price-badge__note { display: block; margin-top: 10px; font-family: var(--font-body); font-size: 15px; opacity: 0.75; }
 
 /* =========================================================
-   CONTACTS — big-type hero form (Claude Design "offline" reference)
+   CONTACTS — three full-screen slides drawn on the same
+   1920×1080 canvas as About: .about-slide supplies --u, the
+   type kit (.about-word / .about-title / .about-text /
+   .about-note), the photo frames and the closing scrim, so
+   only the per-slide layout and the form controls live here.
    ========================================================= */
-.section--white { background: #FFFFFF; }
 
-.interest-picker__label {
-  font-family: 'Montserrat', Arial, sans-serif; font-weight: 400; font-size: 46px;
-  line-height: 1.45; letter-spacing: 0.01em;
-  max-width: 1200px; margin-bottom: 32px;
+/* ---- 01 — the invitation ---- */
+.contacts-s1 {
+  grid-template-columns: 1fr calc(615 * var(--u));
+  align-items: center;
+  gap: calc(110 * var(--u));
 }
-.interest-picker__label-line { display: block; text-wrap: pretty; white-space: nowrap; }
-@media (max-width: 720px) { .interest-picker__label-line { white-space: normal; } }
-.interest-picker__tags {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
-  max-width: 600px; margin-bottom: 64px;
+.contacts-s1 .about-photo { width: 100%; height: auto; aspect-ratio: 3 / 4; }
+.contacts-s1__title { font-size: calc(96 * var(--u)); margin-bottom: calc(34 * var(--u)); }
+.contacts-s1 .about-text--lead {
+  font-size: calc(34 * var(--u));
+  line-height: 1.4;
+  max-width: calc(820 * var(--u));
 }
+.contacts-s1 .about-note { margin-top: calc(34 * var(--u)); }
+
+/* the three clocks answer "are they awake right now?" before the
+   form is touched — they tick from script.js, and read --:-- if
+   the browser has no time-zone data */
+.clock-strip {
+  margin-top: calc(52 * var(--u));
+  padding-top: calc(24 * var(--u));
+  border-top: 1px solid var(--line);
+  max-width: calc(820 * var(--u));
+}
+.clock-strip__label {
+  font-family: var(--font-mono); font-size: calc(16 * var(--u));
+  letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55;
+}
+.clock-strip__row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: calc(30 * var(--u)); margin-top: calc(18 * var(--u));
+}
+.clock { display: flex; flex-direction: column; gap: calc(8 * var(--u)); }
+.clock__city {
+  font-family: var(--font-ui); font-size: calc(17 * var(--u)); font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.6;
+}
+.clock__time {
+  font-family: var(--font-mono); font-size: calc(38 * var(--u));
+  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+}
+.clock--you .clock__time { color: var(--pink); }
+
+/* ---- 02 — the request ---- */
+.contacts-s2 {
+  grid-template-columns: 1fr calc(430 * var(--u));
+  align-items: center;
+  gap: calc(90 * var(--u));
+}
+.contacts-s2__photo { width: 100%; }
+
+/* the sentence writes itself from the tags and the name field, so the
+   visitor reads their own brief back before pressing Send */
+.request-line {
+  font-family: var(--font-display);
+  font-size: calc(48 * var(--u));
+  line-height: 1.35;
+  color: var(--ink-soft);
+  max-width: calc(1180 * var(--u));
+  margin-bottom: calc(56 * var(--u));
+}
+.request-line__slot {
+  display: inline-block;
+  min-width: calc(190 * var(--u));
+  font-style: italic;
+  border-bottom: 1px dashed var(--line);
+  transition: color 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+/* the blank is only as wide as a blank needs to be — once it carries a
+   word it shrinks to it, so the sentence closes up around the answer */
+.request-line__slot.is-filled {
+  min-width: 0;
+  color: var(--ink);
+  border-bottom-style: solid;
+  border-bottom-color: var(--pink);
+}
+.request-line__dot { margin-left: -0.08em; }
+
+.interest-label {
+  font-family: var(--font-mono); font-size: calc(17 * var(--u));
+  letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6;
+  margin-bottom: calc(16 * var(--u));
+}
+.interest-tags { display: flex; flex-wrap: wrap; gap: calc(12 * var(--u)); margin-bottom: calc(56 * var(--u)); }
 .interest-tag {
-  font-family: var(--font-ui); font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 14px 8px; border-radius: 999px; border: 1px solid var(--line);
+  font-family: var(--font-ui); font-size: calc(15 * var(--u)); font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: calc(14 * var(--u)) calc(28 * var(--u));
+  border-radius: 999px; border: 1px solid var(--line);
   background: transparent; color: var(--ink); cursor: pointer;
   transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
 }
 .interest-tag:hover { border-color: var(--ink); }
-.interest-tag.is-selected { background: var(--navy); color: var(--paper); border-color: var(--navy); transform: translateY(-2px); }
-@media (max-width: 600px) { .interest-picker__tags { grid-template-columns: repeat(2, 1fr); max-width: none; } }
+.interest-tag.is-selected {
+  background: var(--navy); color: var(--paper); border-color: var(--navy);
+  transform: translateY(calc(-3 * var(--u)));
+}
 
-.contact-grid { display: flex; flex-direction: column; gap: 56px; max-width: var(--container); margin: 0 auto; }
-.contact-form { display: flex; flex-direction: column; gap: 20px; }
-.contact-form__row { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
-.contact-form__fields { flex: 1 1 480px; max-width: 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
-.form-field { position: relative; padding: 0 0 10px; }
+.contact-form { display: flex; flex-direction: column; }
+.contact-form__row { display: flex; align-items: center; gap: calc(60 * var(--u)); }
+.contact-form__fields { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: calc(30 * var(--u)); }
+/* the hairline is the field's resting state; ::after sweeps the darker
+   line over it on hover and focus */
+.form-field { position: relative; padding: 0 0 calc(10 * var(--u)); border-bottom: 1px solid var(--line); }
 .form-field label {
-  position: absolute; left: 0; top: 0; font-family: var(--font-ui); font-weight: 200; font-size: clamp(24px, 2.9vw, 40px);
+  position: absolute; left: 0; top: 0;
+  font-family: var(--font-ui); font-weight: 200; font-size: calc(38 * var(--u));
   line-height: 1.3; color: var(--ink-soft); pointer-events: none;
   transition: opacity 0.3s ease, transform 0.4s var(--ease);
 }
 .form-field input, .form-field textarea {
-  width: 100%; border: none; background: transparent; font-family: var(--font-ui); font-weight: 200;
-  font-size: clamp(24px, 2.9vw, 40px); line-height: 1.3; color: var(--ink); padding: 0 0 10px; outline: none;
+  width: 100%; border: none; background: transparent;
+  font-family: var(--font-ui); font-weight: 200; font-size: calc(38 * var(--u));
+  line-height: 1.3; color: var(--ink); padding: 0 0 calc(10 * var(--u)); outline: none;
 }
-.form-field textarea { min-height: 1.3em; resize: none; }
+/* the textarea grows with the text (script.js) — the cap keeps a long
+   message from pushing the composition past the fixed-height canvas */
+.form-field textarea { min-height: 1.3em; max-height: calc(150 * var(--u)); overflow-y: auto; resize: none; }
 .form-field::after {
-  content: ""; position: absolute; left: 0; bottom: 0; height: 1px; background: var(--ink-soft);
-  width: 0%; transition: width 0.5s var(--ease);
+  content: ""; position: absolute; left: 0; bottom: calc(-1 * 1px); height: 1px;
+  background: var(--ink-soft); width: 0%; transition: width 0.5s var(--ease);
 }
 .form-field:hover::after, .form-field:focus-within::after { width: 100%; }
 .form-field:hover input:placeholder-shown + label,
@@ -712,32 +797,99 @@ button { font-family: inherit; }
 .form-field textarea:not(:placeholder-shown) + label { opacity: 0; }
 
 .form-submit {
-  flex-shrink: 0; width: 132px; height: 132px; border-radius: 50%;
+  flex-shrink: 0; width: calc(160 * var(--u)); height: calc(160 * var(--u)); border-radius: 50%;
   background: var(--ink); color: var(--paper); border: none; cursor: pointer; will-change: transform;
-  font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-family: var(--font-ui); font-size: calc(13 * var(--u)); letter-spacing: 0.18em; text-transform: uppercase;
   transition: background-color 0.45s ease, color 0.45s ease;
 }
 .form-submit.is-magnet-near { background: var(--accent-pink); color: var(--navy); }
 
-.contact-info {
-  display: flex; flex-direction: row; align-items: baseline; gap: 40px; flex-wrap: wrap;
-  border-top: 1px solid var(--line); padding-top: 28px;
-}
-.contact-info__title { font-family: var(--font-ui); font-size: 19px; font-weight: 500; letter-spacing: 0.01em; }
-.contact-info__row { display: flex; align-items: baseline; gap: 12px 32px; flex-wrap: wrap; }
-.contact-info__label { font-family: var(--font-ui); font-size: 15px; font-weight: 500; }
-.contact-info__value { font-family: var(--font-ui); font-size: 15px; font-weight: 300; color: var(--ink-soft); word-break: break-word; }
-.contact-info__value:hover { color: var(--pink); }
-
-.form-message { display: none; margin-top: 16px; font-size: 17px; }
+.form-message { display: none; margin-top: calc(20 * var(--u)); font-size: calc(20 * var(--u)); }
 .form-message.is-visible { display: block; animation: formFade 0.5s ease both; }
 .form-message--success { font-style: italic; color: var(--pink); }
 .form-message--error { color: var(--pink-dark); }
 @keyframes formFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
-@media (max-width: 760px) {
+/* ---- 03 — the direct channels, over the full-bleed frame ---- */
+.contacts-s3 { place-content: center; justify-items: center; }
+.contacts-s3__text {
+  text-align: center;
+  width: calc(1120 * var(--u));
+  text-shadow: 0 calc(2 * var(--u)) calc(24 * var(--u)) rgba(10, 10, 12, 0.55);
+}
+.contacts-s3__text .about-text { margin: 0 auto; }
+.channels {
+  list-style: none;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: calc(40 * var(--u));
+  margin-top: calc(50 * var(--u));
+  padding-top: calc(38 * var(--u));
+  border-top: 1px solid var(--line-on-dark);
+}
+.channel { display: flex; flex-direction: column; align-items: center; gap: calc(12 * var(--u)); }
+.channel__label {
+  font-family: var(--font-mono); font-size: calc(15 * var(--u));
+  letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.6;
+}
+.channel__value {
+  font-family: var(--font-display); font-size: calc(30 * var(--u)); line-height: 1.2;
+  padding-bottom: calc(4 * var(--u)); word-break: break-word;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px; background-repeat: no-repeat; background-position: 0 100%;
+  transition: background-size 0.5s var(--ease);
+}
+.channel__value:hover { background-size: 100% 1px; }
+.channel__copy {
+  font-family: var(--font-mono); font-size: calc(13 * var(--u));
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: none; border: none; color: inherit; cursor: pointer;
+  padding: calc(4 * var(--u)) 0; opacity: 0.5; transition: opacity 0.3s ease, color 0.3s ease;
+}
+.channel__copy:hover { opacity: 1; }
+.channel__copy.is-copied { opacity: 1; color: var(--accent-pink); }
+
+/* ---- narrow screens: the canvas falls back to stacked flow (the
+   .about-slide rules above already switch it over) ---- */
+@media (max-width: 900px) {
+  .contacts-s1, .contacts-s2 { grid-template-columns: 1fr; }
+  #contacts-01 .about-slide__canvas { padding-top: 128px; }
+  .contacts-s1__title { font-size: clamp(30px, 8.4vw, 44px); margin-bottom: 16px; }
+  .contacts-s1 .about-text--lead { font-size: 17px; max-width: none; }
+  /* the photo reads first on 01, as on About 01 — but on 02 the form
+     leads and the photo closes the slide */
+  .contacts-s1 .about-photo { order: -1; }
+  .contacts-s1 .about-photo { height: auto; width: 100%; }
+
+  .clock-strip { margin-top: 24px; padding-top: 16px; max-width: none; }
+  .clock-strip__label { font-size: 11px; }
+  .clock-strip__row { gap: 12px; margin-top: 12px; }
+  .clock { gap: 4px; }
+  .clock__city { font-size: 11px; }
+  .clock__time { font-size: clamp(15px, 4.6vw, 21px); }
+
+  .request-line { font-size: clamp(20px, 5.4vw, 26px); margin-bottom: 22px; max-width: none; }
+  .request-line__slot { min-width: 78px; }
+  .interest-label { font-size: 12px; margin-bottom: 10px; }
+  .interest-tags { gap: 10px; margin-bottom: 26px; }
+  .interest-tag { font-size: 10px; padding: 12px 18px; }
+
   .contact-form__row { flex-direction: column; align-items: flex-start; gap: 24px; }
-  .contact-form__fields { flex: none; width: 100%; max-width: none; }
+  .contact-form__fields { width: 100%; gap: 18px; }
+  .form-field { padding-bottom: 8px; }
+  .form-field label,
+  .form-field input,
+  .form-field textarea { font-size: clamp(20px, 5.6vw, 26px); padding-bottom: 0; }
+  .form-field input, .form-field textarea { padding-bottom: 8px; }
+  .form-field textarea { max-height: none; }
+  .form-submit { width: 104px; height: 104px; font-size: 10px; }
+  .form-message { font-size: 15px; margin-top: 14px; }
+
+  .contacts-s3__text { width: 100%; }
+  .channels { grid-template-columns: 1fr; gap: 20px; margin-top: 26px; padding-top: 22px; }
+  .channel { gap: 6px; }
+  .channel__label { font-size: 11px; }
+  .channel__value { font-size: 19px; }
+  .channel__copy { font-size: 11px; }
 }
 
 /* ---------- footer ---------- */

@@ -113,10 +113,28 @@
       'service.closing.cta': 'Связаться с нами',
 
       'contacts.title': 'Контакты',
-      'contacts.hero.line1': 'Расскажите, каким вы видите своё путешествие.',
-      'contacts.hero.line2': 'Мы свяжемся с вами в течение дня.',
+      'contacts.s1.title': 'КОНТАКТЫ',
+      'contacts.s1.lead': 'Расскажите, куда и когда вы хотите поехать и каким видите это путешествие. Мы читаем каждое сообщение сами и отвечаем в течение дня.',
+      'contacts.s1.note': 'контакты',
+
+      'contacts.clock.label': 'сейчас',
+      'contacts.clock.london': 'Лондон',
+      'contacts.clock.moscow': 'Москва',
+      'contacts.clock.you': 'У вас',
+
+      'contacts.request.greeting': 'Здравствуйте, это',
+      'contacts.request.namePlaceholder': 'ваше имя',
+      'contacts.request.interest': 'Меня интересует',
+      'contacts.request.interestPlaceholder': 'выберите тег',
+
+      'contacts.s3.lead': 'Или напишите напрямую — как вам удобнее.',
+      'contacts.channel.telegram': 'написать нам ↗',
+      'contacts.s3.note': 'напрямую',
+      'contacts.copy': 'скопировать',
+      'contacts.copied': 'скопировано',
 
       'contacts.interest.label': 'Меня интересует…',
+      'contacts.interest.hint': 'выберите один или два тега',
       'contacts.interest.personal': 'Персональное',
       'contacts.interest.tailored': 'Индивидуальное',
       'contacts.interest.concierge': 'Консьерж',
@@ -246,10 +264,28 @@
       'service.closing.cta': 'Get in Touch',
 
       'contacts.title': 'Contacts',
-      'contacts.hero.line1': 'Tell us how you picture your journey.',
-      'contacts.hero.line2': "We'll get back to you within a day.",
+      'contacts.s1.title': 'CONTACTS',
+      'contacts.s1.lead': 'Tell us where and when you want to go, and how you picture the trip. We read every message ourselves and answer within a day.',
+      'contacts.s1.note': 'contacts',
+
+      'contacts.clock.label': 'right now',
+      'contacts.clock.london': 'London',
+      'contacts.clock.moscow': 'Moscow',
+      'contacts.clock.you': 'Your time',
+
+      'contacts.request.greeting': 'Hello, this is',
+      'contacts.request.namePlaceholder': 'your name',
+      'contacts.request.interest': "I'm interested in",
+      'contacts.request.interestPlaceholder': 'pick a tag',
+
+      'contacts.s3.lead': 'Or reach us directly — whichever way suits you best.',
+      'contacts.channel.telegram': 'message us ↗',
+      'contacts.s3.note': 'direct',
+      'contacts.copy': 'copy',
+      'contacts.copied': 'copied',
 
       'contacts.interest.label': "I'm interested in…",
+      'contacts.interest.hint': 'pick one or two tags',
       'contacts.interest.personal': 'Personal',
       'contacts.interest.tailored': 'Tailored',
       'contacts.interest.concierge': 'Concierge',
