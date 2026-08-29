@@ -25,7 +25,9 @@
      to-have, so it must keep working even if this GSAP bundle fails to load. */
 
   /* =========================================================
-     ABOUT — journal-spread parallax (hedwig-style).
+     ABOUT — parallax drift on the full-bleed closing frame.
+     The layer is inset past the section on both edges, so the
+     drift never uncovers an edge.
      ========================================================= */
   function initAboutParallax() {
     var layers = document.querySelectorAll('[data-parallax]');
