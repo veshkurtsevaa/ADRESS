@@ -423,6 +423,17 @@ button { font-family: inherit; }
 }
 .interest-picker__label-line:hover { background: var(--accent-pink); color: var(--navy); }
 @media (max-width: 720px) { .interest-picker__label-line { white-space: normal; width: auto; } }
+
+/* ---------- heading hover-fill (same accent as the Contacts headline
+   and the form-submit proximity state) — reused on section titles
+   sitewide. box-decoration-break lets the fill hug each wrapped line
+   individually instead of one big rectangle. ---------- */
+.heading-hover {
+  padding: 0 4px; margin: 0 -4px; border-radius: 2px;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.heading-hover:hover { background: var(--accent-pink); color: var(--navy); }
 .interest-picker__tags {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
   max-width: 600px; margin-bottom: 64px;
