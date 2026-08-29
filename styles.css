@@ -741,6 +741,157 @@ button { font-family: inherit; }
 }
 
 /* ---------- footer ---------- */
+
+/* =========================================================
+   CONTACTS — the two closing slides, drawn on the same
+   1920×1080 canvas as About: .about-slide supplies --u, the
+   type kit (.about-word / .about-text / .about-note) and the
+   full-bleed scrim, so only the per-slide layout lives here.
+   ========================================================= */
+
+/* ---- the direct channels, over the full-bleed frame ---- */
+.contacts-s3 { place-content: center; justify-items: center; }
+.contacts-s3__text {
+  text-align: center;
+  width: calc(1120 * var(--u));
+  text-shadow: 0 calc(2 * var(--u)) calc(24 * var(--u)) rgba(10, 10, 12, 0.55);
+}
+.contacts-s3__text .about-text { margin: 0 auto; }
+.channels {
+  list-style: none;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: calc(40 * var(--u));
+  margin-top: calc(50 * var(--u));
+  padding-top: calc(38 * var(--u));
+  border-top: 1px solid var(--line-on-dark);
+}
+.channel { display: flex; flex-direction: column; align-items: center; gap: calc(12 * var(--u)); }
+.channel__label {
+  font-family: var(--font-mono); font-size: calc(15 * var(--u));
+  letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.6;
+}
+.channel__value {
+  font-family: var(--font-display); font-size: calc(30 * var(--u)); line-height: 1.2;
+  padding-bottom: calc(4 * var(--u)); word-break: break-word;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px; background-repeat: no-repeat; background-position: 0 100%;
+  transition: background-size 0.5s var(--ease);
+}
+.channel__value:hover { background-size: 100% 1px; }
+.channel__copy {
+  font-family: var(--font-mono); font-size: calc(13 * var(--u));
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: none; border: none; color: inherit; cursor: pointer;
+  padding: calc(4 * var(--u)) 0; opacity: 0.5; transition: opacity 0.3s ease, color 0.3s ease;
+}
+.channel__copy:hover { opacity: 1; }
+.channel__copy.is-copied { opacity: 1; color: var(--accent-pink); }
+
+/* ---- the trip brief ---- */
+.contacts-plan { align-content: center; justify-items: center; gap: calc(54 * var(--u)); }
+.contacts-plan__head { text-align: center; }
+.contacts-plan__title {
+  font-size: calc(58 * var(--u)); letter-spacing: 0.04em;
+  margin-bottom: calc(18 * var(--u));
+}
+.contacts-plan__sub {
+  font-family: var(--font-ui); font-size: calc(17 * var(--u)); font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7;
+}
+.plan-form { width: 100%; display: flex; flex-direction: column; gap: calc(38 * var(--u)); }
+.plan-form__row { display: grid; gap: calc(38 * var(--u)) calc(60 * var(--u)); }
+.plan-form__row--three { grid-template-columns: repeat(3, 1fr); }
+.plan-form__row--two { grid-template-columns: repeat(2, 1fr); }
+/* the rows arrive one after another rather than all at once */
+.plan-form__row:nth-of-type(2) { transition-delay: 0.09s; }
+.plan-form__row:nth-of-type(3) { transition-delay: 0.18s; }
+.plan-form__row:nth-of-type(4) { transition-delay: 0.27s; }
+.plan-form__foot {
+  display: flex; flex-direction: column; align-items: center;
+  gap: calc(10 * var(--u)); margin-top: calc(6 * var(--u));
+  transition-delay: 0.36s;
+}
+.plan-form__submit {
+  font-family: var(--font-ui); font-size: calc(17 * var(--u)); font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: calc(22 * var(--u)) calc(54 * var(--u)); border-radius: calc(6 * var(--u));
+  background: var(--paper); color: var(--ink); border: none; cursor: pointer;
+  will-change: transform; transition: background-color 0.35s ease, color 0.35s ease;
+}
+.plan-form__submit:hover { background: #FFFFFF; }
+
+/* ---- form controls inside a slide ----
+   Sized in canvas units so they scale with the composition, and the label
+   floats up instead of vanishing: a row of three fields is too dense to
+   lose the question once it has been answered. */
+.about-slide .form-field {
+  padding: calc(26 * var(--u)) 0 calc(12 * var(--u));
+  border-bottom: 1px solid var(--line-on-dark);
+}
+.about-slide .form-field label {
+  top: calc(26 * var(--u)); font-size: calc(24 * var(--u)); font-weight: 300;
+  color: rgba(247, 243, 236, 0.7); transform-origin: left top;
+  transition: transform 0.45s var(--ease), opacity 0.3s ease;
+}
+.about-slide .form-field input,
+.about-slide .form-field textarea {
+  font-size: calc(24 * var(--u)); font-weight: 300; color: var(--paper); padding: 0;
+}
+.about-slide .form-field textarea {
+  min-height: calc(96 * var(--u)); max-height: calc(150 * var(--u)); overflow-y: auto;
+}
+.about-slide .form-field::after { background: var(--paper); bottom: -1px; }
+.about-slide .form-field:focus-within label,
+.about-slide .form-field input:not(:placeholder-shown) + label,
+.about-slide .form-field textarea:not(:placeholder-shown) + label {
+  opacity: 1;
+  transform: translateY(calc(-26 * var(--u))) scale(0.62);
+}
+
+/* the country code sits inside the phone field, so the label starts after it */
+.form-field--phone { display: flex; align-items: center; gap: calc(14 * var(--u)); }
+.phone-code {
+  flex: none; background: transparent; border: none; outline: none; cursor: pointer;
+  font-family: var(--font-ui); font-size: calc(24 * var(--u)); font-weight: 300;
+  color: var(--paper); padding: 0;
+}
+.phone-code option { color: var(--ink); background: var(--paper); }
+.phone-number { flex: 1 1 auto; min-width: 0; }
+.about-slide .form-field--phone label { left: calc(124 * var(--u)); }
+
+/* ---- narrow screens: the canvas falls back to stacked flow ---- */
+@media (max-width: 900px) {
+  .contacts-s3__text { width: 100%; }
+  .channels { grid-template-columns: 1fr; gap: 20px; margin-top: 26px; padding-top: 22px; }
+  .channel { gap: 6px; }
+  .channel__label { font-size: 11px; }
+  .channel__value { font-size: 19px; }
+  .channel__copy { font-size: 11px; }
+
+  .contacts-plan { gap: 26px; justify-items: stretch; }
+  .contacts-plan__title { font-size: clamp(24px, 6.6vw, 34px); margin-bottom: 12px; }
+  .contacts-plan__sub { font-size: 11px; letter-spacing: 0.14em; }
+  .plan-form { gap: 22px; }
+  .plan-form__row { gap: 22px; }
+  .plan-form__row--three, .plan-form__row--two { grid-template-columns: 1fr; }
+  .plan-form__foot { gap: 12px; margin-top: 4px; }
+  .plan-form__submit { font-size: 12px; padding: 16px 30px; border-radius: 4px; }
+
+  .about-slide .form-field { padding: 20px 0 8px; }
+  .about-slide .form-field label { top: 20px; font-size: 15px; }
+  .about-slide .form-field input,
+  .about-slide .form-field textarea { font-size: 16px; }
+  .about-slide .form-field textarea { min-height: 76px; max-height: none; }
+  .about-slide .form-field:focus-within label,
+  .about-slide .form-field input:not(:placeholder-shown) + label,
+  .about-slide .form-field textarea:not(:placeholder-shown) + label {
+    transform: translateY(-19px) scale(0.78);
+  }
+  .phone-code { font-size: 16px; }
+  .about-slide .form-field--phone label { left: 96px; }
+}
+
+/* ---------- footer ---------- */
 .site-footer { padding: 56px 24px 40px; text-align: center; background: var(--ink); color: var(--paper); font-size: 14px; }
 .site-footer__tagline { font-family: var(--font-display); font-size: 21px; margin-bottom: 14px; }
 .site-footer__rights { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.03em; opacity: 0.55; }

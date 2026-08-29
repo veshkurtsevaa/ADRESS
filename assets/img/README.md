@@ -1,7 +1,8 @@
 # Photos
 
-Two sets live here: the five homepage index rows and the seven shots used by
-the five About slides. `styles.css` layers each `<img>` over its frame and
+Three sets live here: the five homepage index rows, the seven shots used by
+the five About slides and the one used by the Contacts closing slides.
+`styles.css` layers each `<img>` over its frame and
 `script.js` removes an `<img>` that fails to load, so a missing file falls
 back to the grey placeholder rather than a broken-image icon.
 
@@ -38,6 +39,19 @@ only one used as a full-bleed background: it is deliberately inset past the
 section edges in `styles.css` — top and bottom to leave room for the parallax
 drift, left and right to crop away its own white border — so it is cropped by
 design.
+
+## Contacts — `contacts.html`
+
+| File                    | Where                        | Photo                                       |
+| ----------------------- | ---------------------------- | ------------------------------------------- |
+| `contacts-03-table.jpg` | Direct channels, full-bleed  | Round table and four chairs in raking light |
+
+It is 1440×1920 (3:4) and is used as a full-bleed background, inset past the
+section edges in `styles.css`, so it is cropped by design — same as
+`about-07`. The trip-brief slide below it is flat navy, with no photo.
+
+The `photo_2026-08-30 *.jpeg` files are the rest of that upload, kept for
+future slides; nothing references them yet.
 
 The photos carry their own white border, so `styles.css` drops the
 placeholder's hairline border whenever a photo is present — otherwise it reads

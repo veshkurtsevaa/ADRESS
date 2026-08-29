@@ -227,50 +227,59 @@
   var interestTags = document.querySelectorAll('[data-interest-tag]');
   var interestInput = document.querySelector('[data-interest-input]');
   var INTEREST_MAX = 2;
-  var selectedInterests = [];
+  var selectedTags = [];
+
+  /* The picks are held as elements, not as label text: the labels are
+     translated in place, so the submitted value has to be rebuilt from
+     them after a language switch — otherwise an English form carries the
+     Russian words the visitor happened to click. */
+  function syncInterestInput() {
+    if (!interestInput) return;
+    interestInput.value = selectedTags.map(function (tag) {
+      return tag.textContent.trim();
+    }).join(', ');
+  }
+
   if (interestTags.length) {
     interestTags.forEach(function (tag) {
       tag.addEventListener('click', function () {
-        var label = tag.textContent.trim();
-        var idx = selectedInterests.indexOf(label);
+        var idx = selectedTags.indexOf(tag);
         if (idx !== -1) {
-          selectedInterests.splice(idx, 1);
+          selectedTags.splice(idx, 1);
           tag.classList.remove('is-selected');
         } else {
-          selectedInterests.push(label);
+          selectedTags.push(tag);
           tag.classList.add('is-selected');
-          if (selectedInterests.length > INTEREST_MAX) {
-            var evicted = selectedInterests.shift();
-            interestTags.forEach(function (t) {
-              if (t.textContent.trim() === evicted) t.classList.remove('is-selected');
-            });
+          if (selectedTags.length > INTEREST_MAX) {
+            selectedTags.shift().classList.remove('is-selected');
           }
         }
-        if (interestInput) interestInput.value = selectedInterests.join(', ');
+        syncInterestInput();
       });
     });
+    document.addEventListener('address:langchange', syncInterestInput);
   }
 
-  /* ---------- contact form ---------- */
-  var form = document.querySelector('[data-contact-form]');
-  if (form) {
+  /* ---------- contact forms ----------
+     Contacts carries two: the short note at the top of the page and the
+     trip brief on the closing slide, so each one is wired on its own. */
+  document.querySelectorAll('[data-contact-form]').forEach(function (form) {
     /* Auto-grow the message textarea: starts one line tall (same tight
        underline gap as the Name/Email inputs) and expands as the user
        types past the first line, instead of always reserving 2 rows. */
-    var messageField = form.querySelector('textarea');
-    if (messageField) {
+    form.querySelectorAll('textarea[rows="1"]').forEach(function (field) {
       var growMessage = function () {
-        messageField.style.height = 'auto';
-        messageField.style.height = messageField.scrollHeight + 'px';
+        field.style.height = 'auto';
+        field.style.height = field.scrollHeight + 'px';
       };
-      messageField.addEventListener('input', growMessage);
+      field.addEventListener('input', growMessage);
       growMessage();
-    }
+    });
 
     /* Browser-native "required"/"type=email" validation bubbles are shown in the
        browser's own locale, not the page's — override them so a Russian-language
        page never shows an English validation message (or vice versa). */
-    form.querySelectorAll('input[required], textarea[required]').forEach(function (field) {
+    form.querySelectorAll('input, textarea').forEach(function (field) {
       field.addEventListener('invalid', function () {
         var t = window.addressI18n && window.addressI18n.t;
         if (!t) return;
@@ -278,6 +287,8 @@
           field.setCustomValidity(t('contacts.form.validation.required'));
         } else if (field.validity.typeMismatch) {
           field.setCustomValidity(t('contacts.form.validation.email'));
+        } else if (field.validity.patternMismatch) {
+          field.setCustomValidity(t('contacts.form.validation.phone'));
         }
       });
       field.addEventListener('input', function () { field.setCustomValidity(''); });
@@ -314,7 +325,48 @@
         if (errorEl) errorEl.classList.add('is-visible');
       });
     });
-  }
+  });
+
+  /* ---------- Contacts: copy the email / phone in one click ----------
+     The value stays a real mailto:/tel: link — this only saves the
+     select-and-copy for anyone writing from another device. */
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    var labelEl = btn.querySelector('span') || btn;
+    var resetTimer;
+
+    btn.addEventListener('click', function () {
+      var value = btn.getAttribute('data-copy') || '';
+
+      function confirmCopy() {
+        var t = window.addressI18n && window.addressI18n.t;
+        labelEl.textContent = t ? t('contacts.copied') : 'copied';
+        btn.classList.add('is-copied');
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () {
+          labelEl.textContent = t ? t('contacts.copy') : 'copy';
+          btn.classList.remove('is-copied');
+        }, 1800);
+      }
+
+      function copyFallback() {
+        var ta = document.createElement('textarea');
+        ta.value = value;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); confirmCopy(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).then(confirmCopy).catch(copyFallback);
+      } else {
+        copyFallback();
+      }
+    });
+  });
 
   /* ---------- page transition (fade on internal nav) ---------- */
   if (!reduceMotion) {
