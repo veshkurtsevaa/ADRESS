@@ -116,9 +116,7 @@
       'contacts.hero.line1': 'Расскажите, каким вы видите своё путешествие.',
       'contacts.hero.line2': 'Мы свяжемся с вами в течение дня.',
 
-      'contacts.s3.lead': 'Напишите нам так, как вам удобнее.',
       'contacts.channel.telegram': 'написать нам ↗',
-      'contacts.s3.note': 'связаться',
       'contacts.copy': 'скопировать',
       'contacts.copied': 'скопировано',
 
@@ -268,9 +266,7 @@
       'contacts.hero.line1': 'Tell us how you picture your journey.',
       'contacts.hero.line2': "We'll get back to you within a day.",
 
-      'contacts.s3.lead': 'Write to us whichever way suits you best.',
       'contacts.channel.telegram': 'message us ↗',
-      'contacts.s3.note': 'get in touch',
       'contacts.copy': 'copy',
       'contacts.copied': 'copied',
 
