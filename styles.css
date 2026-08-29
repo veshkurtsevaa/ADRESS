@@ -112,12 +112,15 @@ button { font-family: inherit; }
   pointer-events: auto;
   display: flex; align-items: center; justify-content: space-between;
   padding: 16px 32px; max-width: 1760px; margin: 0 auto;
-  background: rgba(247, 243, 236, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--line);
+  /* glass: let the page read through the bar, and lean on saturation plus
+     a lit top edge rather than a milky fill */
+  background: rgba(247, 243, 236, 0.34);
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 999px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 6px 24px rgba(28, 27, 24, 0.07);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .logo {
   font-family: var(--font-logo); font-size: 22px;
@@ -185,10 +188,11 @@ button { font-family: inherit; }
   .mobile-nav {
     display: none; pointer-events: auto;
     position: absolute; top: calc(100% + 8px); left: 8px; right: 8px;
-    max-height: calc(100vh - 100%); background: rgba(247, 243, 236, 0.94);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    max-height: calc(100vh - 100%); background: rgba(247, 243, 236, 0.72);
+    backdrop-filter: blur(28px) saturate(170%); -webkit-backdrop-filter: blur(28px) saturate(170%);
     flex-direction: column; padding: 24px; gap: 20px;
-    border: 1px solid var(--line); border-radius: 24px; z-index: 99; overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.34); border-radius: 24px; z-index: 99; overflow-y: auto;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 12px 32px rgba(28, 27, 24, 0.12);
   }
   .mobile-nav.is-open { display: flex; }
   .mobile-nav__utility { display: flex; justify-content: flex-end; padding-top: 16px; margin-top: 4px; border-top: 1px solid var(--line); }
