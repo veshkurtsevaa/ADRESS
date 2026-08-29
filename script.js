@@ -42,10 +42,13 @@
 
   /* ---------- header shadow/compact on scroll ---------- */
   var header = document.querySelector('.site-header');
-  if (header) {
+  var headerBar = header && header.querySelector('.site-header__inner');
+  if (headerBar) {
     var lastY = window.scrollY;
     window.addEventListener('scroll', function () {
-      header.style.borderBottomColor = window.scrollY > 8 ? 'rgba(28,27,24,0.22)' : '';
+      var scrolled = window.scrollY > 8;
+      headerBar.style.borderColor = scrolled ? 'rgba(28,27,24,0.22)' : '';
+      headerBar.style.boxShadow = scrolled ? '0 10px 30px rgba(28,27,24,0.10)' : '';
       lastY = window.scrollY;
     }, { passive: true });
   }
