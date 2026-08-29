@@ -6,8 +6,9 @@ and `script.js` removes the `<img>` if the file is missing — so until the real
 files land here, the rows fall back to the placeholder instead of a broken
 image icon.
 
-Drop the photos in with exactly these names (JPEG, landscape, the row crops
-them to a 4:3 box — ~1600px wide is plenty):
+Drop the photos in with exactly these names. They're portrait shots, and the
+row crops them to a 4:5 box (`object-fit: cover`), so a 3:4 original only loses
+a sliver top and bottom — ~1200px wide is plenty:
 
 | File                      | Row              | Photo to use                                             |
 | ------------------------- | ---------------- | -------------------------------------------------------- |
