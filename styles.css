@@ -24,7 +24,10 @@
 
   /* Wremena is reserved for the ADDRESS wordmark only — see assets/fonts/README.md */
   --font-logo: 'Wremena', Georgia, serif;
-  --font-display: 'Fraunces', Georgia, serif;
+  /* NewParis Skyline is a licensed display font — not on Google Fonts, so
+     it's self-hosted (see assets/fonts/README.md). Fraunces stays in the
+     stack as the interim look until the real files are added. */
+  --font-display: 'NewParis Skyline', 'Fraunces', Georgia, serif;
   --font-body: 'Work Sans', Arial, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --font-ui: 'Work Sans', Arial, sans-serif;
@@ -38,6 +41,15 @@
   font-family: 'Wremena';
   src: url('assets/fonts/Wremena-Regular.woff2') format('woff2'),
        url('assets/fonts/Wremena-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NewParis Skyline';
+  src: url('assets/fonts/NewParisSkyline-Regular.woff2') format('woff2'),
+       url('assets/fonts/NewParisSkyline-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -404,8 +416,13 @@ button { font-family: inherit; }
   line-height: 1.28; letter-spacing: 0.01em;
   max-width: 1200px; margin-bottom: 32px;
 }
-.interest-picker__label-line { display: block; text-wrap: pretty; white-space: nowrap; }
-@media (max-width: 720px) { .interest-picker__label-line { white-space: normal; } }
+.interest-picker__label-line {
+  display: block; width: fit-content; text-wrap: pretty; white-space: nowrap;
+  padding: 0 4px; margin: 0 -4px; border-radius: 2px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.interest-picker__label-line:hover { background: var(--accent-pink); color: var(--navy); }
+@media (max-width: 720px) { .interest-picker__label-line { white-space: normal; width: auto; } }
 .interest-picker__tags {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
   max-width: 600px; margin-bottom: 64px;
