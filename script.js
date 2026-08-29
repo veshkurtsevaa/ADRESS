@@ -246,6 +246,19 @@
   /* ---------- contact form ---------- */
   var form = document.querySelector('[data-contact-form]');
   if (form) {
+    /* Auto-grow the message textarea: starts one line tall (same tight
+       underline gap as the Name/Email inputs) and expands as the user
+       types past the first line, instead of always reserving 2 rows. */
+    var messageField = form.querySelector('textarea');
+    if (messageField) {
+      var growMessage = function () {
+        messageField.style.height = 'auto';
+        messageField.style.height = messageField.scrollHeight + 'px';
+      };
+      messageField.addEventListener('input', growMessage);
+      growMessage();
+    }
+
     /* Browser-native "required"/"type=email" validation bubbles are shown in the
        browser's own locale, not the page's — override them so a Russian-language
        page never shows an English validation message (or vice versa). */
