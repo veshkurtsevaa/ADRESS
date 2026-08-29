@@ -168,19 +168,8 @@
               <input type="email" id="plan-email" name="email" required placeholder=" " autocomplete="email">
               <label for="plan-email" data-i18n="contacts.plan.email">Email address</label>
             </div>
-            <div class="form-field form-field--phone">
-              <select class="phone-code" name="phone_code" aria-label="Country code">
-                <option value="+44" selected>🇬🇧 +44</option>
-                <option value="+7">🇷🇺 +7</option>
-                <option value="+971">🇦🇪 +971</option>
-                <option value="+39">🇮🇹 +39</option>
-                <option value="+33">🇫🇷 +33</option>
-                <option value="+34">🇪🇸 +34</option>
-                <option value="+41">🇨🇭 +41</option>
-                <option value="+49">🇩🇪 +49</option>
-                <option value="+1">🇺🇸 +1</option>
-              </select>
-              <input class="phone-number" type="tel" id="plan-phone" name="phone" placeholder=" " inputmode="tel" pattern="[0-9\s()\-]{6,20}" autocomplete="tel">
+            <div class="form-field">
+              <input type="tel" id="plan-phone" name="phone" placeholder=" " inputmode="tel" pattern="[+0-9\s()\-]{6,20}" autocomplete="tel">
               <label for="plan-phone" data-i18n="contacts.plan.phone">Phone number</label>
             </div>
           </div>

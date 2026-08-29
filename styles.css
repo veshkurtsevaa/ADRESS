@@ -848,17 +848,6 @@ button { font-family: inherit; }
   transform: translateY(calc(-26 * var(--u))) scale(0.62);
 }
 
-/* the country code sits inside the phone field, so the label starts after it */
-.form-field--phone { display: flex; align-items: center; gap: calc(14 * var(--u)); }
-.phone-code {
-  flex: none; background: transparent; border: none; outline: none; cursor: pointer;
-  font-family: var(--font-ui); font-size: calc(24 * var(--u)); font-weight: 300;
-  color: var(--paper); padding: 0;
-}
-.phone-code option { color: var(--ink); background: var(--paper); }
-.phone-number { flex: 1 1 auto; min-width: 0; }
-.about-slide .form-field--phone label { left: calc(124 * var(--u)); }
-
 /* ---- narrow screens: the canvas falls back to stacked flow ---- */
 @media (max-width: 900px) {
   .contacts-s3__text { width: 100%; }
@@ -887,8 +876,6 @@ button { font-family: inherit; }
   .about-slide .form-field textarea:not(:placeholder-shown) + label {
     transform: translateY(-19px) scale(0.78);
   }
-  .phone-code { font-size: 16px; }
-  .about-slide .form-field--phone label { left: 96px; }
 }
 
 /* ---------- footer ---------- */
