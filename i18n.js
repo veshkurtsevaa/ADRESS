@@ -14,7 +14,7 @@
       'footer.rights': '© 2026 ADDRESS. Все права защищены.',
 
       'home.hero.title': 'ADDRESS',
-      'home.hero.subtitle': 'Проект кураторских путешествий. Мы создаём каждое путешествие индивидуально, подстраиваясь под ваш ритм, интересы и ожидания',
+      'home.hero.subtitle': 'Проект авторских путешествий. Мы создаем поездки индивидуально, продумывая их под ваш ритм, интересы и ожидания.',
       'home.hero.cta': 'Связаться',
       'home.hero.cta2': 'Смотреть индекс',
 
@@ -32,7 +32,7 @@
       'home.index.05.title': 'Контакты',
       'home.index.05.text': 'Расскажите о своей поездке — мы свяжемся в течение дня',
 
-      'home.quote.num': '{ философия }',
+      'home.quote.num': 'философия',
       'home.quote.text': 'Эстетика, скрытые места, внимание к деталям и лёгкость, когда путешествие складывается идеально',
 
       'home.pillars.personal.title': 'Индивидуальный подход',
@@ -144,7 +144,7 @@
       'footer.rights': '© 2026 ADDRESS. All rights reserved.',
 
       'home.hero.title': 'ADDRESS',
-      'home.hero.subtitle': 'A project of curated travel experiences. We design each journey individually, shaping it around your rhythm, interests, and expectations',
+      'home.hero.subtitle': 'A project of signature travel. We design each trip individually, shaping it around your rhythm, interests, and expectations.',
       'home.hero.cta': 'Get in Touch',
       'home.hero.cta2': 'View Index',
 
@@ -162,7 +162,7 @@
       'home.index.05.title': 'Contacts',
       'home.index.05.text': "Tell us about your journey — we'll get back to you within a day",
 
-      'home.quote.num': '{ philosophy }',
+      'home.quote.num': 'philosophy',
       'home.quote.text': 'Aesthetics, hidden places, attention to detail, and the feeling of ease when a journey comes together perfectly',
 
       'home.pillars.personal.title': 'Personal Approach',
