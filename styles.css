@@ -28,9 +28,9 @@
      it's self-hosted (see assets/fonts/README.md). Fraunces stays in the
      stack as the interim look until the real files are added. */
   --font-display: 'NewParis Skyline', 'Fraunces', Georgia, serif;
-  --font-body: 'Work Sans', Arial, sans-serif;
+  --font-body: 'Inter', Arial, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
-  --font-ui: 'Work Sans', Arial, sans-serif;
+  --font-ui: 'Inter', Arial, sans-serif;
 
   --container: 1320px;
   --content: 660px;
