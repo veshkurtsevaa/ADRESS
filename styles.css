@@ -308,15 +308,17 @@ button { font-family: inherit; }
 .index-row.is-open .index-row__reveal-wrap { grid-template-rows: 1fr; }
 .index-row__reveal {
   overflow: hidden; min-height: 0;
-  /* text sits at the top of the tall portrait photo rather than floating in
-     the middle of it */
-  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;
+  /* photo column is sized to the photo, so the text sits next to it instead
+     of across a gap; text top-aligns rather than floating mid-photo */
+  display: grid; grid-template-columns: minmax(0, 460px) 1fr; gap: 40px; align-items: start;
 }
 .index-row.is-open .index-row__reveal { padding-top: 32px; padding-bottom: 40px; }
-/* the index photos are shot portrait, so the media box is portrait too —
-   a landscape box would crop away most of each frame. Capped in width so
-   an open row stays a sensible height. */
-.index-row__reveal-media .photo-placeholder { aspect-ratio: 4 / 5; max-width: 460px; }
+/* the index photos are all 1080x1440, so the media box is 3:4 too and each
+   frame shows in full — no crop. */
+.index-row__reveal-media .photo-placeholder { aspect-ratio: 3 / 4; }
+/* each photo carries its own white border, so the placeholder's hairline
+   would read as a second frame — it stays only on the empty placeholder */
+.photo-placeholder:has(.photo-placeholder__img) { border: none; }
 .index-row__reveal-text p { font-size: 18px; margin-bottom: 20px; opacity: 0.85; }
 @media (prefers-reduced-motion: reduce) {
   .index-row__reveal-wrap { transition: none; }
