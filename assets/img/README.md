@@ -35,8 +35,9 @@ cropped to 3:4 by `object-fit: cover` — either crop it to 3:4 first, or adjust
 The About frames are 4:5 (the hero is 3:4) and the shots are 1440×1795 and
 1080×1440, so they fill their frames with no visible crop. `about-07` is the
 only one used as a full-bleed background: it is deliberately inset past the
-section edges in `styles.css` to leave room for the parallax drift, so it is
-cropped by design.
+section edges in `styles.css` — top and bottom to leave room for the parallax
+drift, left and right to crop away its own white border — so it is cropped by
+design.
 
 The photos carry their own white border, so `styles.css` drops the
 placeholder's hairline border whenever a photo is present — otherwise it reads

@@ -45,17 +45,17 @@
        fits the viewport, so the whole composition scales as one piece. -->
   <main class="about-slides">
 
-    <!-- 01 — ADDRESS / who we are -->
+    <!-- 01 — ADDRESS / who we are: the claim leads, the photo answers it -->
     <section class="about-slide about-slide--paper" id="about-01">
       <div class="about-slide__canvas about-s1">
-        <figure class="about-photo about-photo--portrait" data-reveal>
+        <div class="about-s1__text" data-reveal="blur">
+          <h1 class="about-word" data-i18n="about.s1.title">ADDRESS</h1>
+          <p class="about-text about-text--lead" data-i18n="about.s1.lead">A project of authored travel. We build every trip individually, shaping it around your rhythm, your interests and what you expect from it.</p>
+          <p class="about-note" data-i18n="about.s1.note">about us</p>
+        </div>
+        <figure class="about-photo about-photo--portrait" data-reveal="blur">
           <img src="assets/img/about-01-hero.jpg" alt="Two loungers and a white parasol on white sand by a turquoise sea" decoding="async">
         </figure>
-        <div class="about-s1__text" data-reveal>
-          <h1 class="about-word" data-i18n="about.s1.title">ADDRESS</h1>
-          <p class="about-text about-text--lead" data-i18n="about.s1.lead">a project of authored travel. We build every trip individually, shaping it around your rhythm, interests and expectations</p>
-          <p class="about-note" data-i18n="about.s1.note">{ about us }</p>
-        </div>
       </div>
     </section>
 
@@ -63,20 +63,21 @@
     <section class="about-slide about-slide--navy" id="about-02">
       <div class="about-slide__canvas about-s2">
         <div class="about-s2__head" data-reveal>
-          <h2 class="about-title" data-i18n="about.s2.title">HOTELS — THE FOUNDATION OF ANY JOURNEY</h2>
-          <p class="about-text" data-i18n="about.s2.lead">We advise, select and book the stays that become part of how the whole trip feels</p>
+          <h2 class="about-title" data-i18n="about.s2.title">HOTELS — THE FOUNDATION
+OF ANY JOURNEY</h2>
+          <p class="about-text" data-i18n="about.s2.lead">We advise, select and book the stays that become part of how the whole trip feels.</p>
         </div>
-        <div class="about-s2__media" data-reveal>
-          <figure class="about-photo about-photo--tall">
+        <div class="about-s2__media">
+          <figure class="about-photo about-photo--tall" data-reveal="blur">
             <img src="assets/img/about-02-hotel-interior.jpg" alt="Lit sideboard, framed print and silk pendant lamps in a hotel room" loading="lazy" decoding="async">
           </figure>
-          <figure class="about-photo about-photo--tall">
+          <figure class="about-photo about-photo--tall" data-reveal="blur">
             <img src="assets/img/about-03-hotel-grounds.jpg" alt="Formal garden with clipped parterres and a still oval pool seen from above" loading="lazy" decoding="async">
           </figure>
         </div>
         <div class="about-s2__foot" data-reveal>
-          <p class="about-text about-text--small" data-i18n="about.s2.foot">We work with hotels directly, so you get the best conditions, priority on rooms and attention to detail</p>
-          <p class="about-note" data-i18n="about.s2.note">{ hotels }</p>
+          <p class="about-text about-text--small" data-i18n="about.s2.foot">We work with hotels directly, so you get the best conditions, priority on rooms and attention to detail.</p>
+          <p class="about-note" data-i18n="about.s2.note">hotels</p>
         </div>
       </div>
     </section>
@@ -85,10 +86,10 @@
     <section class="about-slide about-slide--dim" id="about-03">
       <div class="about-slide__canvas about-s3">
         <div class="about-s3__text" data-reveal>
-          <p class="about-note" data-i18n="about.s3.note">{ how do we work? }</p>
-          <p class="about-text about-text--lead" data-i18n="about.s3.lead">You share the destination, the number of days and what you are hoping for — we build an itinerary that matches your mood and your request exactly</p>
+          <p class="about-note" data-i18n="about.s3.note">how do we work?</p>
+          <p class="about-text about-text--lead" data-i18n="about.s3.lead">You share the destination, the number of days and what you are hoping for — we build an itinerary that matches your mood and your request exactly.</p>
         </div>
-        <figure class="about-photo about-photo--tall" data-reveal>
+        <figure class="about-photo about-photo--tall" data-reveal="blur">
           <img src="assets/img/about-04-process.jpg" alt="A paper coffee cup on a stone ledge above still green water" loading="lazy" decoding="async">
         </figure>
       </div>
@@ -97,8 +98,8 @@
     <!-- 04 — ADDRESS Guides -->
     <section class="about-slide about-slide--navy" id="about-04">
       <div class="about-slide__canvas about-s4">
-        <div class="about-s4__covers" data-reveal>
-          <figure class="guide-cover guide-cover--a">
+        <div class="about-s4__covers">
+          <figure class="guide-cover guide-cover--a" data-reveal="blur">
             <figcaption class="guide-cover__head">
               <span class="guide-cover__kicker" data-i18n="about.s4.kicker">your personal guide</span>
               <span class="guide-cover__row">
@@ -110,12 +111,12 @@
               <img src="assets/img/about-05-guide-italy.jpg" alt="A pale leather handbag on a marble ledge in front of a clipped hedge" loading="lazy" decoding="async">
             </div>
           </figure>
-          <p class="guide-tag guide-tag--a">
-            <span data-i18n="about.s4.tag.italy">Italy</span>
+          <p class="guide-tag guide-tag--a" data-reveal>
+            <span class="guide-tag__name" data-i18n="about.s4.tag.italy">Italy</span>
             <svg viewBox="0 0 120 34" fill="none" aria-hidden="true"><path d="M2 2c6 18 26 29 60 29 22 0 44-10 56-27" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
           </p>
 
-          <figure class="guide-cover guide-cover--b">
+          <figure class="guide-cover guide-cover--b" data-reveal="blur">
             <figcaption class="guide-cover__head">
               <span class="guide-cover__kicker" data-i18n="about.s4.kickerCity">your personal city guide</span>
               <span class="guide-cover__row">
@@ -127,30 +128,29 @@
               <img src="assets/img/about-06-guide-london.jpg" alt="Marble statues along a clipped hedge on a gravel garden walk" loading="lazy" decoding="async">
             </div>
           </figure>
-          <p class="guide-tag guide-tag--b">
-            <span data-i18n="about.s4.tag.london">London</span>
+          <p class="guide-tag guide-tag--b" data-reveal>
+            <span class="guide-tag__name" data-i18n="about.s4.tag.london">London</span>
             <svg viewBox="0 0 120 34" fill="none" aria-hidden="true"><path d="M2 2c6 18 26 29 60 29 22 0 44-10 56-27" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
           </p>
         </div>
         <div class="about-s4__text" data-reveal>
           <h2 class="about-title about-title--wide" data-i18n="about.s4.title">ADDRESS GUIDES</h2>
-          <p class="about-text" data-i18n="about.s4.lead">we put one together for every trip and every wish. A personal guide with rare places, non-obvious locations and useful hints</p>
-          <p class="about-note" data-i18n="about.s4.note">{ guides }</p>
+          <p class="about-text" data-i18n="about.s4.lead">We put one together for every trip and every wish. A personal guide with rare places, non-obvious locations and useful hints.</p>
+          <p class="about-note" data-i18n="about.s4.note">guides</p>
         </div>
       </div>
     </section>
 
-    <!-- 05 — Closing -->
+    <!-- 05 — Closing: the copy sits straight on the photo -->
     <section class="about-slide about-slide--photo" id="about-05">
-      <div class="about-slide__bg">
+      <div class="about-slide__bg" data-reveal="fade">
         <img data-parallax="0.08" src="assets/img/about-07-closing.jpg" alt="A pale blossom caught in a shaft of light against deep shadow" loading="lazy" decoding="async">
       </div>
       <div class="about-slide__canvas about-s5">
-        <div class="about-s5__panel" data-reveal>
+        <div class="about-s5__text" data-reveal>
           <p class="about-word about-word--small" data-i18n="about.s5.title">ADDRESS</p>
-          <p class="about-text about-text--lead" data-i18n="about.s5.lead">aesthetics, rare places, attention to detail and the feeling of ease when a journey comes together perfectly</p>
-          <a href="contacts.html" class="btn btn--primary about-s5__cta" data-magnetic="0.3" data-i18n="about.s5.cta">get in touch</a>
-          <p class="about-note" data-i18n="about.s5.note">{ about us }</p>
+          <p class="about-text about-text--lead" data-i18n="about.s5.lead">Aesthetics, rare places, attention to detail and the feeling of ease when a journey comes together perfectly.</p>
+          <a href="contacts.html" class="btn about-s5__cta" data-magnetic="0.3" data-i18n="about.s5.cta">get in touch</a>
         </div>
       </div>
     </section>
