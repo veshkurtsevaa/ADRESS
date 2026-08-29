@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%231C1B18%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Georgia,serif%27 font-size=%2734%27 fill=%27%23F7F3EC%27 text-anchor=%27middle%27%3EA%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
   <header class="site-header">
@@ -40,72 +40,121 @@
     </div>
   </header>
 
-  <main>
-    <section class="section section--light" style="padding-top:160px; padding-bottom:80px;">
-      <div class="section__inner">
-        <p class="tag-label" style="display:block; text-align:center;" data-reveal data-i18n="about.hero.label">about us</p>
-        <h1 class="section__title" data-reveal data-i18n="about.title">About Us</h1>
-        <p class="section__text" data-reveal data-i18n="about.lead">ADDRESS is a project of curated travel experiences. We work directly with hotels, guides, and local partners so every detail is thought through in advance</p>
-      </div>
-    </section>
+  <!-- Five full-screen slides. Each one is composed on a 1920×1080 canvas:
+       .about-slide sets --u to one design pixel of the largest 16:9 box that
+       fits the viewport, so the whole composition scales as one piece. -->
+  <main class="about-slides">
 
-    <section class="spread section--dim">
-      <div class="spread__grid">
-        <div class="spread-photo spread-photo--offset-a" data-reveal>
-          <div class="photo-placeholder photo-placeholder--tall" data-parallax="0.12" aria-label="Street scene photo" data-ph="01"></div>
-          <p class="spread-photo__caption"><span class="num">I.</span><span data-i18n="about.spread.01">Every itinerary starts with a conversation — about rhythm, taste, and what a perfect day means to you</span></p>
-        </div>
-        <div class="spread-photo spread-photo--offset-b" data-reveal>
-          <div class="photo-placeholder photo-placeholder--square" data-parallax="-0.1" aria-label="Local guide photo" data-ph="02"></div>
-          <p class="spread-photo__caption"><span class="num">II.</span><span data-i18n="about.spread.02">We visit places ourselves before we recommend them to you</span></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="spread section--olive">
-      <div class="spread__grid">
-        <div class="spread-photo spread-photo--offset-a" data-reveal>
-          <div class="photo-placeholder photo-placeholder--tall" data-parallax="0.12" aria-label="Hidden courtyard photo" data-ph="03"></div>
-          <p class="spread-photo__caption" style="color:var(--paper);"><span class="num">III.</span><span data-i18n="about.spread.03">Hidden addresses no guidebook lists are part of the job</span></p>
-        </div>
-        <div class="spread-photo spread-photo--offset-b" data-reveal>
-          <div class="photo-placeholder photo-placeholder--square" data-parallax="-0.1" aria-label="Postcard writing photo" data-ph="04"></div>
-          <p class="spread-photo__caption" style="color:var(--paper);"><span class="num">IV.</span><span data-i18n="about.spread.04">From the first message to the last day of the trip — we stay in touch</span></p>
+    <!-- 01 — ADDRESS / who we are -->
+    <section class="about-slide about-slide--paper" id="about-01">
+      <div class="about-slide__canvas about-s1">
+        <figure class="about-photo about-photo--portrait" data-reveal>
+          <img src="assets/img/about-01-hero.jpg" alt="Two loungers and a white parasol on white sand by a turquoise sea" decoding="async">
+        </figure>
+        <div class="about-s1__text" data-reveal>
+          <h1 class="about-word" data-i18n="about.s1.title">ADDRESS</h1>
+          <p class="about-text about-text--lead" data-i18n="about.s1.lead">a project of authored travel. We build every trip individually, shaping it around your rhythm, interests and expectations</p>
+          <p class="about-note" data-i18n="about.s1.note">{ about us }</p>
         </div>
       </div>
     </section>
 
-    <section class="section section--light">
-      <div class="section__inner">
-        <p class="tag-label" style="display:block; text-align:center;" data-reveal data-i18n="about.principles.label">principles</p>
-        <div class="principles" data-reveal>
-          <div class="principle">
-            <span class="principle__num">01</span>
-            <h3 class="principle__title" data-i18n="about.principles.personal.title">Personal Approach</h3>
-            <p class="principle__text" data-i18n="about.principles.personal.text">Every itinerary is built from scratch around your rhythm and interests</p>
-          </div>
-          <div class="principle">
-            <span class="principle__num">02</span>
-            <h3 class="principle__title" data-i18n="about.principles.partners.title">Direct Partnerships</h3>
-            <p class="principle__text" data-i18n="about.principles.partners.text">We work directly with hotels — exclusive rates and upgrades</p>
-          </div>
-          <div class="principle">
-            <span class="principle__num">03</span>
-            <h3 class="principle__title" data-i18n="about.principles.guides.title">Guides With Hidden Places</h3>
-            <p class="principle__text" data-i18n="about.principles.guides.text">Personal guides with locations no guidebook lists</p>
-          </div>
-          <div class="principle">
-            <span class="principle__num">04</span>
-            <h3 class="principle__title" data-i18n="about.principles.trust.title">Privacy &amp; Trust</h3>
-            <p class="principle__text" data-i18n="about.principles.trust.text">Confidentiality and attention to detail at every step</p>
-          </div>
+    <!-- 02 — Hotels -->
+    <section class="about-slide about-slide--navy" id="about-02">
+      <div class="about-slide__canvas about-s2">
+        <div class="about-s2__head" data-reveal>
+          <h2 class="about-title" data-i18n="about.s2.title">HOTELS — THE FOUNDATION OF ANY JOURNEY</h2>
+          <p class="about-text" data-i18n="about.s2.lead">We advise, select and book the stays that become part of how the whole trip feels</p>
+        </div>
+        <div class="about-s2__media" data-reveal>
+          <figure class="about-photo about-photo--tall">
+            <img src="assets/img/about-02-hotel-interior.jpg" alt="Lit sideboard, framed print and silk pendant lamps in a hotel room" loading="lazy" decoding="async">
+          </figure>
+          <figure class="about-photo about-photo--tall">
+            <img src="assets/img/about-03-hotel-grounds.jpg" alt="Formal garden with clipped parterres and a still oval pool seen from above" loading="lazy" decoding="async">
+          </figure>
+        </div>
+        <div class="about-s2__foot" data-reveal>
+          <p class="about-text about-text--small" data-i18n="about.s2.foot">We work with hotels directly, so you get the best conditions, priority on rooms and attention to detail</p>
+          <p class="about-note" data-i18n="about.s2.note">{ hotels }</p>
         </div>
       </div>
     </section>
 
-    <section class="quote section--dark">
-      <p class="quote__text" data-reveal data-i18n="about.quote">Aesthetics, hidden places, attention to detail, and the feeling of ease when a journey comes together perfectly</p>
+    <!-- 03 — How we work -->
+    <section class="about-slide about-slide--dim" id="about-03">
+      <div class="about-slide__canvas about-s3">
+        <div class="about-s3__text" data-reveal>
+          <p class="about-note" data-i18n="about.s3.note">{ how do we work? }</p>
+          <p class="about-text about-text--lead" data-i18n="about.s3.lead">You share the destination, the number of days and what you are hoping for — we build an itinerary that matches your mood and your request exactly</p>
+        </div>
+        <figure class="about-photo about-photo--tall" data-reveal>
+          <img src="assets/img/about-04-process.jpg" alt="A paper coffee cup on a stone ledge above still green water" loading="lazy" decoding="async">
+        </figure>
+      </div>
     </section>
+
+    <!-- 04 — ADDRESS Guides -->
+    <section class="about-slide about-slide--navy" id="about-04">
+      <div class="about-slide__canvas about-s4">
+        <div class="about-s4__covers" data-reveal>
+          <figure class="guide-cover guide-cover--a">
+            <figcaption class="guide-cover__head">
+              <span class="guide-cover__kicker" data-i18n="about.s4.kicker">your personal guide</span>
+              <span class="guide-cover__row">
+                <span class="guide-cover__brand">ADDRESS</span>
+                <span class="guide-cover__place">ITALY</span>
+              </span>
+            </figcaption>
+            <div class="guide-cover__media">
+              <img src="assets/img/about-05-guide-italy.jpg" alt="A pale leather handbag on a marble ledge in front of a clipped hedge" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <p class="guide-tag guide-tag--a">
+            <span data-i18n="about.s4.tag.italy">Italy</span>
+            <svg viewBox="0 0 120 34" fill="none" aria-hidden="true"><path d="M2 2c6 18 26 29 60 29 22 0 44-10 56-27" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </p>
+
+          <figure class="guide-cover guide-cover--b">
+            <figcaption class="guide-cover__head">
+              <span class="guide-cover__kicker" data-i18n="about.s4.kickerCity">your personal city guide</span>
+              <span class="guide-cover__row">
+                <span class="guide-cover__brand">ADDRESS</span>
+                <span class="guide-cover__place">LONDON</span>
+              </span>
+            </figcaption>
+            <div class="guide-cover__media">
+              <img src="assets/img/about-06-guide-london.jpg" alt="Marble statues along a clipped hedge on a gravel garden walk" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <p class="guide-tag guide-tag--b">
+            <span data-i18n="about.s4.tag.london">London</span>
+            <svg viewBox="0 0 120 34" fill="none" aria-hidden="true"><path d="M2 2c6 18 26 29 60 29 22 0 44-10 56-27" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </p>
+        </div>
+        <div class="about-s4__text" data-reveal>
+          <h2 class="about-title about-title--wide" data-i18n="about.s4.title">ADDRESS GUIDES</h2>
+          <p class="about-text" data-i18n="about.s4.lead">we put one together for every trip and every wish. A personal guide with rare places, non-obvious locations and useful hints</p>
+          <p class="about-note" data-i18n="about.s4.note">{ guides }</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 — Closing -->
+    <section class="about-slide about-slide--photo" id="about-05">
+      <div class="about-slide__bg">
+        <img data-parallax="0.08" src="assets/img/about-07-closing.jpg" alt="A pale blossom caught in a shaft of light against deep shadow" loading="lazy" decoding="async">
+      </div>
+      <div class="about-slide__canvas about-s5">
+        <div class="about-s5__panel" data-reveal>
+          <p class="about-word about-word--small" data-i18n="about.s5.title">ADDRESS</p>
+          <p class="about-text about-text--lead" data-i18n="about.s5.lead">aesthetics, rare places, attention to detail and the feeling of ease when a journey comes together perfectly</p>
+          <a href="contacts.html" class="btn btn--primary about-s5__cta" data-magnetic="0.3" data-i18n="about.s5.cta">get in touch</a>
+          <p class="about-note" data-i18n="about.s5.note">{ about us }</p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
@@ -113,10 +162,10 @@
     <p class="site-footer__rights" data-i18n="footer.rights">© 2026 ADDRESS. All rights reserved.</p>
   </footer>
 
-  <script src="i18n.js?v=9"></script>
-  <script src="script.js?v=9"></script>
+  <script src="i18n.js?v=10"></script>
+  <script src="script.js?v=10"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="animations.js?v=9"></script>
+  <script src="animations.js?v=10"></script>
 </body>
 </html>
