@@ -6,7 +6,7 @@
   <title>ADDRESS — Contacts</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@200;300;400;500;600&family=Montserrat:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%231C1B18%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Georgia,serif%27 font-size=%2734%27 fill=%27%23F7F3EC%27 text-anchor=%27middle%27%3EA%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css?v=14">
 </head>
@@ -40,70 +40,25 @@
     </div>
   </header>
 
-  <!-- Three full-screen slides, composed on the same 1920×1080 canvas as the
-       About slides: .about-slide sets --u to one design pixel of the largest
-       16:9 box that fits the viewport, so each composition scales as one piece.
-       The type scale (.about-word / .about-title / .about-text / .about-note)
-       is the shared slide kit — see the ABOUT block in styles.css. -->
-  <main class="about-slides">
-
-    <!-- 01 — Contacts / the invitation. The three clocks tick live, so the
-         page answers "are they awake right now?" before the form is touched. -->
-    <section class="about-slide about-slide--paper" id="contacts-01">
-      <div class="about-slide__canvas contacts-s1">
-        <div class="contacts-s1__text" data-reveal="blur">
-          <h1 class="about-title contacts-s1__title" data-i18n="contacts.s1.title">CONTACTS</h1>
-          <p class="about-text about-text--lead" data-i18n="contacts.s1.lead">Tell us the destination, the dates and the mood you are after. We read every message ourselves and answer within a day.</p>
-
-          <div class="clock-strip" data-clock-strip>
-            <p class="clock-strip__label" data-i18n="contacts.clock.label">right now</p>
-            <div class="clock-strip__row">
-              <div class="clock">
-                <span class="clock__city" data-i18n="contacts.clock.london">London</span>
-                <span class="clock__time" data-clock data-tz="Europe/London">--:--</span>
-              </div>
-              <div class="clock">
-                <span class="clock__city" data-i18n="contacts.clock.moscow">Moscow</span>
-                <span class="clock__time" data-clock data-tz="Europe/Moscow">--:--</span>
-              </div>
-              <div class="clock clock--you">
-                <span class="clock__city" data-i18n="contacts.clock.you">Your time</span>
-                <span class="clock__time" data-clock>--:--</span>
-              </div>
-            </div>
-          </div>
-
-          <p class="about-note" data-i18n="contacts.s1.note">contacts</p>
+  <main>
+    <!-- the section as it stands: the tag picker, the short form and the
+         contact details -->
+    <section class="section section--white" style="padding-top:160px;">
+      <div class="section__inner">
+        <p class="interest-picker__label" data-reveal>
+          <span class="interest-picker__label-line" data-i18n="contacts.hero.line1">Tell us how you picture your journey.</span>
+          <span class="interest-picker__label-line" data-i18n="contacts.hero.line2">We'll get back to you within a day.</span>
+        </p>
+        <div class="interest-picker__tags" data-reveal>
+          <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.personal">Personal</button>
+          <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.tailored">Tailored</button>
+          <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.concierge">Concierge</button>
+          <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.other">Something else</button>
         </div>
-        <figure class="about-photo about-photo--portrait" data-reveal="blur">
-          <img src="assets/img/contacts-01-lounge.jpg" alt="A lounge with a tall arched window, a low sofa and a lit lamp in the late afternoon" decoding="async">
-        </figure>
-      </div>
-    </section>
 
-    <!-- 02 — The request. The sentence above the form writes itself from the
-         tags and the name field, so the visitor reads their own brief back. -->
-    <section class="about-slide about-slide--dim" id="contacts-02">
-      <div class="about-slide__canvas contacts-s2">
-        <div class="contacts-s2__form" data-reveal>
-          <p class="request-line" data-request-line>
-            <span data-i18n="contacts.request.greeting">Hello, this is</span>
-            <span class="request-line__slot" data-request-name data-i18n="contacts.request.namePlaceholder">your name</span><span class="request-line__dot">.</span>
-            <span data-i18n="contacts.request.interest">I'm interested in</span>
-            <span class="request-line__slot" data-request-interest data-i18n="contacts.request.interestPlaceholder">a tag below</span><span class="request-line__dot">.</span>
-          </p>
-
-          <form class="contact-form" data-contact-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="contact-grid">
+          <form class="contact-form" data-contact-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-reveal>
             <input type="hidden" name="interest" value="" data-interest-input>
-
-            <p class="interest-label" data-i18n="contacts.interest.hint">pick one or two tags</p>
-            <div class="interest-tags">
-              <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.personal">Personal</button>
-              <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.tailored">Tailored</button>
-              <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.concierge">Concierge</button>
-              <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.other">Something else</button>
-            </div>
-
             <div class="contact-form__row">
               <div class="contact-form__fields">
                 <div class="form-field">
@@ -121,27 +76,38 @@
               </div>
               <button type="submit" class="form-submit" data-magnet-proximity data-i18n="contacts.form.submit">Send</button>
             </div>
-
             <p class="form-message form-message--success" data-form-success data-i18n="contacts.form.success">Thank you — we'll get back to you within a day</p>
             <p class="form-message form-message--error" data-form-error data-i18n="contacts.form.error">Something went wrong. Please try again or reach us directly</p>
           </form>
-        </div>
 
-        <figure class="about-photo about-photo--portrait contacts-s2__photo" data-reveal="blur">
-          <img src="assets/img/contacts-02-incense.jpg" alt="A stick of incense smoking in a carved wooden bowl, in black and white" loading="lazy" decoding="async">
-        </figure>
+          <div class="contact-info" data-reveal>
+            <p class="contact-info__title" data-i18n="contacts.info.title">Contact Information</p>
+            <div class="contact-info__row">
+              <span class="contact-info__label" data-i18n="contacts.info.email.label">Email</span>
+              <a class="contact-info__value" href="mailto:address@gmail.com">address@gmail.com</a>
+              <span class="contact-info__label" data-i18n="contacts.info.phone.label">Phone</span>
+              <a class="contact-info__value" href="tel:+447740174159">+44 (7740) 174159</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 03 — Direct channels over a full-bleed frame, as on the About closing -->
-    <section class="about-slide about-slide--photo" id="contacts-03">
+    <!-- Two full-screen slides on the same 1920×1080 canvas as About:
+         .about-slide supplies --u (one design pixel of the largest 16:9 box
+         that fits the viewport), the type kit and the closing scrim, so the
+         two pages read as one system. -->
+
+    <!-- The direct channels over a full-bleed frame, with the same parallax
+         drift as the About closing -->
+    <section class="about-slide about-slide--photo" id="contacts-channels">
       <div class="about-slide__bg" data-reveal="fade">
         <img data-parallax="0.08" src="assets/img/contacts-03-table.jpg" alt="A round marble table and four chairs under a pendant lamp in late afternoon light" loading="lazy" decoding="async">
       </div>
       <div class="about-slide__canvas contacts-s3">
         <div class="contacts-s3__text" data-reveal>
           <p class="about-word about-word--small" data-i18n="brand.name">ADDRESS</p>
-          <p class="about-text about-text--lead" data-i18n="contacts.s3.lead">Or reach us directly — whichever way suits you best.</p>
+          <p class="about-text about-text--lead" data-i18n="contacts.s3.lead">Write to us whichever way suits you best.</p>
 
           <ul class="channels">
             <li class="channel">
@@ -160,11 +126,84 @@
             </li>
           </ul>
 
-          <p class="about-note" data-i18n="contacts.s3.note">direct</p>
+          <p class="about-note" data-i18n="contacts.s3.note">get in touch</p>
         </div>
       </div>
     </section>
 
+    <!-- The trip brief. The rows arrive in sequence on scroll, each label
+         floats up as its field is filled, and the button is magnetic. -->
+    <section class="about-slide about-slide--navy" id="contacts-plan">
+      <div class="about-slide__canvas contacts-plan">
+        <div class="contacts-plan__head" data-reveal>
+          <h2 class="about-title contacts-plan__title" data-i18n="contacts.plan.title">START PLANNING YOUR TRIP</h2>
+          <p class="contacts-plan__sub" data-i18n="contacts.plan.sub">We will get back to you as soon as we can</p>
+        </div>
+
+        <form class="plan-form" data-contact-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="plan-form__row plan-form__row--three" data-reveal>
+            <div class="form-field">
+              <input type="text" id="plan-where" name="destination" required placeholder=" ">
+              <label for="plan-where" data-i18n="contacts.plan.where">Where would you like to go?</label>
+            </div>
+            <div class="form-field">
+              <input type="text" id="plan-when" name="dates" placeholder=" ">
+              <label for="plan-when" data-i18n="contacts.plan.when">When are you planning to travel?</label>
+            </div>
+            <div class="form-field">
+              <input type="text" id="plan-days" name="duration" placeholder=" ">
+              <label for="plan-days" data-i18n="contacts.plan.days">How long for?</label>
+            </div>
+          </div>
+
+          <div class="plan-form__row plan-form__row--two" data-reveal>
+            <div class="form-field">
+              <input type="text" id="plan-first" name="first_name" required placeholder=" " autocomplete="given-name">
+              <label for="plan-first" data-i18n="contacts.plan.firstName">First name</label>
+            </div>
+            <div class="form-field">
+              <input type="text" id="plan-last" name="last_name" placeholder=" " autocomplete="family-name">
+              <label for="plan-last" data-i18n="contacts.plan.lastName">Last name</label>
+            </div>
+          </div>
+
+          <div class="plan-form__row plan-form__row--two" data-reveal>
+            <div class="form-field">
+              <input type="email" id="plan-email" name="email" required placeholder=" " autocomplete="email">
+              <label for="plan-email" data-i18n="contacts.plan.email">Email address</label>
+            </div>
+            <div class="form-field form-field--phone">
+              <select class="phone-code" name="phone_code" aria-label="Country code">
+                <option value="+44" selected>🇬🇧 +44</option>
+                <option value="+7">🇷🇺 +7</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+39">🇮🇹 +39</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+34">🇪🇸 +34</option>
+                <option value="+41">🇨🇭 +41</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+1">🇺🇸 +1</option>
+              </select>
+              <input class="phone-number" type="tel" id="plan-phone" name="phone" placeholder=" " inputmode="tel" pattern="[0-9\s()\-]{6,20}" autocomplete="tel">
+              <label for="plan-phone" data-i18n="contacts.plan.phone">Phone number</label>
+            </div>
+          </div>
+
+          <div class="plan-form__row" data-reveal>
+            <div class="form-field">
+              <textarea id="plan-comments" name="comments" rows="3" placeholder=" "></textarea>
+              <label for="plan-comments" data-i18n="contacts.plan.comments">Anything specific you would like us to know?</label>
+            </div>
+          </div>
+
+          <div class="plan-form__foot" data-reveal>
+            <button type="submit" class="plan-form__submit" data-magnetic="0.25" data-i18n="contacts.plan.submit">Request my trip</button>
+            <p class="form-message form-message--success" data-form-success data-i18n="contacts.form.success">Thank you — we'll get back to you within a day</p>
+            <p class="form-message form-message--error" data-form-error data-i18n="contacts.form.error">Something went wrong. Please try again or reach us directly</p>
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">

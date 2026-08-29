@@ -260,26 +260,26 @@
     document.addEventListener('address:langchange', syncInterestInput);
   }
 
-  /* ---------- contact form ---------- */
-  var form = document.querySelector('[data-contact-form]');
-  if (form) {
+  /* ---------- contact forms ----------
+     Contacts carries two: the short note at the top of the page and the
+     trip brief on the closing slide, so each one is wired on its own. */
+  document.querySelectorAll('[data-contact-form]').forEach(function (form) {
     /* Auto-grow the message textarea: starts one line tall (same tight
        underline gap as the Name/Email inputs) and expands as the user
        types past the first line, instead of always reserving 2 rows. */
-    var messageField = form.querySelector('textarea');
-    if (messageField) {
+    form.querySelectorAll('textarea[rows="1"]').forEach(function (field) {
       var growMessage = function () {
-        messageField.style.height = 'auto';
-        messageField.style.height = messageField.scrollHeight + 'px';
+        field.style.height = 'auto';
+        field.style.height = field.scrollHeight + 'px';
       };
-      messageField.addEventListener('input', growMessage);
+      field.addEventListener('input', growMessage);
       growMessage();
-    }
+    });
 
     /* Browser-native "required"/"type=email" validation bubbles are shown in the
        browser's own locale, not the page's — override them so a Russian-language
        page never shows an English validation message (or vice versa). */
-    form.querySelectorAll('input[required], textarea[required]').forEach(function (field) {
+    form.querySelectorAll('input, textarea').forEach(function (field) {
       field.addEventListener('invalid', function () {
         var t = window.addressI18n && window.addressI18n.t;
         if (!t) return;
@@ -287,6 +287,8 @@
           field.setCustomValidity(t('contacts.form.validation.required'));
         } else if (field.validity.typeMismatch) {
           field.setCustomValidity(t('contacts.form.validation.email'));
+        } else if (field.validity.patternMismatch) {
+          field.setCustomValidity(t('contacts.form.validation.phone'));
         }
       });
       field.addEventListener('input', function () { field.setCustomValidity(''); });
@@ -323,59 +325,7 @@
         if (errorEl) errorEl.classList.add('is-visible');
       });
     });
-  }
-
-  /* ---------- Contacts: live local clocks ----------
-     The slide asks "are they awake right now?" before the form is
-     touched, so the three times have to be real, not decorative. */
-  var clocks = document.querySelectorAll('[data-clock]');
-  if (clocks.length) {
-    var tickClocks = function () {
-      var now = new Date();
-      clocks.forEach(function (el) {
-        var opts = { hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' };
-        var tz = el.getAttribute('data-tz');
-        if (tz) opts.timeZone = tz;
-        try {
-          el.textContent = new Intl.DateTimeFormat('en-GB', opts).format(now);
-        } catch (e) {
-          /* a browser without this time zone keeps the static --:-- */
-        }
-      });
-    };
-    tickClocks();
-    setInterval(tickClocks, 1000);
-  }
-
-  /* ---------- Contacts: the request line writes itself ----------
-     The sentence above the form fills in from the interest tags and the
-     name field, so the visitor reads their own brief back before sending.
-     Each slot carries its own data-i18n placeholder, which i18n.js writes
-     back on a language switch — hence the re-render on langchange. */
-  var requestLine = document.querySelector('[data-request-line]');
-  if (requestLine) {
-    var nameSlot = requestLine.querySelector('[data-request-name]');
-    var interestSlot = requestLine.querySelector('[data-request-interest]');
-    var nameField = document.getElementById('name');
-
-    var fillSlot = function (slot, value, placeholderKey) {
-      if (!slot) return;
-      var text = (value || '').trim();
-      var t = window.addressI18n && window.addressI18n.t;
-      slot.textContent = text || (t ? t(placeholderKey) : slot.textContent);
-      slot.classList.toggle('is-filled', !!text);
-    };
-    var renderRequestLine = function () {
-      fillSlot(nameSlot, nameField ? nameField.value : '', 'contacts.request.namePlaceholder');
-      fillSlot(interestSlot, interestInput ? interestInput.value : '', 'contacts.request.interestPlaceholder');
-    };
-
-    if (nameField) nameField.addEventListener('input', renderRequestLine);
-    interestTags.forEach(function (tag) { tag.addEventListener('click', renderRequestLine); });
-    if (form) form.addEventListener('reset', function () { setTimeout(renderRequestLine, 0); });
-    document.addEventListener('address:langchange', renderRequestLine);
-    renderRequestLine();
-  }
+  });
 
   /* ---------- Contacts: copy the email / phone in one click ----------
      The value stays a real mailto:/tel: link — this only saves the
