@@ -175,17 +175,25 @@
     requestAnimationFrame(tick);
   });
 
+  /* ---------- photo fallback ----------
+     If a photo file isn't in assets/img yet (or fails to load), drop the <img>
+     so the placeholder block underneath shows through instead of a broken icon. */
+  document.querySelectorAll('.photo-placeholder__img').forEach(function (img) {
+    function drop() { if (img.parentNode) img.parentNode.removeChild(img); }
+    img.addEventListener('error', drop);
+    if (img.complete && img.naturalWidth === 0) drop();
+  });
+
   /* ---------- home index accordion (pure CSS grid-template-rows trick,
      no GSAP/CDN dependency — must work even if the animation CDN fails) ---------- */
   var indexRows = document.querySelectorAll('.index-row');
   if (indexRows.length) {
-    indexRows.forEach(function (row, i) {
+    indexRows.forEach(function (row) {
       row.addEventListener('click', function () {
         var wasOpen = row.classList.contains('is-open');
         indexRows.forEach(function (other) { other.classList.remove('is-open'); });
         if (!wasOpen) row.classList.add('is-open');
       });
-      if (i === 0) row.classList.add('is-open');
     });
   }
 
