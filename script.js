@@ -47,8 +47,12 @@
     var lastY = window.scrollY;
     window.addEventListener('scroll', function () {
       var scrolled = window.scrollY > 8;
-      headerBar.style.borderColor = scrolled ? 'rgba(28,27,24,0.22)' : '';
-      headerBar.style.boxShadow = scrolled ? '0 10px 30px rgba(28,27,24,0.10)' : '';
+      /* scrolled: thicken the glass a little so text stays legible over
+         whatever runs beneath it */
+      headerBar.style.backgroundColor = scrolled ? 'rgba(247,243,236,0.5)' : '';
+      headerBar.style.boxShadow = scrolled
+        ? 'inset 0 1px 0 rgba(255,255,255,0.5), 0 10px 30px rgba(28,27,24,0.12)'
+        : '';
       lastY = window.scrollY;
     }, { passive: true });
   }
