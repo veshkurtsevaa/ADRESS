@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%231C1B18%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Georgia,serif%27 font-size=%2734%27 fill=%27%23F7F3EC%27 text-anchor=%27middle%27%3EA%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=17">
+  <link rel="stylesheet" href="styles.css?v=18">
 </head>
 <body>
   <header class="site-header">
@@ -49,13 +49,13 @@
     <!-- 00 · the claim, the photo answers it, as on the About opener -->
     <section class="about-slide about-slide--paper" id="service-intro">
       <div class="about-slide__canvas svc-intro">
-        <div class="svc-intro__text" data-reveal="blur">
-          <p class="about-note" data-i18n="service.hero.label">services</p>
-          <h1 class="about-title about-title--wide" data-i18n="service.title">For a Journey That Comes Together Effortlessly</h1>
-          <p class="about-text about-text--lead" data-i18n="service.intro.text">We offer several formats of support, from personal guides to complete itinerary planning.</p>
+        <div class="svc-intro__text" data-reveal-stagger="110">
+          <p data-reveal class="about-note" data-i18n="service.hero.label">services</p>
+          <h1 data-reveal class="about-title about-title--wide" data-i18n="service.title">For a Journey That Comes Together Effortlessly</h1>
+          <p data-reveal class="about-text about-text--lead" data-i18n="service.intro.text">We offer several formats of support, from personal guides to complete itinerary planning.</p>
         </div>
         <figure class="about-photo" data-reveal="blur">
-          <img src="assets/img/svc-00-intro.jpg" alt="A hotel lounge under a vault, with an arched window onto a planted courtyard" decoding="async">
+          <img data-parallax-framed="4" src="assets/img/svc-00-intro.jpg" alt="A hotel lounge under a vault, with an arched window onto a planted courtyard" decoding="async">
         </figure>
       </div>
     </section>
@@ -63,30 +63,30 @@
     <!-- 01 · Personal -->
     <section class="about-slide about-slide--navy" id="personal">
       <div class="about-slide__canvas svc">
-        <div class="svc__text" data-reveal>
-          <span class="svc__num num">01</span>
-          <p class="about-note svc__tag" data-i18n="service.personal.tag">personal</p>
-          <h2 class="about-title" data-i18n="service.personal.name">Address Personal</h2>
-          <p class="about-text" data-i18n="service.personal.text">A curated selection of hotels, restaurants, museums, exhibitions, shops, and unique spots around the city, carefully tailored to the season, where you are staying, and the kinds of experiences you enjoy.</p>
-          <p class="svc-cats">
+        <div class="svc__text" data-reveal-stagger>
+          <span data-reveal class="svc__num num">01</span>
+          <p data-reveal class="about-note svc__tag" data-i18n="service.personal.tag">personal</p>
+          <h2 data-reveal class="about-title" data-i18n="service.personal.name">Address Personal</h2>
+          <p data-reveal class="about-text" data-i18n="service.personal.text">A curated selection of hotels, restaurants, museums, exhibitions, shops, and unique spots around the city, carefully tailored to the season, where you are staying, and the kinds of experiences you enjoy.</p>
+          <p data-reveal class="svc-cats">
             <span data-i18n="service.personal.category.hotels">Hotels</span>
             <span data-i18n="service.personal.category.restaurants">Restaurants</span>
             <span data-i18n="service.personal.category.shops">Shops</span>
             <span data-i18n="service.personal.category.exhibitions">Exhibitions</span>
             <span data-i18n="service.personal.category.museums">Museums</span>
           </p>
-          <p class="about-text about-text--small svc__deliverable" data-i18n="service.personal.deliverable1">You receive a file with curated picks by category: descriptions, links, and key details (opening hours, booking conditions, travel tips).</p>
-          <p class="svc-price">
+          <p data-reveal class="about-text about-text--small svc__deliverable" data-i18n="service.personal.deliverable1">You receive a file with curated picks by category: descriptions, links, and key details (opening hours, booking conditions, travel tips).</p>
+          <p data-reveal class="svc-price">
             <span class="svc-price__value" data-i18n="service.personal.price">from €200</span>
             <span class="svc-price__note" data-i18n="service.personal.priceNote">depending on your request</span>
           </p>
         </div>
         <div class="svc__media svc__media--pair">
           <figure class="about-photo about-photo--tall" data-reveal="blur">
-            <img src="assets/img/svc-01-personal-a.jpg" alt="A brass lamp lit over a linen sofa, with travel books stacked on the ledge behind it" loading="lazy" decoding="async">
+            <img data-parallax-framed="4" src="assets/img/svc-01-personal-a.jpg" alt="A brass lamp lit over a linen sofa, with travel books stacked on the ledge behind it" loading="lazy" decoding="async">
           </figure>
           <figure class="about-photo about-photo--tall" data-reveal="blur">
-            <img src="assets/img/svc-01-personal-b.jpg" alt="A slender tree in a stone pot beside a lit niche of books and ceramics" loading="lazy" decoding="async">
+            <img data-parallax-framed="4" src="assets/img/svc-01-personal-b.jpg" alt="A slender tree in a stone pot beside a lit niche of books and ceramics" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
@@ -97,22 +97,22 @@
       <div class="about-slide__canvas svc svc--mirror">
         <div class="svc__media">
           <figure class="about-photo about-photo--tall" data-reveal="blur">
-            <img src="assets/img/svc-02-tailored.jpg" alt="A breakfast spread of sourdough, small plates and juice on a marble table" loading="lazy" decoding="async">
+            <img data-parallax-framed="4" src="assets/img/svc-02-tailored.jpg" alt="A breakfast spread of sourdough, small plates and juice on a marble table" loading="lazy" decoding="async">
           </figure>
         </div>
-        <div class="svc__text" data-reveal>
-          <span class="svc__num num">02</span>
-          <p class="about-note svc__tag" data-i18n="service.tailored.tag">tailored</p>
-          <h2 class="about-title" data-i18n="service.tailored.name">Address Tailored</h2>
-          <p class="about-text" data-i18n="service.tailored.text">Your ideal day in the city, planned down to the smallest detail:</p>
+        <div class="svc__text" data-reveal-stagger>
+          <span data-reveal class="svc__num num">02</span>
+          <p data-reveal class="about-note svc__tag" data-i18n="service.tailored.tag">tailored</p>
+          <h2 data-reveal class="about-title" data-i18n="service.tailored.name">Address Tailored</h2>
+          <p data-reveal class="about-text" data-i18n="service.tailored.text">Your ideal day in the city, planned down to the smallest detail:</p>
           <ul class="svc-list">
-            <li data-i18n="service.tailored.q1">which museum to visit without the queues?</li>
-            <li data-i18n="service.tailored.q2">where to find the best local spots?</li>
-            <li data-i18n="service.tailored.q3">where to enjoy specialty coffee?</li>
-            <li data-i18n="service.tailored.q4">where to have breakfast?</li>
+            <li data-reveal data-i18n="service.tailored.q1">which museum to visit without the queues?</li>
+            <li data-reveal data-i18n="service.tailored.q2">where to find the best local spots?</li>
+            <li data-reveal data-i18n="service.tailored.q3">where to enjoy specialty coffee?</li>
+            <li data-reveal data-i18n="service.tailored.q4">where to have breakfast?</li>
           </ul>
-          <p class="about-text about-text--small svc__deliverable" data-i18n="service.tailored.deliverable">You'll receive a file with your itinerary day by day, with approximate timing and a Google Maps link with the routes ready to go.</p>
-          <p class="svc-price">
+          <p data-reveal class="about-text about-text--small svc__deliverable" data-i18n="service.tailored.deliverable">You'll receive a file with your itinerary day by day, with approximate timing and a Google Maps link with the routes ready to go.</p>
+          <p data-reveal class="svc-price">
             <span class="svc-price__value" data-i18n="service.tailored.price">€150 / day</span>
             <span class="svc-price__note" data-i18n="service.tailored.priceNote">available from two days</span>
           </p>
@@ -123,22 +123,22 @@
     <!-- 03 · Hotel booking -->
     <section class="about-slide about-slide--olive" id="hotels">
       <div class="about-slide__canvas svc">
-        <div class="svc__text" data-reveal>
-          <span class="svc__num num">03</span>
-          <p class="about-note svc__tag" data-i18n="service.hotels.tag">hotels</p>
-          <h2 class="about-title" data-i18n="service.hotels.title">Hotel Booking</h2>
-          <p class="about-text" data-i18n="service.hotels.text">We help you find the best place to stay, with every one of your preferences in mind: the neighborhood, the atmosphere, the budget, and the reason for the trip.</p>
+        <div class="svc__text" data-reveal-stagger>
+          <span data-reveal class="svc__num num">03</span>
+          <p data-reveal class="about-note svc__tag" data-i18n="service.hotels.tag">hotels</p>
+          <h2 data-reveal class="about-title" data-i18n="service.hotels.title">Hotel Booking</h2>
+          <p data-reveal class="about-text" data-i18n="service.hotels.text">We help you find the best place to stay, with every one of your preferences in mind: the neighborhood, the atmosphere, the budget, and the reason for the trip.</p>
           <ul class="svc-list">
-            <li data-i18n="service.hotels.bonus1">special conditions and privileges at our partner hotels</li>
-            <li data-i18n="service.hotels.bonus2">an upgraded room category, subject to availability</li>
-            <li data-i18n="service.hotels.bonus3">priority for early arrival and late departure</li>
-            <li data-i18n="service.hotels.bonus4">treats in your room, spa credits and transfers</li>
-            <li data-i18n="service.hotels.bonus5">support before, during and after the trip</li>
+            <li data-reveal data-i18n="service.hotels.bonus1">special conditions and privileges at our partner hotels</li>
+            <li data-reveal data-i18n="service.hotels.bonus2">an upgraded room category, subject to availability</li>
+            <li data-reveal data-i18n="service.hotels.bonus3">priority for early arrival and late departure</li>
+            <li data-reveal data-i18n="service.hotels.bonus4">treats in your room, spa credits and transfers</li>
+            <li data-reveal data-i18n="service.hotels.bonus5">support before, during and after the trip</li>
           </ul>
         </div>
         <div class="svc__media">
           <figure class="about-photo about-photo--tall" data-reveal="blur">
-            <img src="assets/img/svc-03-hotels.jpg" alt="A made bed with white linen against an oak headboard, seen through a doorway" loading="lazy" decoding="async">
+            <img data-parallax-framed="4" src="assets/img/svc-03-hotels.jpg" alt="A made bed with white linen against an oak headboard, seen through a doorway" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
@@ -149,16 +149,16 @@
       <div class="about-slide__canvas svc svc--mirror">
         <div class="svc__media">
           <figure class="about-photo about-photo--tall" data-reveal="blur">
-            <img src="assets/img/svc-04-concierge.jpg" alt="A laid round table under a brass pendant in a sunlit dining room" loading="lazy" decoding="async">
+            <img data-parallax-framed="4" src="assets/img/svc-04-concierge.jpg" alt="A laid round table under a brass pendant in a sunlit dining room" loading="lazy" decoding="async">
           </figure>
         </div>
-        <div class="svc__text" data-reveal>
-          <span class="svc__num num">04</span>
-          <p class="about-note svc__tag" data-i18n="service.concierge.tag">concierge</p>
-          <h2 class="about-title" data-i18n="service.concierge.name">Concierge Service</h2>
-          <p class="about-text" data-i18n="service.concierge.title">We book restaurants, event tickets and tours for you.</p>
-          <p class="about-text about-text--small svc__deliverable" data-i18n="service.concierge.text">We take care of the organizational details so your trip is as comfortable as possible.</p>
-          <p class="svc-price">
+        <div class="svc__text" data-reveal-stagger>
+          <span data-reveal class="svc__num num">04</span>
+          <p data-reveal class="about-note svc__tag" data-i18n="service.concierge.tag">concierge</p>
+          <h2 data-reveal class="about-title" data-i18n="service.concierge.name">Concierge Service</h2>
+          <p data-reveal class="about-text" data-i18n="service.concierge.title">We book restaurants, event tickets and tours for you.</p>
+          <p data-reveal class="about-text about-text--small svc__deliverable" data-i18n="service.concierge.text">We take care of the organizational details so your trip is as comfortable as possible.</p>
+          <p data-reveal class="svc-price">
             <span class="svc-price__value" data-i18n="service.concierge.price">from €50</span>
           </p>
         </div>
@@ -171,11 +171,11 @@
         <img data-parallax="0.08" src="assets/img/svc-05-closing.jpg" alt="A freestanding bath against travertine and oak panelling in low light" loading="lazy" decoding="async">
       </div>
       <div class="about-slide__canvas about-s5">
-        <div class="about-s5__text" data-reveal>
-          <p class="about-word about-word--small" data-i18n="brand.name">ADDRESS</p>
-          <p class="about-text about-text--lead" data-i18n="service.closing.text1">Planning a trip and want it thought through to the very last detail? Write to us.</p>
-          <p class="about-text" data-i18n="service.closing.text2">We'll choose the right format of support and create a journey made just for you.</p>
-          <a href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener" class="btn about-s5__cta" data-magnetic="0.3" data-i18n="service.closing.cta">Get in Touch</a>
+        <div class="about-s5__text" data-reveal-stagger="140">
+          <p data-reveal class="about-word about-word--small" data-i18n="brand.name">ADDRESS</p>
+          <p data-reveal class="about-text about-text--lead" data-i18n="service.closing.text1">Planning a trip and want it thought through to the very last detail? Write to us.</p>
+          <p data-reveal class="about-text" data-i18n="service.closing.text2">We'll choose the right format of support and create a journey made just for you.</p>
+          <a data-reveal href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener" class="btn about-s5__cta" data-magnetic="0.3" data-i18n="service.closing.cta">Get in Touch</a>
         </div>
       </div>
     </section>
@@ -188,9 +188,9 @@
   </footer>
 
   <script src="i18n.js?v=13"></script>
-  <script src="script.js?v=12"></script>
+  <script src="script.js?v=13"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="animations.js?v=12"></script>
+  <script src="animations.js?v=13"></script>
 </body>
 </html>

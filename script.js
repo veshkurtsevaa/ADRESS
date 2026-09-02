@@ -22,6 +22,17 @@
 
   /* ---------- generic scroll reveal ---------- */
   document.documentElement.classList.add('reveal-ready');
+  /* Inside a [data-reveal-stagger] block the children all cross the viewport
+     together, so the sequence comes from the delay, not from the observer:
+     each child waits a little longer than the one above it. */
+  if (!reduceMotion) {
+    document.querySelectorAll('[data-reveal-stagger]').forEach(function (group) {
+      var step = parseInt(group.getAttribute('data-reveal-stagger'), 10) || 80;
+      group.querySelectorAll('[data-reveal]').forEach(function (child, i) {
+        child.style.transitionDelay = (i * step) + 'ms';
+      });
+    });
+  }
   if ('IntersectionObserver' in window && !reduceMotion) {
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
