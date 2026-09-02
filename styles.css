@@ -717,6 +717,14 @@ button { font-family: inherit; }
 .svc-price__note { font-size: calc(19 * var(--u)); opacity: 0.7; }
 
 .svc__media .about-photo { width: 100%; }
+/* the drift needs the shot to overhang its frame, otherwise the move
+   would uncover an edge; without GSAP the photo just sits inset and fills. */
+.svc__media .about-photo img,
+.svc-intro .about-photo img {
+  position: absolute;
+  top: -6%; left: 0;
+  width: 100%; height: 112%;
+}
 /* the pair sits staggered, the way the two hotel frames do on About */
 .svc__media--pair { display: grid; grid-template-columns: 1fr 1fr; gap: calc(26 * var(--u)); }
 .svc__media--pair .about-photo:first-child { margin-top: calc(70 * var(--u)); }
@@ -1009,6 +1017,12 @@ button { font-family: inherit; }
   transition: opacity 1s var(--ease), transform 1.5s var(--ease), filter 1.2s var(--ease);
 }
 [data-reveal="blur"].is-visible { opacity: 1; transform: scale(1); filter: blur(0); }
+
+/* data-reveal-stagger — the parts of a block arrive one after another
+   rather than as one slab. script.js writes the per-child delay; the
+   attribute alone is enough for the CSS below to hold. */
+[data-reveal-stagger] > [data-reveal],
+[data-reveal-stagger] .svc-list > [data-reveal] { will-change: opacity, transform; }
 
 /* data-reveal="fade" — for a layer something else already transforms */
 [data-reveal="fade"] { opacity: 0; transform: none; }

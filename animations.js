@@ -17,11 +17,39 @@
     gsap.registerPlugin(ScrollTrigger);
 
     initAboutParallax();
+    initFramedParallax();
   });
 
   /* Note: the Home index-list accordion (gaelleperrin-style unfold) lives in
      script.js as plain CSS/JS on purpose — it is core navigation, not a nice-
      to-have, so it must keep working even if this GSAP bundle fails to load. */
+
+  /* =========================================================
+     SERVICE — the shot drifts inside its frame as the spread
+     passes. The overhang set in CSS is what it drifts into, so
+     the move is symmetric around the resting position and no
+     edge is ever uncovered.
+     ========================================================= */
+  function initFramedParallax() {
+    var shots = document.querySelectorAll('[data-parallax-framed]');
+    if (!shots.length || reduceMotion) return;
+
+    shots.forEach(function (shot) {
+      var amount = parseFloat(shot.getAttribute('data-parallax-framed')) || 4;
+      gsap.fromTo(shot,
+        { yPercent: -amount },
+        {
+          yPercent: amount,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: shot,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+    });
+  }
 
   /* =========================================================
      ABOUT — parallax drift on the full-bleed closing frame.
