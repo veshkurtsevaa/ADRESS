@@ -5,3 +5,4 @@ node_modules
 wrangler.toml
 .assetsignore
 .gitignore
+docs
