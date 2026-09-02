@@ -77,6 +77,7 @@
       'service.intro.text': 'Мы предлагаем несколько форматов сопровождения: от персональных гайдов до полного планирования маршрута.',
 
       'service.personal.tag': 'personal',
+      'service.personal.name': 'Address Personal',
       'service.personal.title': 'Personal',
       'service.personal.text': 'Подборка отелей, ресторанов, музеев, выставок, магазинов и просто интересных точек на карте города собирается специально для вас и вашей поездки, с учётом сезона, района проживания и предпочитаемого досуга.',
       'service.personal.category.hotels': 'Отели',
@@ -90,6 +91,7 @@
       'service.personal.priceNote': 'в зависимости от запроса',
 
       'service.tailored.tag': 'tailored',
+      'service.tailored.name': 'Address Tailored',
       'service.tailored.title': 'Индивидуальные маршруты прогулок и досуга',
       'service.tailored.text': 'Ваш идеальный день в городе, продуманный до мелочей:',
       'service.tailored.q1': 'где самый большой выбор шампанского по бокалам?',
@@ -112,7 +114,8 @@
       'service.hotels.bonus5': 'сопровождение до, во время и после поездки',
 
       'service.concierge.tag': 'concierge',
-      'service.concierge.title': 'Мы бронируем для вас рестораны, билеты на мероприятия и экскурсии',
+      'service.concierge.name': 'Консьерж сервис',
+      'service.concierge.title': 'Бронируем для вас рестораны, билеты на мероприятия и экскурсии.',
       'service.concierge.text': 'Берём на себя организационные детали, чтобы путешествие было максимально комфортным.',
       'service.concierge.price': 'от 5 000 ₽',
 
@@ -236,6 +239,7 @@
       'service.intro.text': 'We offer several formats of support, from personal guides to complete itinerary planning.',
 
       'service.personal.tag': 'personal',
+      'service.personal.name': 'Address Personal',
       'service.personal.title': 'Personal',
       'service.personal.text': 'A curated selection of hotels, restaurants, museums, exhibitions, shops, and unique spots around the city, carefully tailored to the season, where you are staying, and the kinds of experiences you enjoy.',
       'service.personal.category.hotels': 'Hotels',
@@ -249,6 +253,7 @@
       'service.personal.priceNote': 'depending on your request',
 
       'service.tailored.tag': 'tailored',
+      'service.tailored.name': 'Address Tailored',
       'service.tailored.title': 'Personalized Routes for Walks and Leisure',
       'service.tailored.text': 'Your ideal day in the city, planned down to the smallest detail:',
       'service.tailored.q1': 'which museum to visit without the queues?',
@@ -271,7 +276,8 @@
       'service.hotels.bonus5': 'support before, during and after the trip',
 
       'service.concierge.tag': 'concierge',
-      'service.concierge.title': 'We Book Your Restaurants, Event Tickets, and Tours',
+      'service.concierge.name': 'Concierge Service',
+      'service.concierge.title': 'We book restaurants, event tickets and tours for you.',
       'service.concierge.text': 'We take care of the organizational details so your trip is as comfortable as possible.',
       'service.concierge.price': 'from €50',
 

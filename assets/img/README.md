@@ -25,6 +25,22 @@ shows in full with no crop. A replacement shot at a different ratio will be
 cropped to 3:4 by `object-fit: cover` — either crop it to 3:4 first, or adjust
 `.index-row__reveal-media .photo-placeholder` in `styles.css`.
 
+## Service — `service.html`, the five spreads
+
+| File                     | Spread            | Photo                                         |
+| ------------------------ | ----------------- | --------------------------------------------- |
+| `svc-00-intro.jpg`       | 00 — the opener   | Hotel lounge under a vault, arched window      |
+| `svc-01-personal-a.jpg`  | 01 — Personal     | Brass lamp over a sofa, travel books on a ledge |
+| `svc-01-personal-b.jpg`  | 01 — Personal     | Tree in a stone pot beside a lit book niche    |
+| `svc-02-tailored.jpg`    | 02 — Tailored     | Breakfast spread on a marble table             |
+| `svc-03-hotels.jpg`      | 03 — Hotels       | Made bed in white linen seen through a doorway |
+| `svc-04-concierge.jpg`   | 04 — Concierge    | Laid round table under a brass pendant         |
+| `svc-05-closing.jpg`     | 05 — Closing      | Freestanding bath against travertine and oak   |
+
+All seven are copies of `photo_2026-08-30 *.jpeg` frames, kept at their
+original 3:4. The spread frames are 4:5, so `object-fit: cover` trims a little
+top and bottom; `svc-05` is a full-bleed background, cropped by design.
+
 ## About — `about.html`, the five slides
 
 | File                          | Slide                  | Photo                                     |
