@@ -8,15 +8,18 @@ back to the grey placeholder rather than a broken-image icon.
 
 ## Homepage — `index.html`, section `#index`
 
-| File                     | Row            | Photo                                        |
-| ------------------------ | -------------- | -------------------------------------------- |
-| `index-01-personal.jpg`  | 01 — Personal  | Sitting room with the stone fireplace         |
-| `index-02-tailored.jpg`  | 02 — Tailored  | Ocean shoreline at sunset                     |
-| `index-03-concierge.jpg` | 03 — Concierge | Pool and loungers beside a villa in the jungle |
-| `index-04-about.jpg`     | 04 — About Us  | Stone benches around a lit fire pit            |
-| `index-05-contacts.jpg`  | 05 — Contacts  | Handwritten card and perfume box on an armchair |
+| File                     | Row                  | Photo                                        |
+| ------------------------ | -------------------- | -------------------------------------------- |
+| `index-01-personal.jpg`  | 01 — Address Personal | Sitting room with the stone fireplace        |
+| `index-02-tailored.jpg`  | 02 — Address Tailored | Ocean shoreline at sunset                    |
+| `index-03-hotels.jpg`    | 03 — Hotel Booking   | Hotel lounge under a vault, arched window     |
+| `index-03-concierge.jpg` | 04 — Concierge       | Pool and loungers beside a villa in the jungle |
+| `index-04-about.jpg`     | 05 — About Us        | Stone benches around a lit fire pit           |
+| `index-05-contacts.jpg`  | 06 — Contacts        | Handwritten card and perfume box on an armchair |
 
-All five are 1080×1440 (3:4) and the media box is 3:4 to match, so each frame
+`index-03-hotels.jpg` is a copy of `photo_2026-08-30 00.21.42.jpeg`; the file
+names keep their original numbering, so `index-03-concierge.jpg` now sits in
+row 04. All the others are 1080×1440 (3:4) and the media box is 3:4 to match, so each frame
 shows in full with no crop. A replacement shot at a different ratio will be
 cropped to 3:4 by `object-fit: cover` — either crop it to 3:4 first, or adjust
 `.index-row__reveal-media .photo-placeholder` in `styles.css`.
