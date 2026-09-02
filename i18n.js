@@ -30,10 +30,6 @@
       'home.index.03.bonus': 'Работаем с отелями напрямую: специальные тарифы, апгрейд номера, ранний заезд и поздний выезд, завтраки и приветственные комплименты — при наличии',
       'home.index.04.title': 'Консьерж-сервис',
       'home.index.04.text': 'Бронируем рестораны, билеты на мероприятия и экскурсии, организуем трансферы — берём организацию на себя',
-      'home.index.05.title': 'О нас',
-      'home.index.05.text': 'Команда, которая проектирует путешествие вокруг вас — от выбора отеля до последней детали маршрута',
-      'home.index.06.title': 'Контакты',
-      'home.index.06.text': 'Расскажите о своей поездке — мы свяжемся в течение дня',
 
       'home.quote.num': 'философия',
       'home.quote.text': 'Эстетика, скрытые места, внимание к деталям и лёгкость, когда путешествие складывается идеально',
@@ -192,10 +188,6 @@
       'home.index.03.bonus': 'We work with hotels directly: special rates, a room upgrade, early check-in and late check-out, breakfast and welcome treats — subject to availability',
       'home.index.04.title': 'Concierge Service',
       'home.index.04.text': 'We book restaurants, event tickets, and tours, and arrange transfers — taking the organizing off your hands',
-      'home.index.05.title': 'About Us',
-      'home.index.05.text': 'A team that designs the journey around you, from choosing the hotel to the very last detail',
-      'home.index.06.title': 'Contacts',
-      'home.index.06.text': "Tell us about your journey — we'll get back to you within a day",
 
       'home.quote.num': 'philosophy',
       'home.quote.text': 'Aesthetics, hidden places, attention to detail, and the feeling of ease when a journey comes together perfectly',

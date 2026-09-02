@@ -1,6 +1,6 @@
 # Photos
 
-Three sets live here: the five homepage index rows, the seven shots used by
+Three sets live here: the homepage index rows, the seven shots used by
 the five About slides and the one used by the Contacts closing slides.
 `styles.css` layers each `<img>` over its frame and
 `script.js` removes an `<img>` that fails to load, so a missing file falls
@@ -14,8 +14,9 @@ back to the grey placeholder rather than a broken-image icon.
 | `index-02-tailored.jpg`  | 02 — Address Tailored | Ocean shoreline at sunset                    |
 | `index-03-hotels.jpg`    | 03 — Hotel Booking   | Hotel lounge under a vault, arched window     |
 | `index-03-concierge.jpg` | 04 — Concierge       | Pool and loungers beside a villa in the jungle |
-| `index-04-about.jpg`     | 05 — About Us        | Stone benches around a lit fire pit           |
-| `index-05-contacts.jpg`  | 06 — Contacts        | Handwritten card and perfume box on an armchair |
+
+`index-04-about.jpg` and `index-05-contacts.jpg` are unused since the index
+dropped its About and Contacts rows; they are kept for a future slide.
 
 `index-03-hotels.jpg` is a copy of `photo_2026-08-30 00.21.42.jpeg`; the file
 names keep their original numbering, so `index-03-concierge.jpg` now sits in
