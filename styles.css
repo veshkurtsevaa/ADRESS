@@ -565,6 +565,7 @@ button { font-family: inherit; }
   text-shadow: 0 calc(2 * var(--u)) calc(24 * var(--u)) rgba(10, 10, 12, 0.55);
 }
 .about-s5__text .about-text { margin: 0 auto; }
+.about-s5__text .about-text + .about-text { margin-top: calc(18 * var(--u)); }
 .about-s5__text .about-text--lead { font-size: calc(34 * var(--u)); }
 .about-s5__cta {
   margin-top: calc(46 * var(--u));
@@ -638,43 +639,110 @@ button { font-family: inherit; }
 }
 
 /* =========================================================
-   SERVICE — editorial list + pin-scroll category reveal
+   SERVICE — five spreads on the same 1920×1080 canvas as About.
+   .about-slide supplies --u, the type kit and the closing scrim;
+   everything here only places the service copy on that canvas.
    ========================================================= */
-.service-hero::after { content: none; }
-.service-hero__panel {
-  display: inline-block; background: rgba(247, 243, 236, 0.92);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  border-radius: 4px; padding: 48px 56px; max-width: 760px;
+.about-slide--olive { background: var(--olive); color: var(--paper); }
+
+/* the opener: claim left, photo right, same proportions as About 01 */
+.svc-intro {
+  grid-template-columns: 1fr calc(600 * var(--u));
+  align-items: center;
+  gap: calc(110 * var(--u));
 }
-.service-hero .hero__content { color: var(--ink); }
-.service-hero .tag-label, .service-hero .section__title, .service-hero .section__text { font-family: var(--font-ui); }
-.service-hero .section__title { font-family: var(--font-display); }
-@media (max-width: 600px) { .service-hero__panel { padding: 32px 24px; } }
+.svc-intro .about-photo { width: 100%; aspect-ratio: 3 / 4; }
+.svc-intro .about-title { font-size: calc(72 * var(--u)); }
+.svc-intro .about-note { margin: 0 0 calc(26 * var(--u)); }
+.svc-intro .about-text--lead { font-size: calc(34 * var(--u)); max-width: calc(860 * var(--u)); }
 
-.service-scroll__pin { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-.service-scroll__stage { width: 100%; }
-.service-scroll__words { position: relative; display: flex; justify-content: center; align-items: baseline; gap: 40px; flex-wrap: wrap; }
-.service-word { font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px); white-space: nowrap; color: var(--ink); }
-.service-scroll__images { display: flex; justify-content: center; gap: 40px; margin-top: 64px; flex-wrap: wrap; }
-.service-image { flex: 1 1 160px; max-width: 220px; }
-.service-image .photo-placeholder { width: 100%; }
-@media (max-width: 860px) {
-  .service-word { font-size: clamp(22px, 6vw, 32px); }
-  .service-scroll__words { gap: 16px 24px; }
-  .service-scroll__images { gap: 16px; }
-  .service-image { flex: 1 1 40%; max-width: none; }
+/* a service spread: copy on one side, photography on the other.
+   --mirror swaps the columns, so consecutive services alternate. */
+.svc {
+  grid-template-columns: 1fr calc(700 * var(--u));
+  align-items: center;
+  gap: calc(90 * var(--u));
+}
+.svc--mirror { grid-template-columns: calc(700 * var(--u)) 1fr; }
+
+.svc__num {
+  display: block;
+  font-size: calc(20 * var(--u));
+  opacity: 0.55;
+  margin-bottom: calc(16 * var(--u));
+}
+.svc__tag { margin: 0 0 calc(14 * var(--u)); }
+.svc__text .about-title { font-size: calc(52 * var(--u)); margin-bottom: calc(22 * var(--u)); }
+.svc__text .about-text { max-width: calc(700 * var(--u)); }
+.svc__deliverable { margin-top: calc(28 * var(--u)); opacity: 0.82; }
+
+/* the Personal categories, set as a mono strip under the copy */
+.svc-cats {
+  display: flex; flex-wrap: wrap;
+  gap: calc(12 * var(--u)) calc(26 * var(--u));
+  margin-top: calc(26 * var(--u));
+  font-family: var(--font-mono);
+  font-size: calc(17 * var(--u));
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.72;
 }
 
-.question-list { display: flex; flex-direction: column; gap: 16px; max-width: 640px; margin: 0 auto; }
-.question-item { display: flex; align-items: center; gap: 16px; }
-.question-item__arrow { font-family: var(--font-mono); opacity: 0.5; flex-shrink: 0; }
-.question-item__text { border: 1px solid var(--line-on-dark); border-radius: 999px; padding: 12px 24px; font-size: 17px; }
-.section--light .question-item__text { border-color: var(--line); }
+.svc-list { list-style: none; margin: calc(26 * var(--u)) 0 0; display: grid; gap: calc(14 * var(--u)); }
+.svc-list li {
+  position: relative;
+  padding-left: calc(34 * var(--u));
+  font-size: calc(24 * var(--u));
+  line-height: 1.35;
+  max-width: calc(700 * var(--u));
+}
+.svc-list li::before {
+  content: "→";
+  position: absolute; left: 0; top: 0;
+  font-family: var(--font-mono);
+  opacity: 0.5;
+}
 
-.price-badge { display: inline-block; border-radius: 999px; padding: 13px 30px; font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
-.price-badge--on-dark { background: var(--paper); color: var(--ink); }
-.price-badge--on-light { background: var(--ink); color: var(--paper); }
-.price-badge__note { display: block; margin-top: 10px; font-family: var(--font-body); font-size: 15px; opacity: 0.75; }
+.svc-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: calc(20 * var(--u)); margin-top: calc(38 * var(--u)); }
+.svc-price__value {
+  font-family: var(--font-mono);
+  font-size: calc(21 * var(--u));
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: calc(13 * var(--u)) calc(28 * var(--u));
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.svc-price__note { font-size: calc(19 * var(--u)); opacity: 0.7; }
+
+.svc__media .about-photo { width: 100%; }
+/* the pair sits staggered, the way the two hotel frames do on About */
+.svc__media--pair { display: grid; grid-template-columns: 1fr 1fr; gap: calc(26 * var(--u)); }
+.svc__media--pair .about-photo:first-child { margin-top: calc(70 * var(--u)); }
+.svc__media--pair .about-photo:last-child { margin-bottom: calc(70 * var(--u)); }
+
+/* ---- narrow screens: the same stacked fallback as the About slides ---- */
+@media (max-width: 900px) {
+  .svc-intro, .svc, .svc--mirror { grid-template-columns: 1fr; gap: 28px; }
+  #service-intro .about-slide__canvas { padding-top: 128px; }
+  .svc-intro .about-title, .svc__text .about-title { font-size: clamp(26px, 7.4vw, 38px); margin-bottom: 14px; }
+  .svc-intro .about-text--lead { font-size: 17px; max-width: none; }
+  .svc-intro .about-photo { order: -1; }
+  .svc__text .about-text, .svc-list li { max-width: none; }
+  .svc__num { font-size: 12px; margin-bottom: 10px; }
+  .svc__tag { margin-bottom: 10px; }
+  .svc__deliverable { margin-top: 18px; }
+  .svc-cats { font-size: 11px; gap: 8px 16px; margin-top: 18px; }
+  .svc-list { gap: 10px; margin-top: 18px; }
+  .svc-list li { font-size: 15px; padding-left: 22px; }
+  .svc-price { gap: 12px; margin-top: 24px; }
+  .svc-price__value { font-size: 13px; padding: 11px 20px; }
+  .svc-price__note { font-size: 13px; }
+  .svc__media--pair { gap: 10px; }
+  .svc__media--pair .about-photo:first-child,
+  .svc__media--pair .about-photo:last-child { margin: 0; }
+}
 
 /* =========================================================
    CONTACTS — big-type hero form (Claude Design "offline" reference)
