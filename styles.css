@@ -173,6 +173,51 @@ button { font-family: inherit; }
 }
 .btn--glass:hover { background: var(--paper); border-color: var(--paper); color: var(--ink); }
 
+/* ---------- contact menu: the header button opens the two channels ---------- */
+.contact-menu { position: relative; }
+.contact-menu__list {
+  position: absolute; top: calc(100% + 10px); right: 0; z-index: 40;
+  min-width: 232px;
+  display: flex; flex-direction: column;
+  background: rgba(247, 243, 236, 0.92);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: 0 18px 40px rgba(28, 27, 24, 0.18);
+  /* opens from the button it hangs under */
+  transform-origin: top right;
+  animation: contact-menu-in 0.22s var(--ease);
+}
+@keyframes contact-menu-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+/* the class sets display, which would otherwise win over the UA rule for
+   the hidden attribute and leave the menu open on load */
+.contact-menu__list[hidden] { display: none; }
+.contact-menu__item {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 11px 14px; border-radius: 10px;
+  color: var(--ink);
+  transition: background-color 0.2s ease;
+}
+.contact-menu__item:hover { background: rgba(28, 27, 24, 0.06); }
+.contact-menu__channel {
+  font-family: var(--font-ui); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.09em; text-transform: uppercase; opacity: 0.6;
+}
+.contact-menu__number { font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.02em; }
+
+/* in the mobile panel there is no room for a popover, so both channels
+   are simply on show */
+.contact-menu--stacked { display: flex; flex-direction: column; gap: 4px; width: 100%; }
+.contact-menu--stacked .contact-menu__item {
+  border: 1px solid var(--line); padding: 13px 16px;
+}
+
+@media (prefers-reduced-motion: reduce) { .contact-menu__list { animation: none; } }
+
 .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
 .burger span { width: 24px; height: 2px; background: var(--ink); transition: transform 0.2s ease, opacity 0.2s ease; }
 .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -570,16 +615,19 @@ button { font-family: inherit; }
 .about-s5__text .about-text { margin: 0 auto; }
 .about-s5__text .about-text + .about-text { margin-top: calc(18 * var(--u)); }
 .about-s5__text .about-text--lead { font-size: calc(34 * var(--u)); }
+.about-s5__text .about-text { font-weight: 500; }
 .about-s5__cta {
   margin-top: calc(46 * var(--u));
   font-size: calc(20 * var(--u));
   padding: calc(18 * var(--u)) calc(40 * var(--u));
   border-radius: 999px;
-  background: var(--paper);
-  color: var(--ink);
+  background: rgba(247, 243, 236, 0.12);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(247, 243, 236, 0.55);
+  color: var(--paper);
   text-shadow: none;
 }
-.about-s5__cta:hover { background: #fff; }
+.about-s5__cta:hover { background: var(--paper); border-color: var(--paper); color: var(--ink); }
 
 /* ---- narrow screens: the 16:9 canvas would shrink the type past
    readable, so the slides fall back to a stacked, self-sized flow ---- */
@@ -682,14 +730,20 @@ button { font-family: inherit; }
 /* the Personal categories, set as a mono strip under the copy */
 .svc-cats {
   display: flex; flex-wrap: wrap;
-  gap: calc(12 * var(--u)) calc(26 * var(--u));
+  justify-content: space-between;
+  width: calc(700 * var(--u));
+  max-width: 100%;
+  row-gap: calc(12 * var(--u));
   margin-top: calc(26 * var(--u));
   font-family: var(--font-mono);
   font-size: calc(17 * var(--u));
-  letter-spacing: 0.12em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   opacity: 0.72;
 }
+/* the tracking is added on the right of every letter, including the last
+   one, so the strip would end short of the paragraph edge without this */
+.svc-cats > span:last-child { margin-right: -0.2em; }
 
 .svc-list { list-style: none; margin: calc(26 * var(--u)) 0 0; display: grid; gap: calc(14 * var(--u)); }
 .svc-list li {
@@ -729,9 +783,26 @@ button { font-family: inherit; }
   width: 100%; height: 112%;
 }
 /* the pair sits staggered, the way the two hotel frames do on About */
-.svc__media--pair { display: grid; grid-template-columns: 1fr 1fr; gap: calc(26 * var(--u)); }
-.svc__media--pair .about-photo:first-child { margin-top: calc(70 * var(--u)); }
-.svc__media--pair .about-photo:last-child { margin-bottom: calc(70 * var(--u)); }
+.svc__media--pair { display: grid; grid-template-columns: 1fr 1fr; gap: calc(38 * var(--u)); }
+.svc__media--pair .svc-float:first-child { margin-top: calc(70 * var(--u)); }
+.svc__media--pair .svc-float:last-child { margin-bottom: calc(70 * var(--u)); }
+
+/* the tilt and the drift sit on a wrapper, so they compose with the blur
+   reveal on the frame itself instead of fighting it for the transform */
+.svc-float {
+  --tilt: 2deg;
+  animation: svc-drift 7s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.svc-float--a { --tilt: 1.6deg; animation-delay: -2.4s; }
+.svc-float--b { --tilt: 2.4deg; animation-delay: -5.1s; }
+@keyframes svc-drift {
+  from { transform: rotate(var(--tilt)) translateY(calc(-8 * var(--u))); }
+  to   { transform: rotate(var(--tilt)) translateY(calc(10 * var(--u))); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-float { animation: none; transform: rotate(var(--tilt)); }
+}
 
 /* ---- narrow screens: the same stacked fallback as the About slides ---- */
 @media (max-width: 900px) {
@@ -744,7 +815,7 @@ button { font-family: inherit; }
   .svc__num { font-size: 12px; margin-bottom: 10px; }
   .svc__tag { margin-bottom: 10px; }
   .svc__deliverable { margin-top: 18px; }
-  .svc-cats { font-size: 11px; gap: 8px 16px; margin-top: 18px; }
+  .svc-cats { font-size: 11px; width: auto; justify-content: flex-start; gap: 8px 16px; margin-top: 18px; letter-spacing: 0.14em; }
   .svc-list { gap: 10px; margin-top: 18px; }
   .svc-list li { font-size: 15px; padding-left: 22px; }
   .svc-price { gap: 12px; margin-top: 24px; }
