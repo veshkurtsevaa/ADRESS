@@ -276,7 +276,8 @@ button { font-family: inherit; }
 .section__inner--narrow { max-width: var(--content); }
 .section__inner--center { text-align: center; }
 .section__title { font-size: clamp(34px, 5vw, 58px); text-align: center; margin-bottom: 24px; }
-.section__text { font-size: 20px; text-align: center; max-width: var(--content); margin: 0 auto 48px; }
+.section__text {
+  text-wrap: pretty; font-size: 20px; text-align: center; max-width: var(--content); margin: 0 auto 48px; }
 
 /* =========================================================
    HOME — numbered index that unfolds on scroll (gaelleperrin)
@@ -424,6 +425,8 @@ button { font-family: inherit; }
 }
 .about-title--wide { letter-spacing: 0.02em; }
 .about-text {
+  /* keeps a lone word off the last line where the browser supports it */
+  text-wrap: pretty;
   font-size: calc(27 * var(--u));
   line-height: 1.5;
   max-width: calc(720 * var(--u));
