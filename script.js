@@ -20,6 +20,31 @@
     });
   }
 
+  /* ---------- contact menu: the header button offers Telegram or WhatsApp ---------- */
+  var contactMenus = document.querySelectorAll('[data-contact-menu]');
+  if (contactMenus.length) {
+    contactMenus.forEach(function (menu) {
+      var toggle = menu.querySelector('[data-contact-toggle]');
+      var list = menu.querySelector('[data-contact-list]');
+      if (!toggle || !list) return;
+
+      function setOpen(open) {
+        list.hidden = !open;
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(list.hidden);
+      });
+      /* a click inside the list is a channel being picked, so it may pass */
+      list.addEventListener('click', function (e) { e.stopPropagation(); });
+      document.addEventListener('click', function () { setOpen(false); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !list.hidden) { setOpen(false); toggle.focus(); }
+      });
+    });
+  }
+
   /* ---------- generic scroll reveal ---------- */
   document.documentElement.classList.add('reveal-ready');
   /* Inside a [data-reveal-stagger] block the children all cross the viewport
