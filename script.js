@@ -76,6 +76,50 @@
     });
   }
 
+  /* ---------- word by word out of blur ----------
+     The words are wrapped here rather than in the HTML because i18n rewrites
+     textContent on every language switch, which would throw the markup away;
+     the split is redone on the address:langchange event it fires, including
+     the one on first load. Splitting happens on ordinary spaces only, so a
+     pair held together by a non-breaking space stays inside one word and
+     cannot be broken across lines. */
+  var wordBlocks = document.querySelectorAll('[data-reveal-words]');
+  if (wordBlocks.length) {
+    var STEP = 70;
+
+    function splitWords(el) {
+      var text = el.textContent;
+      el.textContent = '';
+      var i = 0;
+      text.split(/( +)/).forEach(function (chunk) {
+        if (chunk === '') return;
+        if (chunk.charAt(0) === ' ') { el.appendChild(document.createTextNode(chunk)); return; }
+        var word = document.createElement('span');
+        word.className = 'word';
+        word.textContent = chunk;
+        if (!reduceMotion) word.style.transitionDelay = (i++ * STEP) + 'ms';
+        el.appendChild(word);
+      });
+    }
+
+    function splitAll() { wordBlocks.forEach(splitWords); }
+    document.addEventListener('address:langchange', splitAll);
+    splitAll();
+
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      var wordObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          wordObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.35 });
+      wordBlocks.forEach(function (el) { wordObserver.observe(el); });
+    } else {
+      wordBlocks.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+  }
+
   /* ---------- header shadow/compact on scroll ---------- */
   var header = document.querySelector('.site-header');
   var headerBar = header && header.querySelector('.site-header__inner');
