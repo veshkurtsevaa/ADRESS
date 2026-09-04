@@ -13,6 +13,7 @@
       'footer.tagline': 'Кураторские путешествия',
       'footer.rights': '© 2026 ADDRESS. Все права защищены.',
 
+      'home.hero.kicker': 'YOUR PERSONAL GUIDE',
       'home.hero.title': 'ADDRESS',
       'home.hero.subtitle': 'Проект авторских путешествий. Мы создаём поездки индивидуально, продумывая их под ваш ритм, интересы и ожидания.',
       'home.hero.cta': 'Связаться',
@@ -175,6 +176,7 @@
       'footer.tagline': 'Curated travel experiences',
       'footer.rights': '© 2026 ADDRESS. All rights reserved.',
 
+      'home.hero.kicker': 'YOUR PERSONAL GUIDE',
       'home.hero.title': 'ADDRESS',
       'home.hero.subtitle': 'A project of signature travel. We design each trip individually, shaping it around your rhythm, interests, and expectations.',
       'home.hero.cta': 'Get in Touch',
