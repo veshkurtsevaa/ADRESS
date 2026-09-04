@@ -157,15 +157,19 @@ button { font-family: inherit; }
   font-family: var(--font-ui); font-weight: 500; font-size: 12px;
   letter-spacing: 0.09em; text-transform: uppercase;
   display: inline-block; padding-bottom: 3px;
-  color: #FFFFFF;
-  /* the page you are on stays at full strength, the rest step back; white
-     asks for a shorter fall than ink did, or the words go out on the glass */
-  opacity: 0.78;
+  color: var(--ink);
+  /* the page you are on stays at full strength, the rest step back */
+  opacity: 0.55;
   transition: color 0.2s ease, opacity 0.2s ease, transform 0.28s var(--ease);
 }
 .nav__link--active { opacity: 1; }
+/* over a dark block the links turn white; the fall for the pages you are not
+   on is shorter there, or the words go out on the glass */
+.site-header.is-over-dark .nav__link { color: #FFFFFF; opacity: 0.78; }
+.site-header.is-over-dark .nav__link--active { opacity: 1; }
 /* the word swells under the pointer, the way it would under a lens */
-.nav__link:hover { color: #E6E279; opacity: 1; }
+.nav__link:hover,
+.site-header.is-over-dark .nav__link:hover { color: #E6E279; opacity: 1; }
 .mobile-nav__link:hover { color: #E6E279; }
 
 .lang-toggle {
