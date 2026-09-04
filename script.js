@@ -125,7 +125,27 @@
   var headerBar = header && header.querySelector('.site-header__inner');
   if (headerBar) {
     var lastY = window.scrollY;
-    window.addEventListener('scroll', function () {
+
+    /* the bar floats over whatever the page is showing at that moment, so the
+       links follow it: white while a dark block runs under the bar, ink
+       everywhere else. The olive quote on the home page is a pale panel
+       despite its name, so only the olive service spread is listed here. */
+    var darkBlocks = document.querySelectorAll(
+      '.hero, .marquee, .section--dark, .about-slide--navy, .about-slide--olive, .about-slide--photo'
+    );
+    function syncHeaderTone() {
+      if (!darkBlocks.length) return;
+      var bar = headerBar.getBoundingClientRect();
+      var line = bar.top + bar.height / 2;
+      var overDark = false;
+      for (var i = 0; i < darkBlocks.length; i++) {
+        var r = darkBlocks[i].getBoundingClientRect();
+        if (r.top <= line && r.bottom >= line) { overDark = true; break; }
+      }
+      header.classList.toggle('is-over-dark', overDark);
+    }
+
+    function onScroll() {
       var scrolled = window.scrollY > 8;
       /* scrolled: thicken the glass a little so text stays legible over
          whatever runs beneath it */
@@ -133,8 +153,13 @@
       headerBar.style.boxShadow = scrolled
         ? 'inset 0 1px 0 rgba(255,255,255,0.5), 0 10px 30px rgba(28,27,24,0.12)'
         : '';
+      syncHeaderTone();
       lastY = window.scrollY;
-    }, { passive: true });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', syncHeaderTone);
+    syncHeaderTone();
   }
 
   /* ---------- custom cursor ---------- */
