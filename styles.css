@@ -93,6 +93,9 @@ button { font-family: inherit; }
   mix-blend-mode: difference; opacity: 0;
 }
 .cursor.is-active { opacity: 1; }
+/* over the call to action the button carries the circle itself, so the
+   cursor's own disc steps out of the way rather than blending with it */
+.cursor.is-fill { opacity: 0; }
 /* one diameter for every state the circle takes, so moving along the header
    from a link to the button to the language switch does not resize it */
 .cursor.is-hover {
@@ -196,8 +199,21 @@ button { font-family: inherit; }
 .btn--primary:hover { background: var(--pink-dark); }
 .site-header .btn--primary,
 .mobile-nav .btn--primary { background: var(--navy); }
+/* the pill itself keeps its blue under the pointer: the yellow arrives only
+   inside a circle the size of the cursor, which follows it across the button */
 .site-header .btn--primary:hover,
-.mobile-nav .btn--primary:hover { background: #E6E279; color: var(--ink); }
+.mobile-nav .btn--primary:hover { background: var(--navy); }
+.nav-cta { position: relative; overflow: hidden; }
+.nav-cta::before {
+  content: ""; position: absolute; inset: 0; background: #E6E279;
+  clip-path: circle(40px at var(--cta-x, 50%) var(--cta-y, 50%));
+  opacity: 0; transition: opacity 0.22s ease; pointer-events: none;
+}
+.nav-cta:hover::before { opacity: 1; }
+/* the word inverts against whatever passes beneath it, so it reads on the
+   blue and on the yellow alike */
+.nav-cta__label { position: relative; z-index: 1; color: #FFFFFF; mix-blend-mode: difference; }
+@media (prefers-reduced-motion: reduce) { .nav-cta::before { transition: none; } }
 .btn--outline { border-color: var(--ink); color: var(--ink); background: transparent; }
 .btn--outline:hover { background: var(--ink); color: var(--paper); }
 .btn--outline-light { border-color: var(--paper); color: var(--paper); background: transparent; }
