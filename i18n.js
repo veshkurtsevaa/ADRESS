@@ -133,7 +133,7 @@
       'contacts.copied': 'скопировано',
 
       'contacts.plan.title': 'НАЧНИТЕ ПЛАНИРОВАТЬ СВОЮ ПОЕЗДКУ',
-      'contacts.plan.sub': 'Мы свяжемся с вами как можно скорее.',
+      'contacts.plan.sub': 'Мы свяжемся с вами как можно скорее',
       'contacts.plan.where': 'Куда вы хотите поехать?',
       'contacts.plan.when': 'Когда планируете поездку?',
       'contacts.plan.days': 'На сколько дней?',
@@ -145,8 +145,8 @@
       'contacts.plan.submit': 'Запросить путешествие',
 
       'contacts.interest.label': 'Меня интересует…',
-      'contacts.interest.personal': 'Персональное',
-      'contacts.interest.tailored': 'Индивидуальное',
+      'contacts.interest.personal': 'Address personal',
+      'contacts.interest.tailored': 'Address tailored',
       'contacts.interest.hotels': 'Отели',
       'contacts.interest.concierge': 'Консьерж',
       'contacts.interest.other': 'Свой запрос',
@@ -296,7 +296,7 @@
       'contacts.copied': 'copied',
 
       'contacts.plan.title': 'START PLANNING YOUR TRIP',
-      'contacts.plan.sub': 'We will get back to you as soon as we can.',
+      'contacts.plan.sub': 'We will get back to you as soon as we can',
       'contacts.plan.where': 'Where would you like to go?',
       'contacts.plan.when': 'When are you planning to travel?',
       'contacts.plan.days': 'How long for?',
@@ -308,8 +308,8 @@
       'contacts.plan.submit': 'Request my trip',
 
       'contacts.interest.label': "I'm interested in…",
-      'contacts.interest.personal': 'Personal',
-      'contacts.interest.tailored': 'Tailored',
+      'contacts.interest.personal': 'Address personal',
+      'contacts.interest.tailored': 'Address tailored',
       'contacts.interest.hotels': 'Hotels',
       'contacts.interest.concierge': 'Concierge',
       'contacts.interest.other': 'Something else',

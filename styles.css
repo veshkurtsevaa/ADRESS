@@ -18,6 +18,7 @@
   --navy: #25304A;
   --navy-dark: #1B2439;
   --accent-pink: #F7DDE2;
+  --yellow: #E6E279;
   --line: rgba(28, 27, 24, 0.14);
   --line-on-dark: rgba(247, 243, 236, 0.22);
   --placeholder: #4A473F;
@@ -279,6 +280,29 @@ button { font-family: inherit; }
 .contact-menu--stacked { display: flex; flex-direction: column; gap: 4px; width: 100%; }
 .contact-menu--stacked .contact-menu__item {
   border: 1px solid var(--line); padding: 13px 16px;
+}
+
+/* the closing call to action carries the same two channels as the header.
+   It sits low on the slide and in the middle of the column, so its list
+   opens upward and is centred on the button rather than hung off its edge. */
+/* the slide reveals its lines with a transform, which makes each of them a
+   stacking context, so the menu has to claim a layer of its own to open
+   over the copy rather than under it */
+.contact-menu--cta { display: inline-block; z-index: 6; }
+.contact-menu--up .contact-menu__list {
+  /* opaque: it opens over a photograph, not over the header's paper */
+  background: var(--paper);
+  top: auto; bottom: calc(100% + 12px);
+  right: 50%; margin-right: -116px;
+  transform-origin: bottom center;
+  animation-name: contact-menu-up-in;
+}
+@keyframes contact-menu-up-in {
+  from { opacity: 0; transform: translateY(6px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+@media (max-width: 420px) {
+  .contact-menu--up .contact-menu__list { right: auto; left: 0; margin-right: 0; min-width: 0; width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) { .contact-menu__list { animation: none; } }
@@ -1011,15 +1035,25 @@ button { font-family: inherit; }
 @media (max-width: 600px) {
   .section__inner--wide .interest-picker__tags { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-.contact-form { position: relative; display: flex; flex-direction: column; gap: 20px; }
+.contact-form {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: clamp(32px, 5vw, 84px);
+  row-gap: 20px;
+}
 /* the hairline that ties the question above to the form answering it */
 .contact-form::before {
   content: ""; position: absolute; left: 0; bottom: 100%; margin-bottom: 8px;
   width: 1px; height: 26px; background: linear-gradient(to bottom, transparent, var(--line));
 }
-.contact-form__fields { max-width: 640px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
-/* the submit sits after the last field, where the form ends */
-.contact-form__foot { display: flex; justify-content: flex-end; margin-top: 12px; }
+.contact-form__fields { grid-column: 1; max-width: 640px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+/* the submit sits beside the rows rather than under them */
+.contact-form__foot {
+  grid-column: 2; grid-row: 1;
+  display: flex; align-items: center; justify-content: center;
+}
 
 .form-field {
   position: relative; padding: 30px 0 12px;
@@ -1053,14 +1087,31 @@ button { font-family: inherit; }
 .form-field:focus-within::after { width: 100%; }
 
 .form-submit {
-  flex-shrink: 0; width: 132px; height: 132px; border-radius: 50%;
-  background: var(--ink); color: var(--paper); border: 1px solid var(--ink); cursor: pointer; will-change: transform;
-  font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-  transition: background-color 0.45s ease, color 0.45s ease;
+  position: relative; flex-shrink: 0; width: 176px; height: 176px; border-radius: 50%;
+  background: var(--yellow); color: var(--ink); border: 1px solid var(--yellow); cursor: pointer; will-change: transform;
+  font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+  transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease, transform 0.45s var(--ease);
 }
-.form-submit:hover { background: var(--navy); border-color: var(--navy); }
-.form-submit:focus-visible { outline: 2px solid var(--navy); outline-offset: 4px; }
-.form-submit.is-magnet-near { background: var(--accent-pink); color: var(--navy); border-color: var(--accent-pink); }
+/* the glow: a wider copy of the disc, blurred, that swells as the pointer
+   comes near and burns brighter once it is over the button */
+.form-submit::before {
+  content: ""; position: absolute; inset: -18%; border-radius: 50%; z-index: -1;
+  background: var(--yellow);
+  filter: blur(26px); opacity: 0; transform: scale(0.82);
+  transition: opacity 0.45s ease, transform 0.55s var(--ease);
+  pointer-events: none;
+}
+.form-submit:hover { transform: scale(1.04); }
+.form-submit:hover::before { opacity: 0.85; transform: scale(1.12); }
+.form-submit:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
+.form-submit:focus-visible::before { opacity: 0.7; transform: scale(1.06); }
+/* the magnet fires before the pointer arrives, so the glow leads the hover */
+.form-submit.is-magnet-near { background: var(--yellow); color: var(--ink); border-color: var(--yellow); }
+.form-submit.is-magnet-near::before { opacity: 0.6; transform: scale(1.06); }
+@media (prefers-reduced-motion: reduce) {
+  .form-submit, .form-submit::before { transition: none; }
+  .form-submit:hover { transform: none; }
+}
 
 .contact-info {
   display: flex; flex-direction: row; align-items: baseline; gap: 40px; flex-wrap: wrap;
@@ -1071,17 +1122,21 @@ button { font-family: inherit; }
 .contact-info__label { font-family: var(--font-ui); font-size: 15px; font-weight: 500; }
 .contact-info__value { font-family: var(--font-ui); font-size: 15px; font-weight: 300; color: var(--ink-soft); word-break: break-word; }
 .contact-info__value:hover { color: var(--pink); }
+/* the numbers stack, so the label keeps sitting next to the first of them */
+.contact-info__values { display: flex; flex-direction: column; gap: 6px; }
 
-.form-message { display: none; margin-top: 16px; font-size: 17px; }
+.form-message { grid-column: 1 / -1; display: none; margin-top: 16px; font-size: 17px; }
 .form-message.is-visible { display: block; animation: formFade 0.5s ease both; }
 .form-message--success { font-style: italic; color: var(--pink); }
 .form-message--error { color: var(--pink-dark); }
 @keyframes formFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 @media (max-width: 760px) {
+  /* no room for a column beside the rows: the button drops back underneath */
+  .contact-form { grid-template-columns: minmax(0, 1fr); }
   .contact-form__fields { width: 100%; max-width: none; }
-  .contact-form__foot { max-width: none; justify-content: flex-start; margin-top: 20px; }
-  .form-submit { width: 112px; height: 112px; }
+  .contact-form__foot { grid-column: 1; grid-row: auto; max-width: none; justify-content: flex-start; margin-top: 20px; }
+  .form-submit { width: 132px; height: 132px; font-size: 11px; }
   /* the contact line stacks into label / value pairs instead of breaking raggedly */
   .contact-info { flex-direction: column; align-items: stretch; gap: 20px; }
   .contact-info__row { display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; align-items: baseline; }
@@ -1244,7 +1299,7 @@ button { font-family: inherit; }
   content: ""; position: absolute; inset: 0; z-index: -1; background: var(--ink);
 }
 .site-footer__tagline { font-family: var(--font-display); font-size: 21px; margin-bottom: 14px; }
-.site-footer__rights { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.03em; opacity: 0.55; }
+.site-footer__rights { font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.03em; opacity: 0.55; }
 
 /* ---------- page transition overlay ---------- */
 .page-transition {
