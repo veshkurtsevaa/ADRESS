@@ -1220,6 +1220,22 @@ button { font-family: inherit; }
 [data-reveal-stagger] > [data-reveal],
 [data-reveal-stagger] .svc-list > [data-reveal] { will-change: opacity, transform; }
 
+/* data-reveal-words — the line assembles itself, each word settling out of
+   a blur a beat after the one before it. script.js does the splitting. */
+[data-reveal-words] .word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(8px);
+}
+.reveal-ready [data-reveal-words] .word {
+  transition: opacity 0.8s var(--ease), filter 0.8s var(--ease), transform 0.8s var(--ease);
+}
+[data-reveal-words].is-visible .word { opacity: 1; filter: blur(0); transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal-words] .word { opacity: 1; filter: none; transform: none; transition: none; }
+}
+
 /* data-reveal="fade" — for a layer something else already transforms */
 [data-reveal="fade"] { opacity: 0; transform: none; }
 .reveal-ready [data-reveal="fade"] { transition: opacity 1.4s var(--ease); }
