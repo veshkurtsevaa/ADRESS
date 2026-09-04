@@ -247,8 +247,37 @@
       var magnify = target.closest('[data-lens]');
       if (magnify) { if (magnify !== lensTarget) openLens(magnify); }
       else if (lensTarget) closeLens();
+
+      /* the call to action draws the circle inside itself, so the cursor's
+         own disc gets out of the way instead of blending over the yellow */
+      cursor.classList.toggle('is-fill', !!target.closest('.nav-cta'));
     });
   }
+
+  /* ---------- the header call to action: yellow inside the circle only ----------
+     The pill stays blue and a yellow disc the size of the cursor follows the
+     pointer across it. The label is wrapped so it can invert over both, and
+     it is re-wrapped after a language switch, which rewrites the button's
+     text and would otherwise throw the wrapper away. */
+  document.querySelectorAll('.nav-cta').forEach(function (btn) {
+    function wrapLabel() {
+      if (btn.querySelector('.nav-cta__label')) return;
+      var span = document.createElement('span');
+      span.className = 'nav-cta__label';
+      span.textContent = btn.textContent;
+      btn.textContent = '';
+      btn.appendChild(span);
+    }
+    wrapLabel();
+    if (window.MutationObserver) {
+      new MutationObserver(wrapLabel).observe(btn, { childList: true });
+    }
+    btn.addEventListener('mousemove', function (e) {
+      var r = btn.getBoundingClientRect();
+      btn.style.setProperty('--cta-x', (e.clientX - r.left) + 'px');
+      btn.style.setProperty('--cta-y', (e.clientY - r.top) + 'px');
+    });
+  });
 
   /* ---------- magnetic buttons (mouse-follow with elastic snap-back) ---------- */
   function initMagnetic(el, strength) {
