@@ -103,7 +103,7 @@
     var label = cursor.querySelector('.cursor__label');
     var lens = cursor.querySelector('.cursor__lens');
     var lensText = lens.firstChild;
-    var lensTarget = null, lensScale = 2.1;
+    var lensTarget = null, lensScale = 1.9;
 
     var mouseX = 0, mouseY = 0, curX = 0, curY = 0, active = false;
     document.addEventListener('mousemove', function (e) {
@@ -166,6 +166,9 @@
       if (!hit) {
         cursor.classList.remove('is-hover');
         label.textContent = '';
+        /* the lens has to go with it: leaving a header link straight onto the
+           page never crosses another link, so nothing else would close it */
+        closeLens();
         return;
       }
       var labelled = target.closest('[data-cursor-label]');

@@ -84,6 +84,7 @@ button { font-family: inherit; }
 
 /* ---------- custom cursor (magnetic + label) ---------- */
 .cursor {
+  --cursor-d: 80px;
   position: fixed; top: 0; left: 0; width: 14px; height: 14px;
   border-radius: 50%; background: var(--ink); pointer-events: none;
   z-index: 9999; transform: translate(-50%, -50%);
@@ -92,8 +93,10 @@ button { font-family: inherit; }
   mix-blend-mode: difference; opacity: 0;
 }
 .cursor.is-active { opacity: 1; }
+/* one diameter for every state the circle takes, so moving along the header
+   from a link to the button to the language switch does not resize it */
 .cursor.is-hover {
-  width: 64px; height: 64px; background: var(--paper);
+  width: var(--cursor-d); height: var(--cursor-d); background: var(--paper);
   display: flex; align-items: center; justify-content: center;
 }
 .cursor__label {
@@ -110,7 +113,7 @@ button { font-family: inherit; }
    pale yellow on a pale header is not readable at any size */
 .cursor__lens > span { position: absolute; white-space: nowrap; transform-origin: 0 0; color: var(--ink); }
 .cursor.is-lens {
-  width: 96px; height: 96px;
+  width: var(--cursor-d); height: var(--cursor-d);
   background: var(--paper);
   mix-blend-mode: normal;
   border: 1px solid var(--line);
