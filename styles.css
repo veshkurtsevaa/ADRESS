@@ -377,7 +377,10 @@ button { font-family: inherit; }
 /* the hero ADDRESS is the wordmark, so it takes --font-logo (Wremena)
    rather than the sitewide heading font */
 .hero__title { font-family: var(--font-logo); font-size: clamp(52px, 9vw, 108px); margin-bottom: 18px; line-height: 1.02; }
-.hero__subtitle { font-family: var(--font-body); font-size: 21px; max-width: var(--content); margin: 0 auto; line-height: 1.6; }
+/* 780 rather than the 660 the rest of the body copy uses: the Russian lead
+   needs 700 to hold two lines, and the margin keeps it there if a fallback
+   face ever renders a little wider */
+.hero__subtitle { font-family: var(--font-body); font-size: 21px; max-width: 780px; margin: 0 auto; line-height: 1.6; }
 .hero__actions { margin-top: 36px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .hero__scroll-cue {
   position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2;
