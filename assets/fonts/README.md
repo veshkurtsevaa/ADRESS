@@ -1,9 +1,6 @@
 # Self-hosted fonts
 
-Work Sans and Fraunces come from Google Fonts. Wremena does not, so it lives
-here. Until its file is added the site falls back to Fraunces and nothing
-breaks: the moment the file appears, every heading and the wordmark switch
-over on their own.
+Work Sans comes from Google Fonts. Wremena does not, so it lives here.
 
 ## Wremena Light — wordmark and headings
 
@@ -11,14 +8,19 @@ over on their own.
 `'Wremena', 'Fraunces', Georgia, serif`, used by the ADDRESS wordmark, every
 heading (h1 to h3), the section titles and the Contacts headline.
 
-Drop the font file into this folder as one of these, in order of preference:
+The font arrived as `Wremena Light.otf` (59KB) and was converted here to
+`Wremena-Light.woff2` (26KB) and `Wremena-Light.woff` (31KB), which is what
+browsers download. The `.otf` stays as the source; the `@font-face` rule
+lists all three, best format first.
 
-- `Wremena-Light.woff2` (best: smallest file)
-- `Wremena-Light.woff`
-- `Wremena-Light.ttf` (works as is, just heavier to download)
+To replace the font later, drop the new file in and convert it the same way:
 
-The `@font-face` rule already lists all three paths, so whichever one you
-upload is picked up. A `.ttf` you have on hand can be dropped in unchanged.
+```
+pip install fonttools brotli
+python3 -c "from fontTools.ttLib import TTFont; f=TTFont('NEW.otf'); f.flavor='woff2'; f.save('Wremena-Light.woff2')"
+```
+
+The face carries both Cyrillic and Latin, so both languages are covered.
 
 ## What the rest of the site uses
 
@@ -31,3 +33,8 @@ upload is picked up. A `.ttf` you have on hand can be dropped in unchanged.
 
 No longer referenced. `NewParisSkyline-Regular.woff2` and `.woff` are still in
 this folder; nothing loads them.
+
+## Fraunces
+
+Still requested from Google Fonts as the fallback behind Wremena, so a slow
+or blocked font request degrades to something close rather than to Georgia.

@@ -97,9 +97,13 @@
   if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
     var cursor = document.createElement('div');
     cursor.className = 'cursor';
-    cursor.innerHTML = '<span class="cursor__label"></span>';
+    cursor.innerHTML = '<span class="cursor__label"></span>' +
+                       '<span class="cursor__lens"><span></span></span>';
     document.body.appendChild(cursor);
     var label = cursor.querySelector('.cursor__label');
+    var lens = cursor.querySelector('.cursor__lens');
+    var lensText = lens.firstChild;
+    var lensTarget = null, lensScale = 2.1;
 
     var mouseX = 0, mouseY = 0, curX = 0, curY = 0, active = false;
     document.addEventListener('mousemove', function (e) {
@@ -108,12 +112,46 @@
     });
     document.addEventListener('mouseleave', function () {
       active = false; cursor.classList.remove('is-active');
+      closeLens();
     });
+
+    /* The lens holds a magnified copy of the word it is passing over. The
+       copy is placed so that the point of the text under the middle of the
+       circle sits at the middle of the circle, which is what makes it read
+       as a lens rather than as a floating label. The circle eases toward
+       the pointer, so the sum is taken from the circle's own position, not
+       from the pointer's. */
+    function placeLens() {
+      if (!lensTarget) return;
+      var r = lensTarget.getBoundingClientRect();
+      var d = cursor.offsetWidth / 2;
+      lensText.style.left = (d - (curX - r.left) * lensScale) + 'px';
+      lensText.style.top = (d - (curY - r.top) * lensScale) + 'px';
+    }
+
+    function openLens(el) {
+      var cs = window.getComputedStyle(el);
+      lensTarget = el;
+      lensText.textContent = el.textContent;
+      lensText.style.font = cs.font;
+      lensText.style.letterSpacing = cs.letterSpacing;
+      lensText.style.textTransform = cs.textTransform;
+      lensText.style.transform = 'scale(' + lensScale + ')';
+      cursor.classList.add('is-lens');
+      placeLens();
+    }
+
+    function closeLens() {
+      lensTarget = null;
+      cursor.classList.remove('is-lens');
+      lensText.textContent = '';
+    }
 
     function raf() {
       curX += (mouseX - curX) * 0.18;
       curY += (mouseY - curY) * 0.18;
       cursor.style.transform = 'translate(' + curX + 'px, ' + curY + 'px) translate(-50%, -50%)';
+      placeLens();
       requestAnimationFrame(raf);
     }
     raf();
@@ -133,6 +171,10 @@
       var labelled = target.closest('[data-cursor-label]');
       cursor.classList.add('is-hover');
       label.textContent = labelled ? labelled.getAttribute('data-cursor-label') : '';
+
+      var magnify = target.closest('[data-lens]');
+      if (magnify) { if (magnify !== lensTarget) openLens(magnify); }
+      else if (lensTarget) closeLens();
     });
   }
 
