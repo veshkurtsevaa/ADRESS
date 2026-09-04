@@ -173,8 +173,8 @@ button { font-family: inherit; }
 .site-header.is-over-dark .nav__link--active { opacity: 1; }
 /* the word swells under the pointer, the way it would under a lens */
 .nav__link:hover,
-.site-header.is-over-dark .nav__link:hover { color: #E6E279; opacity: 1; }
-.mobile-nav__link:hover { color: #E6E279; }
+.site-header.is-over-dark .nav__link:hover { color: var(--yellow); opacity: 1; }
+.mobile-nav__link:hover { color: var(--yellow); }
 
 .lang-toggle {
   display: inline-flex; align-items: center;
@@ -206,7 +206,7 @@ button { font-family: inherit; }
 .mobile-nav .btn--primary:hover { background: var(--navy); }
 .nav-cta { position: relative; overflow: hidden; }
 .nav-cta::before {
-  content: ""; position: absolute; inset: 0; background: #E6E279;
+  content: ""; position: absolute; inset: 0; background: var(--yellow);
   clip-path: circle(40px at var(--cta-x, 50%) var(--cta-y, 50%));
   opacity: 0; transition: opacity 0.22s ease; pointer-events: none;
 }
@@ -283,26 +283,21 @@ button { font-family: inherit; }
 }
 
 /* the closing call to action carries the same two channels as the header.
-   It sits low on the slide and in the middle of the column, so its list
-   opens upward and is centred on the button rather than hung off its edge. */
-/* the slide reveals its lines with a transform, which makes each of them a
-   stacking context, so the menu has to claim a layer of its own to open
-   over the copy rather than under it */
+   It stands in the middle of its column, so the list is centred on the
+   button rather than hung off its edge, and it opens downward, into the
+   room the canvas keeps below the button.
+   The slide reveals its lines with a transform, which makes each of them a
+   stacking context, so the menu also has to claim a layer of its own to
+   open over the copy rather than under it. */
 .contact-menu--cta { display: inline-block; z-index: 6; }
-.contact-menu--up .contact-menu__list {
+.contact-menu--cta .contact-menu__list {
   /* opaque: it opens over a photograph, not over the header's paper */
   background: var(--paper);
-  top: auto; bottom: calc(100% + 12px);
   right: 50%; margin-right: -116px;
-  transform-origin: bottom center;
-  animation-name: contact-menu-up-in;
-}
-@keyframes contact-menu-up-in {
-  from { opacity: 0; transform: translateY(6px) scale(0.97); }
-  to   { opacity: 1; transform: none; }
+  transform-origin: top center;
 }
 @media (max-width: 420px) {
-  .contact-menu--up .contact-menu__list { right: auto; left: 0; margin-right: 0; min-width: 0; width: 100%; }
+  .contact-menu--cta .contact-menu__list { right: auto; left: 0; margin-right: 0; min-width: 0; width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) { .contact-menu__list { animation: none; } }
@@ -1088,7 +1083,7 @@ button { font-family: inherit; }
 
 .form-submit {
   position: relative; flex-shrink: 0; width: 176px; height: 176px; border-radius: 50%;
-  background: var(--yellow); color: var(--ink); border: 1px solid var(--yellow); cursor: pointer; will-change: transform;
+  background: var(--olive); color: var(--paper); border: 1px solid var(--olive); cursor: pointer; will-change: transform;
   font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
   transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease, transform 0.45s var(--ease);
 }
@@ -1096,17 +1091,17 @@ button { font-family: inherit; }
    comes near and burns brighter once it is over the button */
 .form-submit::before {
   content: ""; position: absolute; inset: -18%; border-radius: 50%; z-index: -1;
-  background: var(--yellow);
+  background: var(--olive);
   filter: blur(26px); opacity: 0; transform: scale(0.82);
   transition: opacity 0.45s ease, transform 0.55s var(--ease);
   pointer-events: none;
 }
 .form-submit:hover { transform: scale(1.04); }
 .form-submit:hover::before { opacity: 0.85; transform: scale(1.12); }
-.form-submit:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
+.form-submit:focus-visible { outline: 2px solid var(--olive-dark); outline-offset: 6px; }
 .form-submit:focus-visible::before { opacity: 0.7; transform: scale(1.06); }
 /* the magnet fires before the pointer arrives, so the glow leads the hover */
-.form-submit.is-magnet-near { background: var(--yellow); color: var(--ink); border-color: var(--yellow); }
+.form-submit.is-magnet-near { background: var(--olive-dark); color: var(--paper); border-color: var(--olive-dark); }
 .form-submit.is-magnet-near::before { opacity: 0.6; transform: scale(1.06); }
 @media (prefers-reduced-motion: reduce) {
   .form-submit, .form-submit::before { transition: none; }
