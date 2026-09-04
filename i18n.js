@@ -128,7 +128,6 @@
       'contacts.hero.line1': 'Расскажите, каким вы видите своё путешествие.',
       'contacts.hero.line2': 'Мы свяжемся с вами в течение дня.',
 
-      'contacts.channel.telegram': 'написать нам ↗',
       'contacts.copy': 'скопировать',
       'contacts.copied': 'скопировано',
 
@@ -291,7 +290,6 @@
       'contacts.hero.line1': 'Tell us how you picture your journey.',
       'contacts.hero.line2': "We'll get back to you within a day.",
 
-      'contacts.channel.telegram': 'message us ↗',
       'contacts.copy': 'copy',
       'contacts.copied': 'copied',
 
