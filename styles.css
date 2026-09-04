@@ -42,11 +42,11 @@
 
 @font-face {
   font-family: 'Wremena';
-  /* the .ttf is listed too, so the font works the moment the file is
-     dropped in, whether or not it has been converted to woff2 yet */
+  /* woff2 first (26KB against the 59KB original); the .otf the file came
+     as is kept in the repo as the source and listed last */
   src: url('assets/fonts/Wremena-Light.woff2') format('woff2'),
        url('assets/fonts/Wremena-Light.woff') format('woff'),
-       url('assets/fonts/Wremena-Light.ttf') format('truetype');
+       url('assets/fonts/Wremena%20Light.otf') format('opentype');
   font-weight: 300 400;
   font-style: normal;
   font-display: swap;
@@ -102,6 +102,22 @@ button { font-family: inherit; }
   opacity: 0; transition: opacity 0.2s ease;
 }
 .cursor.is-hover .cursor__label { opacity: 1; }
+
+/* the lens: the circle turns into a glass holding a magnified copy of the
+   word underneath it, so the header needs no underline to answer a hover */
+.cursor__lens { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; opacity: 0; }
+/* ink rather than the hover yellow: the word is read through the lens, and
+   pale yellow on a pale header is not readable at any size */
+.cursor__lens > span { position: absolute; white-space: nowrap; transform-origin: 0 0; color: var(--ink); }
+.cursor.is-lens {
+  width: 96px; height: 96px;
+  background: var(--paper);
+  mix-blend-mode: normal;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(28, 27, 24, 0.16);
+}
+.cursor.is-lens .cursor__lens { opacity: 1; }
+.cursor.is-lens .cursor__label { display: none; }
 @media (hover: none), (max-width: 860px) { .cursor { display: none; } }
 @media (prefers-reduced-motion: reduce) { .cursor { transition: none; } }
 
@@ -144,7 +160,7 @@ button { font-family: inherit; }
 }
 .nav__link--active { opacity: 1; }
 /* the word swells under the pointer, the way it would under a lens */
-.nav__link:hover { color: #E6E279; opacity: 1; transform: scale(1.16); }
+.nav__link:hover { color: #E6E279; opacity: 1; }
 .mobile-nav__link:hover { color: #E6E279; }
 
 .lang-toggle {
