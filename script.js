@@ -118,16 +118,21 @@
     }
     raf();
 
-    document.querySelectorAll('a, button, [data-cursor]').forEach(function (el) {
-      var text = el.getAttribute('data-cursor-label') || '';
-      el.addEventListener('mouseenter', function () {
-        cursor.classList.add('is-hover');
-        label.textContent = text;
-      });
-      el.addEventListener('mouseleave', function () {
+    /* One delegated handler rather than a pair per element: moving from a row
+       onto a link inside it used to fire the row's mouseleave and blank the
+       label, so the word flickered away while the pointer was still on the
+       row. Reading the target's nearest labelled ancestor keeps it up. */
+    document.addEventListener('mouseover', function (e) {
+      var target = e.target.closest ? e.target : e.target.parentElement;
+      var hit = target && target.closest('a, button, [data-cursor]');
+      if (!hit) {
         cursor.classList.remove('is-hover');
         label.textContent = '';
-      });
+        return;
+      }
+      var labelled = target.closest('[data-cursor-label]');
+      cursor.classList.add('is-hover');
+      label.textContent = labelled ? labelled.getAttribute('data-cursor-label') : '';
     });
   }
 
