@@ -20,6 +20,31 @@
     });
   }
 
+  /* ---------- the hero film loops without a flash ----------
+     Left to the loop attribute the film cuts straight from its last frame
+     to its first, and the two do not match. It loops by hand instead: the
+     picture fades into the ink behind it over the closing half second, the
+     wrap skips the opening frames, and it fades back up. */
+  var heroVideo = document.querySelector('[data-hero-video]');
+  if (heroVideo) {
+    var loopStart = parseFloat(heroVideo.getAttribute('data-loop-start')) || 0;
+    var fade = reduceMotion ? 0 : 0.5;
+    heroVideo.addEventListener('timeupdate', function () {
+      var left = heroVideo.duration - heroVideo.currentTime;
+      if (isFinite(left) && left <= fade) heroVideo.classList.add('is-wrapping');
+    });
+    heroVideo.addEventListener('ended', function () {
+      heroVideo.currentTime = loopStart;
+      heroVideo.classList.remove('is-wrapping');
+      var played = heroVideo.play();
+      /* if the browser refuses to start it again, hand the loop back to it
+         rather than leaving the hero on a frozen frame */
+      if (played && played.catch) played.catch(function () { heroVideo.loop = true; });
+    });
+    /* a browser that refuses autoplay still gets a film that loops */
+    heroVideo.addEventListener('error', function () { heroVideo.loop = true; });
+  }
+
   /* ---------- contact menu: the header button offers Telegram or WhatsApp ---------- */
   var contactMenus = document.querySelectorAll('[data-contact-menu]');
   if (contactMenus.length) {
