@@ -882,13 +882,9 @@ button { font-family: inherit; }
 }
 .svc--mirror { grid-template-columns: calc(700 * var(--u)) 1fr; }
 
-.svc__num {
-  display: block;
-  font-size: calc(18 * var(--u));
-  letter-spacing: 0.12em;
-  opacity: 0.55;
-  margin-bottom: calc(16 * var(--u));
-}
+/* the number and the tag are one line, "(01) personal", set at the label
+   size and in one tone: two stacked lines were two starts to the same spread */
+.svc__num { margin-right: calc(6 * var(--u)); }
 .svc__tag { margin: 0 0 calc(14 * var(--u)); }
 .svc__text .about-title { font-size: calc(52 * var(--u)); margin-bottom: calc(22 * var(--u)); }
 .svc__text .about-text { max-width: calc(700 * var(--u)); }
@@ -988,7 +984,7 @@ button { font-family: inherit; }
   .svc-intro .about-text--lead { font-size: 17px; max-width: none; }
   .svc-intro .about-photo { order: -1; }
   .svc__text .about-text, .svc-list li { max-width: none; }
-  .svc__num { font-size: 12px; margin-bottom: 10px; }
+  .svc__num { margin-right: 4px; }
   .svc__tag { margin-bottom: 10px; }
   .svc__deliverable { margin-top: 18px; }
   .svc-cats { font-size: 12px; width: auto; justify-content: flex-start; gap: 8px 16px; margin-top: 18px; letter-spacing: 0.12em; }
