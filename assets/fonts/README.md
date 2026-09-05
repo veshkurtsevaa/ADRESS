@@ -24,10 +24,17 @@ The face carries both Cyrillic and Latin, so both languages are covered.
 
 ## What the rest of the site uses
 
-- **Work Sans** (Google Fonts): body copy, buttons, form fields, labels and
-  every run of digits, including the 01 to 06 section numbers.
-- **IBM Plex Mono**: only the small journal-style tags (`personal`,
-  `tailored`, `сервисы`) and the language switch.
+- **Work Sans** (Google Fonts): everything that is not a heading. Body copy,
+  buttons, form fields, the small journal tags, the language switch, the
+  prices and every run of digits, including the 01 to 06 section numbers.
+- **Onest** (Google Fonts): the same role in Russian. Work Sans carries no
+  Cyrillic, so without a companion the Russian text fell through to Arial and
+  read as a different site. Onest stands second in `--font-body`, `--font-ui`
+  and `--font-num`, so each glyph is taken from Work Sans where it exists and
+  from Onest otherwise.
+
+IBM Plex Mono, Inter and Montserrat were requested by the pages and are gone:
+nothing referenced them once the tags moved to Work Sans.
 
 ## NewParis Skyline
 
