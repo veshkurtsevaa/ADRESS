@@ -6,10 +6,10 @@
   <title>ADDRESS · Service</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Onest:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600&family=Onest:wght@200;300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/img/favicon.png?v=2">
   <link rel="alternate icon" href="favicon.ico">
-  <link rel="stylesheet" href="styles.css?v=31">
+  <link rel="stylesheet" href="styles.css?v=34">
 </head>
 <body>
   <header class="site-header">
@@ -201,7 +201,75 @@
           <p data-reveal class="about-word about-word--small" data-i18n="brand.name">ADDRESS</p>
           <p data-reveal class="about-text about-text--lead" data-i18n="service.closing.text1">Planning a trip and want it thought through to the very last detail? Write to us.</p>
           <p data-reveal class="about-text" data-i18n="service.closing.text2">We'll choose the right format of support and create a journey made just for you.</p>
-          <a data-reveal href="https://t.me/+79029423542" target="_blank" rel="noopener" class="btn about-s5__cta" data-magnetic="0.3" data-i18n="service.closing.cta">Get in Touch</a>
+          <div class="contact-menu contact-menu--cta" data-reveal data-contact-menu>
+            <button type="button" class="btn about-s5__cta" data-contact-toggle data-magnetic="0.3" aria-expanded="false" aria-haspopup="true" data-i18n="service.closing.cta">Get in Touch</button>
+            <div class="contact-menu__list" data-contact-list hidden>
+              <a class="contact-menu__item" href="https://t.me/+79029423542" target="_blank" rel="noopener">
+                <span class="contact-menu__channel">Telegram</span>
+                <span class="contact-menu__number">+7 902 942 3542</span>
+              </a>
+              <a class="contact-menu__item" href="https://wa.me/447740174159" target="_blank" rel="noopener">
+                <span class="contact-menu__channel">WhatsApp</span>
+                <span class="contact-menu__number">+44 7740 174159</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- the brief that closes the page: the tag picker, the short form
+         and the contact details, moved here from Contacts -->
+    <section class="section section--white section--wide">
+      <div class="section__inner section__inner--wide">
+        <p class="interest-picker__label" data-reveal>
+          <span class="interest-picker__label-line" data-i18n="contacts.hero.line1">Tell us how you picture your journey.</span>
+          <span class="interest-picker__label-line" data-i18n="contacts.hero.line2">We'll get back to you within a day.</span>
+        </p>
+        <div class="interest-picker__tags" data-reveal>
+          <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.personal">Address personal</button>
+          <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.tailored">Address tailored</button>
+          <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.hotels">Hotels</button>
+          <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.concierge">Concierge</button>
+          <button type="button" class="interest-tag" data-interest-tag data-i18n="contacts.interest.other">Something else</button>
+        </div>
+
+        <div class="contact-grid">
+          <form class="contact-form" data-contact-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-reveal>
+            <input type="hidden" name="interest" value="" data-interest-input>
+            <div class="contact-form__fields">
+              <div class="form-field">
+                <input class="form-input" type="text" id="name" name="name" required placeholder=" " autocomplete="name">
+                <label for="name" data-i18n="contacts.form.name">Name</label>
+              </div>
+              <div class="form-field">
+                <input class="form-input" type="email" id="email" name="email" required placeholder=" " autocomplete="email">
+                <label for="email" data-i18n="contacts.form.email">Email</label>
+              </div>
+              <div class="form-field">
+                <textarea class="form-textarea" id="message" name="message" required placeholder=" " rows="1"></textarea>
+                <label for="message" data-i18n="contacts.form.message">Message</label>
+              </div>
+            </div>
+            <div class="contact-form__foot">
+              <button type="submit" class="form-submit" data-magnet-proximity data-i18n="contacts.form.submit">Send</button>
+            </div>
+            <p class="form-message form-message--success" data-form-success data-i18n="contacts.form.success">Thank you, we'll get back to you within a day.</p>
+            <p class="form-message form-message--error" data-form-error data-i18n="contacts.form.error">Something went wrong. Please try again or reach us directly.</p>
+          </form>
+
+          <div class="contact-info" data-reveal>
+            <p class="contact-info__title" data-i18n="contacts.info.title">Contact Information</p>
+            <div class="contact-info__row">
+              <span class="contact-info__label" data-i18n="contacts.info.email.label">Email</span>
+              <a class="contact-info__value" href="mailto:address@gmail.com">address@gmail.com</a>
+              <span class="contact-info__label" data-i18n="contacts.info.phone.label">Phone</span>
+              <span class="contact-info__values">
+                <a class="contact-info__value" href="tel:+79029423542">+7 (902) 942 3542</a>
+                <a class="contact-info__value" href="tel:+447740174159">+44 (7740) 174159</a>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -213,8 +281,8 @@
     <p class="site-footer__rights" data-i18n="footer.rights">© 2026 ADDRESS. All rights reserved.</p>
   </footer>
 
-  <script src="i18n.js?v=15"></script>
-  <script src="script.js?v=20"></script>
+  <script src="i18n.js?v=17"></script>
+  <script src="script.js?v=21"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="animations.js?v=13"></script>
